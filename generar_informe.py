@@ -118,15 +118,27 @@ S.append(PageBreak())
 # ───────────────────────── EDA ─────────────────────────
 S.append(Paragraph('3. Análisis exploratorio', H1))
 
-S.append(Paragraph('3.1 Evolución temporal y tasas por comuna', H2))
+S.append(Paragraph('3.1 Panorama general: cuántos, cuándo, quiénes', H2))
+S.append(Paragraph(
+    '37.849 siniestros en 2021-2024 (25,9 por día), 5,7% severos. La hora pico de siniestros sigue '
+    'la hora pico de tránsito; la víctima más frecuente es por lejos la <b>moto</b>, seguida del peatón, '
+    'y la contraparte más frecuente es el auto.', P))
+S += img('estadisticas_generales.png',
+         caption='Panorama: siniestros por año, por hora del día, víctima y contraparte más frecuentes.')
+S.append(PageBreak())
+
+S.append(Paragraph('3.2 Evolución temporal y tasas por comuna', H2))
 S += img('serie_temporal_siniestros.png',
          caption='Crecimiento sostenido post-pandemia: +35,2% entre 2021 (7.819) y 2024 (10.569).')
 S += img('mapa_tasas_comunas.png', width=13.5*cm,
          caption='Tasa anual de siniestros cada 100.000 habitantes (Censo 2022). '
                  'Máximo: Comuna 1 (458,5); mínimo: Comuna 6 (195,4) — 2,3× de diferencia.')
+S += img('top_arterias.png', width=13.5*cm,
+         caption='Top 10 arterias por cantidad de siniestros. Concentración, no riesgo por vehículo: sin datos '
+                 'de flujo no se puede normalizar por exposición.')
 S.append(PageBreak())
 
-S.append(Paragraph('3.2 ¿Los días de lluvia tienen más siniestros? No: tienen menos', H2))
+S.append(Paragraph('3.3 ¿Los días de lluvia tienen más siniestros? No: tienen menos', H2))
 S.append(Paragraph(
     'Los días con lluvia registran <b>-8% de siniestros</b> (24,5 vs 26,6 por día) y el efecto '
     'es dosis-dependiente: con más de 20 mm caen <b>-21%</b>. La composición de víctimas casi no cambia '
@@ -138,13 +150,13 @@ S.append(Paragraph(
 S += img('lluvia_vs_siniestros.png',
          caption='Izq: siniestros/día por intensidad de lluvia. Der: dispersión precipitación vs cantidad diaria.')
 
-S.append(Paragraph('3.3 Combinaciones de variables', H2))
+S.append(Paragraph('3.4 Combinaciones de variables', H2))
 S += img('combinaciones_interesantes.png',
          caption='Los cruces dicen más que las variables aisladas: madrugada de finde concentra severidad y jóvenes; '
                  'la lluvia baja la frecuencia en todos los tipos de vía; la banda crítica de severidad es 65+.')
 S.append(PageBreak())
 
-S.append(Paragraph('3.4 El gradiente velocidad → severidad', H2))
+S.append(Paragraph('3.5 El gradiente velocidad → severidad', H2))
 S.append(Paragraph(
     'No existe dataset público de velocidad medida; en CABA el límite legal lo fija el tipo de vía. '
     'Sumando las áreas de prioridad peatonal (20 km/h) el gradiente queda completo y monotónico — '
@@ -152,7 +164,7 @@ S.append(Paragraph(
 S += img('gradiente_velocidad_severidad.png', width=12.5*cm,
          caption='Zona 20 km/h: 3,4% · Calle (40): 3,8% · Avenida (60): 5,4% · Autopista (80+): 14,1% SEVERO.')
 
-S.append(Paragraph('3.5 Edad × fin de semana', H2))
+S.append(Paragraph('3.6 Edad × fin de semana', H2))
 S.append(Paragraph(
     'Los jóvenes (18-29) pasan del 28,8% de las víctimas entre semana al <b>33,5% el fin de semana</b>. '
     'En la madrugada de finde la mediana baja a 31 años y el 43,9% de los siniestros tiene '
@@ -263,7 +275,7 @@ S.append(Paragraph('Reproducibilidad', H2))
 S.append(Paragraph(
     'Todo el trabajo es reproducible: notebook de 80 celdas que corre de punta a punta, datasets externos '
     'descargados como archivos estáticos (sin llamadas a APIs en tiempo de ejecución), semillas fijas '
-    '(random_state=42) y protocolo de validación único. Artefactos: dataset integrado, 19 gráficos, '
+    '(random_state=42) y protocolo de validación único. Artefactos: dataset integrado, 21 gráficos, '
     '4 mapas interactivos y 4 modelos serializados. Todas las técnicas aplicadas corresponden al programa '
     'de la materia: EDA (Clase 4), Árboles de Decisión (Clase 7), Random Forest y validación de modelos '
     '(Clase 8), regresión (Clase 9) y aprendizaje no supervisado (Clase 10).', P))
