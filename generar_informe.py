@@ -237,7 +237,11 @@ S.append(PageBreak())
 
 S.append(Paragraph('4.2 Regresión: cantidad diaria de siniestros', H2))
 S.append(Paragraph(
-    'Problema de <b>regresión</b> (target numérico), evaluado con MSE, RMSE, MAE y R². '
+    'Problema de <b>regresión</b>: predecir cuántos siniestros habrá en un día dado de CABA. Los inputs '
+    'se conocen antes de que empiece el día — calendario (día de semana, mes, feriado, finde), clima '
+    '(pronóstico de lluvia y temperatura) y tránsito del mes — y la salida es la cantidad esperada. '
+    'Uso práctico: dimensionar recursos (guardias del SAME, operativos de tránsito): "feriado con '
+    'lluvia → ~15 siniestros esperados, no los ~26 de un día típico". Evaluado con MSE, RMSE, MAE y R². '
     'Validación con split temporal honesto: entrenamiento 2021-2023, test 2024 (un año nunca visto). '
     'Gana la <b>Regresión Lineal Múltiple con dummies</b> (RMSE 7,43 · MAE 5,84 · R² 0,385) sobre el '
     'Árbol de Regresión (R² 0,241) y Random Forest (R² 0,313) — los árboles no extrapolan la tendencia '
