@@ -3,7 +3,7 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
 from reportlab.lib import colors
 from reportlab.platypus import (SimpleDocTemplate, Paragraph, Spacer, PageBreak,
-                                Image, Table, TableStyle)
+                                Image, Table, TableStyle, KeepTogether)
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from PIL import Image as PILImage
 import os
@@ -33,7 +33,7 @@ def img(path, width=15.5*cm, caption=None):
     if caption:
         cap = ParagraphStyle('cap', parent=PC, alignment=1)
         el.append(Paragraph(caption, cap))
-    return el
+    return [KeepTogether(el)]
 
 def tabla(data, col_widths=None, font=8.5):
     t = Table(data, colWidths=col_widths, hAlign='LEFT')
@@ -175,9 +175,12 @@ S += img('lluvia_vs_siniestros.png',
          caption='Izq: siniestros/día por intensidad de lluvia. Der: dispersión precipitación vs cantidad diaria.')
 
 S.append(Paragraph('3.5 Combinaciones de variables', H2))
-S += img('combinaciones_interesantes.png',
-         caption='Los cruces dicen más que las variables aisladas: madrugada de finde concentra severidad y jóvenes; '
-                 'la lluvia baja la frecuencia en todos los tipos de vía; la banda crítica de severidad es 65+.')
+S += img('combinaciones_cuando.png',
+         caption='El CUÁNDO: la madrugada de fin de semana concentra la severidad (12,1% vs 5,5%); '
+                 'la noche domina y la lluvia nocturna suma poco (+0,6 pp).')
+S += img('combinaciones_quien_via.png',
+         caption='El QUIÉN y la VÍA: la lluvia baja la frecuencia en todos los tipos de vía (no castiga más '
+                 'a las autopistas); la banda crítica de severidad es 65+ (fragilidad), no los jóvenes.')
 S.append(PageBreak())
 
 S.append(Paragraph('3.6 El gradiente velocidad → severidad', H2))
@@ -304,7 +307,7 @@ S.append(Paragraph('Reproducibilidad', H2))
 S.append(Paragraph(
     'Todo el trabajo es reproducible: notebook de 80 celdas que corre de punta a punta, datasets externos '
     'descargados como archivos estáticos (sin llamadas a APIs en tiempo de ejecución), semillas fijas '
-    '(random_state=42) y protocolo de validación único. Artefactos: dataset integrado, 23 gráficos, '
+    '(random_state=42) y protocolo de validación único. Artefactos: dataset integrado, 25 gráficos, '
     '4 mapas interactivos y 4 modelos serializados. Todas las técnicas aplicadas corresponden al programa '
     'de la materia: EDA (Clase 4), Árboles de Decisión (Clase 7), Random Forest y validación de modelos '
     '(Clase 8), regresión (Clase 9) y aprendizaje no supervisado (Clase 10).', P))
