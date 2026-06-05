@@ -42,7 +42,7 @@ De los 6 datasets de la consigna, 4 no aportaban señal: se demostró con ablaci
 
 ## Entregables
 
-- Notebook: `siniestros_viales_pipeline.ipynb` (80 celdas).
+- Notebook: `siniestros_viales_pipeline.ipynb` (91 celdas).
 - Informe PDF: `informe_tpo.pdf`, regenerable con `python generar_informe.py` después de ejecutar el notebook.
 - Presentación: Google Slides en Drive, carpeta "TPO Ciencia de Datos — Siniestros Viales CABA" (actualizable con `gws` CLI):  
   `https://docs.google.com/presentation/d/1x74N1XuflQ0JhJOylUInuEbnH7jKyY7YTv-ht4Ea2VQ`
