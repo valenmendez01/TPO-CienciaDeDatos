@@ -31,7 +31,13 @@ No: **dos tercios es exposición**. El tránsito creció +22% (peajes, único co
 Es un supuesto declarado: asume co-movimiento entre el tránsito de autopistas y el de superficie. Es el único conteo vehicular *continuo* disponible (los radares AUSA cubren 4 autopistas con huecos y el Anillo Digital murió en 2022). La correlación r = 0,88 con los siniestros —que ocurren 98,6% fuera de autopistas— sugiere que el proxy funciona.
 
 **9. "¿Cuál es la autopista más peligrosa?"**
-Depende qué se mida. Por millón de vehículos, el corredor oeste (25 de Mayo + Perito Moreno: 0,55) quintuplica a la Illia (0,10). Pero la Illia tiene la **mayor severidad** (29% de sus siniestros son severos — velocidad). Caveat: el peaje cuenta pasadas por cabina, no vehículos-km; por eso comparamos el corredor combinado y no peajes sueltos.
+Depende qué se mida. Por millón de vehículos, el corredor oeste (25 de Mayo + Perito Moreno: 0,55) quintuplica a la Illia (0,10). Pero la Illia tiene la **mayor severidad**. Caveat: el peaje cuenta pasadas por cabina, no vehículos-km; por eso comparamos el corredor combinado y no peajes sueltos.
+
+**9b. "¿Por qué la Illia tiene los siniestros más graves? ¿No son muy pocos casos?"**
+Son pocos (17 atribuibles, 5 severos) y lo declaramos: es una señal cualitativa, no una estadística. Pero la señal es consistente en tres frentes: (1) **los 5 severos son todos MORTALES** — ni un "grave"; a alta velocidad el resultado es binario; (2) **dos son contra OBJETO FIJO de noche/madrugada** — el choque clásico de velocidad en flujo libre; (3) la Illia es la **autopista más nocturna** del sistema (41% de sus siniestros vs ~16% en 25 de Mayo/Perito Moreno) — de noche, vacía, la velocidad real es máxima. El contraste con la 25 de Mayo cierra el mecanismo: congestionada, 4× más siniestros por vehículo pero más leves (choques de tráfico a baja velocidad).
+
+**9c. "¿Y si el dataset simplemente pierde siniestros de la Illia?"**
+Pierde, sí — y lo validamos: ~la mitad de los siniestros de autopista no nombra cuál (dirección vacía o "AU." genérica), así que los conteos por autopista son un piso. Pero el faltante afecta a todas las autopistas por igual, y el **registro completo de AUSA** (que incluye incidentes sin víctimas) confirma el patrón de forma independiente: Illia 202 incidentes vs 917 de la 25 de Mayo en 2022-2025 — ~4,5× menos. "Pocos choques en la Illia" es real, no un artefacto.
 
 **10. "¿Y las avenidas? ¿Rivadavia es la más peligrosa?"**
 En crudo, Rivadavia lidera por cantidad. Normalizado por tránsito (sensores 2024), **sigue primera** (65 siniestros/millón en el punto medido) — su volumen no la explica del todo. En cambio Corrientes, top-5 en crudo, cae al último lugar normalizada (19/M): su ranking era tránsito. Caveat: el sensor mide un punto de la arteria; el índice es comparativo.
