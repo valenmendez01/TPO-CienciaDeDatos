@@ -80,6 +80,9 @@ S.append(Paragraph(
     '• <b>Modelo final de clasificación:</b> Random Forest + zona geográfica de k-means como variable '
     'sintética — detecta el <b>72% de los siniestros severos</b> (recall CV 0,72; ROC-AUC 0,83), el mejor '
     'F1-Score de la comparación.<br/>'
+    '• <b>El "+35% de siniestros 2021-2024" es en dos tercios un efecto del tránsito:</b> los vehículos '
+    'crecieron +22% (peajes) y la tasa por millón de vehículos solo +10% (68 → 75). El tránsito mensual y '
+    'los siniestros se mueven juntos (r = 0,88) — sin normalizar por exposición, la estadística engaña.<br/>'
     '• <b>La lluvia reduce la frecuencia de siniestros (-8%; -21% con lluvia fuerte) pero NO aumenta '
     'la gravedad</b> del siniestro individual — validado por 3 vías independientes.<br/>'
     '• <b>La severidad no es un lugar, es un perfil:</b> geográficamente es homogénea (4,7-5,6%), '
@@ -106,6 +109,8 @@ S.append(tabla([
     ['Feriados (ArgentinaDatos)', 'AGREGAR', 'driver #1 de la cantidad diaria'],
     ['Población (Censo 2022)', 'AGREGAR', 'tasas por habitante por comuna'],
     ['Seguridad Vial AUSA', 'VALIDACIÓN', 'superficie seca/mojada por incidente (no mergeable)'],
+    ['Peajes autopistas (IDECBA)', 'AGREGAR', 'único conteo vehicular continuo: normaliza por exposición'],
+    ['Sensores de volumen (2024)', 'AGREGAR', '95 puntos en avenidas: normaliza el ranking de arterias'],
 ], col_widths=[4.6*cm, 2.6*cm, 8.9*cm]))
 S.append(Spacer(1, 0.2*cm))
 S.append(Paragraph(
@@ -138,7 +143,26 @@ S += img('top_arterias.png', width=13.5*cm,
                  'de flujo no se puede normalizar por exposición.')
 S.append(PageBreak())
 
-S.append(Paragraph('3.3 ¿Los días de lluvia tienen más siniestros? No: tienen menos', H2))
+S.append(Paragraph('3.3 ¿Más siniestros porque hay más tránsito? Sí, en dos tercios', H2))
+S.append(Paragraph(
+    'Los siniestros crecieron +35% entre 2021 y 2024. ¿Empeoró la seguridad vial o solo volvió el '
+    'tránsito post-pandemia? Con el único conteo vehicular continuo de la Ciudad (peajes de autopistas, '
+    'IDECBA) como proxy de exposición: el tránsito mensual y los siniestros mensuales se mueven juntos '
+    '(<b>r = 0,88</b>), el tránsito creció <b>+22%</b> y la tasa de siniestros por millón de vehículos '
+    'solo <b>+10%</b> (68 → 75). Es decir: <b>dos tercios del aumento es exposición</b> (más autos en la '
+    'calle), un tercio es deterioro real. Con los peajes, además, la tasa por autopista: el corredor '
+    'oeste (25 de Mayo + Perito Moreno, 0,55 siniestros por millón de vehículos) duplica a la Illia '
+    '(0,10). Y con los sensores de volumen 2024 (95 puntos), el ranking de arterias normalizado: '
+    'parte de las "avenidas peligrosas" simplemente llevan más tránsito.', P))
+S += img('transito_vs_siniestros.png',
+         caption='Izq: tránsito (peajes) y siniestros mensuales 2021-2024 se mueven juntos. '
+                 'Der: cada punto es un mes — la relación es lineal y estable entre años.')
+S += img('arterias_normalizadas.png',
+         caption='El ranking de arterias cambia al normalizar por tránsito (sensores 2024, punto medido). '
+                 'Índice comparativo: el sensor mide un punto, no toda la extensión de la arteria.')
+S.append(PageBreak())
+
+S.append(Paragraph('3.4 ¿Los días de lluvia tienen más siniestros? No: tienen menos', H2))
 S.append(Paragraph(
     'Los días con lluvia registran <b>-8% de siniestros</b> (24,5 vs 26,6 por día) y el efecto '
     'es dosis-dependiente: con más de 20 mm caen <b>-21%</b>. La composición de víctimas casi no cambia '
@@ -150,13 +174,13 @@ S.append(Paragraph(
 S += img('lluvia_vs_siniestros.png',
          caption='Izq: siniestros/día por intensidad de lluvia. Der: dispersión precipitación vs cantidad diaria.')
 
-S.append(Paragraph('3.4 Combinaciones de variables', H2))
+S.append(Paragraph('3.5 Combinaciones de variables', H2))
 S += img('combinaciones_interesantes.png',
          caption='Los cruces dicen más que las variables aisladas: madrugada de finde concentra severidad y jóvenes; '
                  'la lluvia baja la frecuencia en todos los tipos de vía; la banda crítica de severidad es 65+.')
 S.append(PageBreak())
 
-S.append(Paragraph('3.5 El gradiente velocidad → severidad', H2))
+S.append(Paragraph('3.6 El gradiente velocidad → severidad', H2))
 S.append(Paragraph(
     'No existe dataset público de velocidad medida; en CABA el límite legal lo fija el tipo de vía. '
     'Sumando las áreas de prioridad peatonal (20 km/h) el gradiente queda completo y monotónico — '
@@ -164,7 +188,7 @@ S.append(Paragraph(
 S += img('gradiente_velocidad_severidad.png', width=12.5*cm,
          caption='Zona 20 km/h: 3,4% · Calle (40): 3,8% · Avenida (60): 5,4% · Autopista (80+): 14,1% SEVERO.')
 
-S.append(Paragraph('3.6 Edad × fin de semana', H2))
+S.append(Paragraph('3.7 Edad × fin de semana', H2))
 S.append(Paragraph(
     'Los jóvenes (18-29) pasan del 28,8% de las víctimas entre semana al <b>33,5% el fin de semana</b>. '
     'En la madrugada de finde la mediana baja a 31 años y el 43,9% de los siniestros tiene '
@@ -214,7 +238,9 @@ S.append(Paragraph(
     'Validación con split temporal honesto: entrenamiento 2021-2023, test 2024 (un año nunca visto). '
     'Gana la <b>Regresión Lineal Múltiple con dummies</b> (RMSE 7,43 · MAE 5,84 · R² 0,385) sobre el '
     'Árbol de Regresión (R² 0,241) y Random Forest (R² 0,313) — los árboles no extrapolan la tendencia '
-    'creciente. Coeficientes interpretables: '
+    'creciente. Y un paso más de interpretación: reemplazar la feature abstracta `tendencia` por el '
+    '<b>tránsito real del mes</b> (peajes) mejora el modelo a <b>R² 0,397</b> — la "tendencia creciente" '
+    'queda explicada por su mecanismo, la recuperación del tránsito. Coeficientes interpretables: '
     '<b>feriado -9,6 siniestros/día</b> (el efecto más fuerte), fin de semana -5,3, día de lluvia -1,7 '
     '(-0,036 por mm), tendencia +2,9/año.', P))
 S += img('regresion_diaria.png',
@@ -246,13 +272,16 @@ S.append(Paragraph('5. Conclusiones', H1))
 S.append(Paragraph(
     '<b>1.</b> La señal de gravedad está en el <i>quién</i> y el <i>cuándo</i> (peatón, moto, mayores de 65, '
     'madrugada de finde, tipo de vía) — no en el contexto ambiental ni en el lugar exacto.<br/>'
-    '<b>2.</b> La lluvia es un factor de <i>frecuencia</i> (menos exposición → menos siniestros), no de '
+    '<b>2.</b> El crecimiento de siniestros es ante todo <i>exposición</i>: dos tercios del +35% lo explica '
+    'el tránsito (+22%); la tasa por vehículo subió +10%. La regresión lo confirma: el tránsito mensual '
+    'reemplaza y supera a la tendencia abstracta.<br/>'
+    '<b>3.</b> La lluvia es un factor de <i>frecuencia</i> (menos exposición → menos siniestros), no de '
     '<i>gravedad</i>. Confirmado por el clasificador, el EDA diario y los registros per-incidente de AUSA.<br/>'
-    '<b>3.</b> La velocidad de la vía es el factor estructural de severidad más claro: el gradiente '
+    '<b>4.</b> La velocidad de la vía es el factor estructural de severidad más claro: el gradiente '
     '20→40→60→80+ km/h multiplica por 4 el porcentaje de siniestros severos.<br/>'
-    '<b>4.</b> Para política pública: proteger peatones en avenidas, controles en madrugadas de fin de '
+    '<b>5.</b> Para política pública: proteger peatones en avenidas, controles en madrugadas de fin de '
     'semana, atención a mayores de 65, e intervenciones puntuales en los hotspots identificados.<br/>'
-    '<b>5.</b> Metodológicamente: evaluar la integración <i>antes</i> de integrarla evitó arrastrar ruido; '
+    '<b>6.</b> Metodológicamente: evaluar la integración <i>antes</i> de integrarla evitó arrastrar ruido; '
     'reagrupar el target fue la mejora más barata; y combinar técnicas (la zona de k-means como variable '
     'sintética del Random Forest) dio el mejor modelo de la comparación.', P))
 
@@ -275,7 +304,7 @@ S.append(Paragraph('Reproducibilidad', H2))
 S.append(Paragraph(
     'Todo el trabajo es reproducible: notebook de 80 celdas que corre de punta a punta, datasets externos '
     'descargados como archivos estáticos (sin llamadas a APIs en tiempo de ejecución), semillas fijas '
-    '(random_state=42) y protocolo de validación único. Artefactos: dataset integrado, 21 gráficos, '
+    '(random_state=42) y protocolo de validación único. Artefactos: dataset integrado, 23 gráficos, '
     '4 mapas interactivos y 4 modelos serializados. Todas las técnicas aplicadas corresponden al programa '
     'de la materia: EDA (Clase 4), Árboles de Decisión (Clase 7), Random Forest y validación de modelos '
     '(Clase 8), regresión (Clase 9) y aprendizaje no supervisado (Clase 10).', P))

@@ -20,6 +20,8 @@ Análisis de siniestros viales en CABA con foco en gravedad del siniestro, frecu
 | Clima horario (Open-Meteo) | ✅ VALIDACIÓN — ¿llovía en el momento exacto? |
 | AUSA Seguridad Vial | ✅ VALIDACIÓN — superficie seca/mojada por incidente |
 | Áreas de prioridad peatonal | ✅ EDA — gradiente velocidad → severidad |
+| Peajes de autopistas (IDECBA) | ✅ NORMALIZACIÓN + FEATURE — descompone el +35% en exposición vs riesgo; reemplaza a `tendencia` en la regresión |
+| Sensores de volumen (BA Data 2024) | ✅ NORMALIZACIÓN — arterias por millón de vehículos |
 | Lluvia/temperatura mensual | ❌ DESCARTADO — redundante con `mes`/estación |
 | Flujo AUSA y Anillo Digital | ❌ DESCARTADO — 36-74% NaN, cobertura insuficiente |
 
@@ -35,6 +37,7 @@ De los 6 datasets de la consigna, 4 no aportaban señal: se demostró con ablaci
 - `PLAN.md`: plan de trabajo, decisiones de integración y resultados por fase.
 - `requirements.txt`: dependencias de Python.
 - `NOTAS_QA_ANALISIS.md`: validaciones y advertencias metodológicas.
+- `DEFENSA.md`: preguntas probables de la defensa con sus respuestas.
 - `outputs/`: carpeta generada al correr el notebook; no se versiona.
 
 ## Entregables
