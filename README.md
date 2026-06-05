@@ -49,6 +49,15 @@ De los 6 datasets de la consigna, 4 no aportaban señal: se demostró con ablaci
 
 ## Cómo correrlo
 
+### En Google Colab (sin instalar nada)
+
+Abrir directamente:
+https://colab.research.google.com/github/valenmendez01/TPO-CienciaDeDatos/blob/mariano/siniestros_viales_pipeline.ipynb
+
+La primera celda de código clona el repo (datasets incluidos, ~12 MB) y todas las dependencias ya vienen preinstaladas en Colab. Ejecutar todo: `Entorno de ejecución → Ejecutar todas` (~15-20 min en CPU de Colab).
+
+### Local
+
 Usando el entorno compartido de la materia, desde esta carpeta:
 
 ```bash
