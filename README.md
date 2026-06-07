@@ -38,6 +38,7 @@ De los 6 datasets de la consigna, 4 no aportaban señal: se demostró con ablaci
 - `requirements.txt`: dependencias de Python.
 - `NOTAS_QA_ANALISIS.md`: validaciones y advertencias metodológicas.
 - `DEFENSA.md`: preguntas probables de la defensa con sus respuestas.
+- `webapp/`: app web interactiva + deck de defensa (ver sección siguiente).
 - `outputs/`: carpeta generada al correr el notebook; no se versiona.
 
 ## Entregables
@@ -46,6 +47,28 @@ De los 6 datasets de la consigna, 4 no aportaban señal: se demostró con ablaci
 - Informe PDF: `informe_tpo.pdf`, regenerable con `python generar_informe.py` después de ejecutar el notebook.
 - Presentación: Google Slides en Drive, carpeta "TPO Ciencia de Datos — Siniestros Viales CABA" (actualizable con `gws` CLI):  
   `https://docs.google.com/presentation/d/1x74N1XuflQ0JhJOylUInuEbnH7jKyY7YTv-ht4Ea2VQ`
+
+## Web interactiva y deck de defensa
+
+- **App interactiva**: https://siniestros-viales-caba.pages.dev — 6 pestañas (Panorama · Explorar · Predecir · Mapa · Reglas · Modelos) con los datos reales preprocesados y dos predictores corriendo en vivo en el navegador. Botón "Ajustes" en el rail: tema Papel/Tinta, acento, densidad y animaciones.
+- **Deck de defensa (HTML)**: https://siniestros-viales-caba.pages.dev/defensa/ — 22 slides navegables con ←/→, rail de miniaturas y notas del orador.
+
+### Cómo editar
+
+Todo vive en `webapp/`:
+
+- `webapp/src/app/*.jsx` — las pestañas de la app (React sin imports, un archivo por pestaña) · `webapp/src/styles.css` — el sistema visual · `webapp/src/data/aggregates.js` — los agregados precomputados que alimentan todos los gráficos.
+- `webapp/src/defensa/index.html` — el deck (slides como `<section>` dentro de `<deck-stage>`, notas del orador en `<script type="text/x-speaker-notes">`).
+
+Para publicar cambios:
+
+```bash
+cd webapp
+./build.sh    # compila JSX → public/ (necesita node; baja vendors la primera vez)
+npx wrangler pages deploy public --project-name siniestros-viales-caba --branch main
+```
+
+El detalle de la estructura está en `webapp/README.md`.
 
 ## Cómo correrlo
 

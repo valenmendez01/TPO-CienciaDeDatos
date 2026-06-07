@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siniestros Viales CABA — Análisis interactivo</title>
+<meta name="description" content="TPO Ciencia de Datos UADE — análisis interactivo de 37.849 siniestros viales en CABA (2021–2024): explorador, predictores en vivo, mapa, reglas de asociación y comparación de modelos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vendor/leaflet.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="root"></div>
+
+<!-- vendor (self-hosted: la demo no depende de CDNs) -->
+<script src="vendor/leaflet.js"></script>
+<script src="vendor/leaflet-heat.js"></script>
+<script src="vendor/react.production.min.js"></script>
+<script src="vendor/react-dom.production.min.js"></script>
+
+<!-- data -->
+<script src="data/aggregates.js"></script>
+
+<!-- app (JSX precompilado — ver build.sh) -->
+<script src="app/tweaks-panel.js"></script>
+<script src="app/charts.js"></script>
+<script src="app/ui.js"></script>
+<script src="app/tab-panorama.js"></script>
+<script src="app/tab-explorar.js"></script>
+<script src="app/tab-predecir.js"></script>
+<script src="app/tab-mapa.js"></script>
+<script src="app/tab-reglas.js"></script>
+<script src="app/tab-modelos.js"></script>
+<script src="app/app.js"></script>
+</body>
+</html>
