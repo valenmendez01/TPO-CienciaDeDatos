@@ -28,6 +28,9 @@ SUB = ParagraphStyle('SUBx', parent=ss['Normal'], fontSize=12, alignment=1, text
 def img(path, width=15.5*cm, caption=None):
     el = []
     p = os.path.join(OUT, path)
+    if not os.path.exists(p):
+        # capturas estáticas de mapas folium (HTML interactivo) que el notebook no exporta a PNG
+        p = os.path.join('informe_assets', path)
     w, h = PILImage.open(p).size
     el.append(Image(p, width=width, height=width*h/w))
     if caption:
@@ -101,8 +104,8 @@ S.append(Paragraph(
 S.append(tabla([
     ['Dataset', 'Veredicto', 'Evidencia'],
     ['Hechos (37.849, 2021-24)', 'BASE', 'un registro por siniestro, target gravedad'],
-    ['Víctimas (43.255)', 'INTEGRAR', 'join 1:1 perfecto por id; hay_peaton es el mejor predictor'],
-    ['Lluvia/temp MENSUAL', 'DESCARTAR', 'casi constante por mes; agregarla EMPEORA el CV (-0,009)'],
+    ['Víctimas (42.650)', 'INTEGRAR', 'join 1:1 perfecto por id; hay_peaton es el mejor predictor'],
+    ['Lluvia/temp MENSUAL', 'DESCARTAR', 'casi constante por mes: un solo valor para todos los siniestros del mes'],
     ['Flujo AUSA (radares)', 'DESCARTAR', '36% NaN; solo autopistas; sin 2021 ni mar-sep 2022'],
     ['Flujo Anillo Digital', 'DESCARTAR', '74% NaN (termina feb 2022); 6-9 sensores'],
     ['Clima DIARIO (Meteostat)', 'AGREGAR', '1461/1461 días; variación real entre siniestros'],
@@ -151,7 +154,7 @@ S.append(Paragraph(
     '(<b>r = 0,88</b>), el tránsito creció <b>+22%</b> y la tasa de siniestros por millón de vehículos '
     'solo <b>+10%</b> (68 → 75). Es decir: <b>dos tercios del aumento es exposición</b> (más autos en la '
     'calle), un tercio es deterioro real. Con los peajes, además, la tasa por autopista: el corredor '
-    'oeste (25 de Mayo + Perito Moreno, 0,55 siniestros por millón de vehículos) duplica a la Illia '
+    'oeste (25 de Mayo + Perito Moreno, 0,55 siniestros por millón de vehículos) quintuplica a la Illia '
     '(0,10). Y con los sensores de volumen 2024 (95 puntos), el ranking de arterias normalizado: '
     'parte de las "avenidas peligrosas" simplemente llevan más tránsito.', P))
 S += img('transito_vs_siniestros.png',
@@ -193,7 +196,7 @@ S += img('gradiente_velocidad_severidad.png', width=12.5*cm,
 
 S.append(Paragraph('3.7 Edad × fin de semana', H2))
 S.append(Paragraph(
-    'Los jóvenes (18-29) pasan del 28,8% de las víctimas entre semana al <b>33,5% el fin de semana</b>. '
+    'Los jóvenes (18-29) pasan del 28,8% de las víctimas entre semana al <b>33,4% el fin de semana</b>. '
     'En la madrugada de finde la mediana baja a 31 años y el 43,9% de los siniestros tiene '
     'víctimas menores de 30. El perfil de riesgo completo: <b>jóvenes + madrugada + finde = 2× frecuencia '
     'y 2× severidad</b>. Matiz importante: la severidad individual por edad la dominan los mayores de 65 '
@@ -309,7 +312,7 @@ S.append(Paragraph(
 
 S.append(Paragraph('Reproducibilidad', H2))
 S.append(Paragraph(
-    'Todo el trabajo es reproducible: notebook de 80 celdas que corre de punta a punta, datasets externos '
+    'Todo el trabajo es reproducible: un notebook que corre de punta a punta, datasets externos '
     'descargados como archivos estáticos (sin llamadas a APIs en tiempo de ejecución), semillas fijas '
     '(random_state=42) y protocolo de validación único. Artefactos: dataset integrado, 25 gráficos, '
     '4 mapas interactivos y 4 modelos serializados. Todas las técnicas aplicadas corresponden al programa '

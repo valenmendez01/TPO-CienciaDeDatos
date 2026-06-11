@@ -45,7 +45,7 @@ En crudo, Rivadavia lidera por cantidad. Normalizado por tránsito (sensores 202
 ## Sobre los datos
 
 **11. "¿Por qué descartaron el clima mensual y el flujo de radares?"**
-Resultado negativo cuantificado: el clima mensual es casi constante dentro de cada mes (redundante con `mes`/estación) y agregarlo *empeora* el CV (-0,009); el flujo tiene 36-74% de NaN y el join espacial solo valdría para el 6% de los siniestros. Los reemplazamos por fuentes con la granularidad correcta (clima diario Meteostat, feriados, peajes). Documentar el descarte con números es parte del entregable.
+Resultado negativo cuantificado: el clima mensual es casi constante dentro de cada mes — un solo valor compartido por todos los siniestros del mes, redundante con `mes`/estación; el flujo tiene 36-74% de NaN y el join espacial solo valdría para el 6% de los siniestros. Los reemplazamos por fuentes con la granularidad correcta (clima diario Meteostat, feriados, peajes). Documentar el descarte con números es parte del entregable.
 
 **12. "¿La Comuna 1 es la más peligrosa?"**
 Tiene la mayor tasa per cápita (458/100k, Censo 2022), pero la población *residente* no es la exposición real: al Microcentro entran cientos de miles de no-residentes por día. No existe dataset público de tránsito por comuna para normalizar mejor — la tasa por habitante es el estándar epidemiológico cuando no hay medida de exposición, y el caveat está declarado.
@@ -60,4 +60,4 @@ En cuatro lugares, cada uno por su motivo: (1) **Clasificador**: `OneHotEncoder(
 Sección 10e. Cada siniestro se convierte en una "canasta" de ítems: `franja=MADRUGADA`, `calle=AVENIDA`, `vict=PEATON`, `acus=AUTO`, `FINDE`/`SEMANA`, más la etiqueta `LEVE`/`SEVERO`. `TransactionEncoder` lo pasa a matriz one-hot, `apriori` (soporte mínimo 1%) encuentra los itemsets frecuentes y `association_rules` genera reglas filtradas por lift ≥ 1,2 **con consecuente exactamente {SEVERO}** (excluyendo antecedentes que contengan la gravedad, para no generar tautologías). La lectura del lift: cuántas veces multiplica esa combinación la probabilidad base de severo (5,7%). Top reglas: **peatón ×2,1** (y peatón-en-avenida ×2,2), **madrugada ×2,2**, moto ×1,37, finde ×1,26. El valor sobre el clasificador: las reglas son directamente accionables y explicables — "un peatón atropellado en avenida tiene el doble de chances de terminar grave" no necesita modelo para comunicarse.
 
 **16. "¿Esto corre? ¿Lo puedo reproducir?"**
-Sí: notebook de 90 celdas que corre de punta a punta en local (sin APIs en runtime — todos los datasets externos son archivos estáticos versionados), semillas fijas (`random_state=42`), protocolo de validación único. `python generar_informe.py` regenera el PDF.
+Sí: notebook que corre de punta a punta en local (sin APIs en runtime — todos los datasets externos son archivos estáticos versionados), semillas fijas (`random_state=42`), protocolo de validación único. `python generar_informe.py` regenera el PDF.

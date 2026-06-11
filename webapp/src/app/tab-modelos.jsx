@@ -4,10 +4,11 @@ function Modelos() {
   const base = D.lifts.base;
   // operating points (recall / precision) per model — documented screening points
   const ops = {
-    'Árbol d=4': { recall:0.92, prec:0.11 },
-    'Reg. Logística': { recall:0.75, prec:0.14 },
-    'Random Forest': { recall:0.70, prec:0.16 },
-    'RF + zona k-means': { recall:0.73, prec:0.16 },
+    'Árbol d=4': { recall:0.92, prec:0.094 },
+    'Árbol d=7': { recall:0.83, prec:0.11 },
+    'Reg. Logística': { recall:0.75, prec:0.136 },
+    'Random Forest': { recall:0.72, prec:0.151 },
+    'RF + zona k-means': { recall:0.72, prec:0.157 },
   };
   const [sel, setSel] = useState('RF + zona k-means');
   const Ntest = 7570, sev = Math.round(Ntest*base);
@@ -25,18 +26,18 @@ function Modelos() {
 
   return (
     <div className="view wide">
-      <PageHead num="06" kicker="Modelos" title="Cuatro modelos, un mismo protocolo, un <em>ganador</em>"
+      <PageHead num="06" kicker="Modelos" title="Cinco modelos, un mismo protocolo, un <em>ganador</em>"
         lead="Validación cruzada estratificada de 5 folds. No se ordena por accuracy —acertar el 94% es predecir 'siempre leve'— sino por capacidad de <strong>detectar severos</strong> (recall y ROC-AUC)." />
 
       <Card title="Comparación de modelos" cap="CV 5-fold · binario LEVE vs SEVERO">
         <table className="tbl">
-          <thead><tr><th>Modelo</th><th>Tipo</th><th>Bal. accuracy</th><th>ROC-AUC</th><th>Recall severo</th><th></th></tr></thead>
+          <thead><tr><th>Modelo</th><th>Tipo</th><th>F1 severo</th><th>ROC-AUC</th><th>Recall severo</th><th></th></tr></thead>
           <tbody>
             {D.models.map((m,i)=>(
               <tr key={i} className={m.final?'final':''}>
                 <td>{m.name}</td>
                 <td style={{textAlign:'left',color:'var(--mute)',fontSize:13}}>{m.tipo}</td>
-                <td className="m">{m.balacc.toFixed(3).replace('.',',')}</td>
+                <td className="m">{m.f1.toFixed(3).replace('.',',')}</td>
                 <td className="m">{m.roc.toFixed(3).replace('.',',')}</td>
                 <td className="m" style={{color: m.recall>0.9?'var(--green)':'var(--ink)'}}>{m.recall.toFixed(2).replace('.',',')}</td>
                 <td style={{textAlign:'left',color:'var(--mute)',fontSize:12}}>{m.nota}</td>
@@ -44,12 +45,12 @@ function Modelos() {
             ))}
           </tbody>
         </table>
-        <div className="card-note">El árbol gana en <b>recall</b> (0,92): ideal para screening, no perder casos graves. El RF + zona k-means gana en discriminación global (ROC-AUC 0,83). Voting y stacking <b>no aportan</b> (≈ igual, 3× el costo): combinar técnicas sí (la zona k-means como feature), combinar modelos no.</div>
+        <div className="card-note">El árbol gana en <b>recall</b> (0,92): ideal para screening, no perder casos graves. El RF + zona k-means gana en F1 de severo (0,257) y discriminación global (ROC-AUC 0,833). Voting y stacking <b>no aportan</b> (≈ igual, 3× el costo): combinar técnicas sí (la zona k-means como feature), combinar modelos no.</div>
       </Card>
 
       <div className="grid g-2-1" style={{marginTop:20}}>
         <Card title="Matriz de confusión" cap={`${sel} · punto de screening`}>
-          <div style={{marginBottom:18}}><Seg value={sel} onChange={setSel} options={Object.keys(ops).map(k=>({v:k,label:k.replace('RF + zona k-means','RF + k-means').replace('Reg. Logística','Logística').replace('Árbol d=4','Árbol')}))}/></div>
+          <div style={{marginBottom:18}}><Seg value={sel} onChange={setSel} options={Object.keys(ops).map(k=>({v:k,label:k.replace('RF + zona k-means','RF + k-means').replace('Reg. Logística','Logística')}))}/></div>
           <div style={{display:'grid',gridTemplateColumns:'90px 1fr 1fr',gridTemplateRows:'auto 1fr 1fr',gap:8,alignItems:'stretch'}}>
             <div></div>
             <div style={{textAlign:'center',fontFamily:'var(--ff-mono)',fontSize:10.5,letterSpacing:'.06em',color:'var(--mute)',textTransform:'uppercase',paddingBottom:4}}>Predijo severo</div>
