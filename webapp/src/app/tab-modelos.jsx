@@ -4,11 +4,11 @@ function Modelos() {
   const base = D.lifts.base;
   // operating points (recall / precision) per model — documented screening points
   const ops = {
-    'Árbol d=4': { recall:0.92, prec:0.094 },
-    'Árbol d=7': { recall:0.83, prec:0.11 },
-    'Reg. Logística': { recall:0.75, prec:0.136 },
-    'Random Forest': { recall:0.72, prec:0.151 },
-    'RF + zona k-means': { recall:0.72, prec:0.157 },
+    'Árbol d=4': { recall:0.93, prec:0.096 },
+    'Árbol d=7': { recall:0.80, prec:0.121 },
+    'Reg. Logística': { recall:0.75, prec:0.137 },
+    'Random Forest': { recall:0.71, prec:0.156 },
+    'RF + zona k-means': { recall:0.70, prec:0.16 },
   };
   const [sel, setSel] = useState('RF + zona k-means');
   const Ntest = 7570, sev = Math.round(Ntest*base);
@@ -45,7 +45,7 @@ function Modelos() {
             ))}
           </tbody>
         </table>
-        <div className="card-note">El árbol gana en <b>recall</b> (0,92): ideal para screening, no perder casos graves. El RF + zona k-means gana en F1 de severo (0,257) y discriminación global (ROC-AUC 0,833). Voting y stacking <b>no aportan</b> (≈ igual, 3× el costo): combinar técnicas sí (la zona k-means como feature), combinar modelos no.</div>
+        <div className="card-note">El árbol gana en <b>recall</b> (0,93): ideal para screening, no perder casos graves. El RF + zona k-means gana en F1 de severo (0,261) y discriminación global (ROC-AUC 0,830). Voting y stacking <b>no aportan</b> (≈ igual, 3× el costo): combinar técnicas sí (la zona k-means como feature), combinar modelos no.</div>
       </Card>
 
       <div className="grid g-2-1" style={{marginTop:20}}>

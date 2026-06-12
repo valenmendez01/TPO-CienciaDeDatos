@@ -81,7 +81,7 @@ S.append(Paragraph(
 S.append(Paragraph('Resultados principales:', P))
 S.append(Paragraph(
     '• <b>Modelo final de clasificación:</b> Random Forest + zona geográfica de k-means como variable '
-    'sintética — detecta el <b>72% de los siniestros severos</b> (recall CV 0,72; ROC-AUC 0,83), el mejor '
+    'sintética — detecta el <b>73% de los siniestros severos</b> en el test holdout (recall 0,73; ROC-AUC 0,83), el mejor '
     'F1-Score de la comparación.<br/>'
     '• <b>El "+35% de siniestros 2021-2024" es en dos tercios un efecto del tránsito:</b> los vehículos '
     'crecieron +22% (peajes) y la tasa por millón de vehículos solo +10% (68 → 75). El tránsito mensual y '
@@ -215,15 +215,16 @@ S.append(Paragraph(
     'MORTAL 1,1%) es inviable con 3 clases; lo reagrupamos en LEVE vs SEVERO. Con un dataset tan '
     'desbalanceado la <i>accuracy</i> engaña (predecir siempre LEVE "acierta" el 94%), así que evaluamos con '
     'matriz de confusión, precision, recall, F1-Score y ROC-AUC, ponderando las clases con '
-    'class_weight=balanced. Comparación bajo el mismo protocolo (validación cruzada estratificada de '
-    '5 particiones):', P))
+    'class_weight=balanced. Protocolo: el test holdout (20%, estratificado) se separa primero y queda '
+    'intacto; la comparación de modelos corre por validación cruzada estratificada de 5 particiones '
+    'solo sobre el train:', P))
 S.append(tabla([
     ['Modelo', 'Accuracy', 'Precision SEV.', 'Recall SEV.', 'F1 SEV.', 'ROC-AUC'],
-    ['Árbol de decisión d=4 (interpretable)', '0,486', '0,094', '0,92', '0,171', '0,761'],
-    ['Árbol de decisión d=7', '0,602', '0,110', '0,83', '0,194', '0,787'],
-    ['Regresión Logística', '0,712', '0,136', '0,75', '0,230', '0,814'],
-    ['Random Forest (n=300, d=10)', '0,753', '0,151', '0,72', '0,250', '0,828'],
-    ['RF + zona k-means (FINAL)', '0,763', '0,157', '0,72', '0,257', '0,833'],
+    ['Árbol de decisión d=4 (interpretable)', '0,491', '0,096', '0,93', '0,174', '0,764'],
+    ['Árbol de decisión d=7', '0,649', '0,121', '0,80', '0,209', '0,789'],
+    ['Regresión Logística', '0,714', '0,137', '0,75', '0,231', '0,815'],
+    ['Random Forest (n=300, d=10)', '0,764', '0,156', '0,71', '0,256', '0,826'],
+    ['RF + zona k-means (FINAL)', '0,771', '0,160', '0,70', '0,261', '0,830'],
 ], col_widths=[6.2*cm, 1.9*cm, 2.5*cm, 2.1*cm, 1.7*cm, 1.8*cm]))
 S.append(Spacer(1, 0.2*cm))
 S.append(Paragraph(
@@ -231,18 +232,21 @@ S.append(Paragraph(
     'limitadas como <b>poda preventiva</b> contra el sobreajuste. La mejora final viene de combinar '
     '<b>técnicas</b>: la zona geográfica de k-means se ajusta dentro de cada fold de validación y se usa '
     'como <b>variable sintética</b> del Random Forest. El árbol de profundidad 4 se conserva como modelo '
-    'interpretable de screening (recall 0,92: detecta casi todos los severos, a costa de falsos positivos).', P))
+    'interpretable de screening (recall 0,93: detecta casi todos los severos, a costa de falsos positivos).', P))
 S += img('modelo_final_rf.png',
          caption='Modelo final Random Forest + zona: matriz de confusión y curva ROC (test 20%, recall SEVERO 0,73).')
+S += img('feature_importance_final.png', width=12.5*cm,
+         caption='Importancia de variables del modelo final: dominan la edad media, la completitud del registro (categorías DESCONOCIDO — el sesgo declarado en Limitaciones) y los agregados de víctimas (% masculino, peatón).')
 S += img('arbol_decision.png',
          caption='Árbol de Decisión interpretable (criterio Gini, primeros 3 niveles): reglas si-entonces legibles.')
 S.append(PageBreak())
 
 S.append(Paragraph('4.2 Regresión: cantidad diaria de siniestros', H2))
 S.append(Paragraph(
-    'Problema de <b>regresión</b>: predecir cuántos siniestros habrá en un día dado de CABA. Los inputs '
-    'se conocen antes de que empiece el día — calendario (día de semana, mes, feriado, finde), clima '
-    '(pronóstico de lluvia y temperatura) y tránsito del mes — y la salida es la cantidad esperada. '
+    'Problema de <b>regresión</b>: predecir cuántos siniestros habrá en un día dado de CABA. Los inputs: '
+    'calendario (día de semana, mes, feriado, finde — conocido de antemano), clima (pronóstico de lluvia '
+    'y temperatura) y tránsito del mes (contemporáneo: el total mensual se conoce al cerrar el mes; en un '
+    'uso operativo se usaría el mes anterior o una proyección — acá su rol es explicativo). '
     'Uso práctico: dimensionar recursos (guardias del SAME, operativos de tránsito): "feriado con '
     'lluvia → ~15 siniestros esperados, no los ~26 de un día típico". Evaluado con MSE, RMSE, MAE y R². '
     'Validación con split temporal honesto: entrenamiento 2021-2023, test 2024 (un año nunca visto). '
