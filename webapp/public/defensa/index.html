@@ -234,11 +234,11 @@
           <thead><tr><th>Dataset</th><th>Veredicto</th><th>Evidencia</th></tr></thead>
           <tbody>
             <tr><td>Hechos · 37.849</td><td class="num" style="color:var(--slate)">BASE</td><td style="font-size:18px; color:var(--mute)">target gravedad</td></tr>
-            <tr><td>Víctimas · 43.255</td><td class="num" style="color:var(--green); font-weight:600">INTEGRAR</td><td style="font-size:18px; color:var(--mute)">join 1:1; mejor predictor</td></tr>
+            <tr><td>Víctimas · 42.650</td><td class="num" style="color:var(--green); font-weight:600">INTEGRAR</td><td style="font-size:18px; color:var(--mute)">join 1:1; mejor predictor</td></tr>
             <tr><td>Clima diario · Meteostat</td><td class="num" style="color:var(--green); font-weight:600">AGREGAR</td><td style="font-size:18px; color:var(--mute)">1461/1461 días</td></tr>
             <tr><td>Feriados</td><td class="num" style="color:var(--green); font-weight:600">AGREGAR</td><td style="font-size:18px; color:var(--mute)">driver #1 diario</td></tr>
             <tr><td>Peajes · IDECBA</td><td class="num" style="color:var(--green); font-weight:600">AGREGAR</td><td style="font-size:18px; color:var(--mute)">normaliza exposición</td></tr>
-            <tr><td>Lluvia / temp mensual</td><td class="num" style="color:var(--severe); font-weight:600">DESCARTAR</td><td style="font-size:18px; color:var(--mute)">empeora el CV (−0,009)</td></tr>
+            <tr><td>Lluvia / temp mensual</td><td class="num" style="color:var(--severe); font-weight:600">DESCARTAR</td><td style="font-size:18px; color:var(--mute)">un valor por mes: redundante con estación</td></tr>
             <tr><td>Flujo AUSA radares</td><td class="num" style="color:var(--severe); font-weight:600">DESCARTAR</td><td style="font-size:18px; color:var(--mute)">36% NaN, solo autopistas</td></tr>
             <tr><td>Flujo Anillo Digital</td><td class="num" style="color:var(--severe); font-weight:600">DESCARTAR</td><td style="font-size:18px; color:var(--mute)">74% NaN, muere feb-2022</td></tr>
           </tbody>
@@ -246,7 +246,7 @@
         <div class="anim" style="--d:.25s">
           <p class="lead" style="font-size:31px; margin-bottom:26px">Los 4 que no aportaban se <strong>reemplazaron</strong> por fuentes con la granularidad correcta.</p>
           <p class="body" style="font-size:24px; margin-bottom:28px">El clima mensual es casi constante dentro de cada mes — redundante con la estación. El flujo de radares solo serviría para el <span class="hl">6%</span> de los siniestros.</p>
-          <p class="note">Se demostró con ablación por validación cruzada. El resultado negativo, cuantificado, es parte del valor del trabajo.</p>
+          <p class="note">La decisión quedó documentada con números: granularidad, cobertura y nulos. El resultado negativo es parte del valor del trabajo.</p>
         </div>
       </div>
     </div>
@@ -298,12 +298,12 @@
               <div style="width:100%; height:74%; background:var(--slate); border-radius:3px 3px 0 0"></div>
             </div>
             <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%">
-              <span class="mono" style="font-size:22px; font-weight:600; margin-bottom:12px">8.609</span>
-              <div style="width:100%; height:81%; background:var(--slate); border-radius:3px 3px 0 0"></div>
+              <span class="mono" style="font-size:22px; font-weight:600; margin-bottom:12px">9.536</span>
+              <div style="width:100%; height:90%; background:var(--slate); border-radius:3px 3px 0 0"></div>
             </div>
             <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%">
-              <span class="mono" style="font-size:22px; font-weight:600; margin-bottom:12px">9.852</span>
-              <div style="width:100%; height:93%; background:var(--amber); border-radius:3px 3px 0 0"></div>
+              <span class="mono" style="font-size:22px; font-weight:600; margin-bottom:12px">9.925</span>
+              <div style="width:100%; height:94%; background:var(--amber); border-radius:3px 3px 0 0"></div>
             </div>
             <div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%">
               <span class="mono" style="font-size:22px; font-weight:600; margin-bottom:12px; color:var(--severe)">10.569</span>
@@ -527,16 +527,16 @@
   <!-- 14 · COMPARACIÓN DE MODELOS -->
   <section class="slide" data-label="Comparación de modelos">
     <div class="eyebrow"><span class="ey-num">05</span><span class="ey-sec">Clasificación · clases 7–8</span><span class="ey-line"></span></div>
-    <h2 class="title sm anim">Cuatro modelos, un mismo protocolo, un ganador</h2>
+    <h2 class="title sm anim">Cinco modelos, un mismo protocolo, un ganador</h2>
     <div class="content" style="justify-content:center">
       <table class="tbl anim" style="--d:.12s">
         <thead><tr><th>Modelo</th><th>Accuracy</th><th>Precisión sev.</th><th>Recall sev.</th><th>F1 sev.</th><th>ROC-AUC</th></tr></thead>
         <tbody>
-          <tr><td>Árbol de decisión · d=4 <span class="mono" style="color:var(--mute); font-size:17px">interpretable</span></td><td class="num">0,486</td><td class="num">0,094</td><td class="num" style="color:var(--green); font-weight:600">0,92</td><td class="num">0,171</td><td class="num">0,761</td></tr>
-          <tr><td>Árbol de decisión · d=7</td><td class="num">0,602</td><td class="num">0,110</td><td class="num">0,83</td><td class="num">0,194</td><td class="num">0,787</td></tr>
-          <tr><td>Regresión logística</td><td class="num">0,712</td><td class="num">0,136</td><td class="num">0,75</td><td class="num">0,230</td><td class="num">0,814</td></tr>
-          <tr><td>Random Forest · n=300, d=10</td><td class="num">0,753</td><td class="num">0,151</td><td class="num">0,72</td><td class="num">0,250</td><td class="num">0,828</td></tr>
-          <tr class="final"><td>Random Forest + zona k-means</td><td class="num">0,763</td><td class="num">0,157</td><td class="num">0,72</td><td class="num">0,257</td><td class="num">0,833</td></tr>
+          <tr><td>Árbol de decisión · d=4 <span class="mono" style="color:var(--mute); font-size:17px">interpretable</span></td><td class="num">0,491</td><td class="num">0,096</td><td class="num" style="color:var(--green); font-weight:600">0,93</td><td class="num">0,174</td><td class="num">0,764</td></tr>
+          <tr><td>Árbol de decisión · d=7</td><td class="num">0,649</td><td class="num">0,121</td><td class="num">0,80</td><td class="num">0,209</td><td class="num">0,789</td></tr>
+          <tr><td>Regresión logística</td><td class="num">0,714</td><td class="num">0,137</td><td class="num">0,75</td><td class="num">0,231</td><td class="num">0,815</td></tr>
+          <tr><td>Random Forest · n=300, d=10</td><td class="num">0,764</td><td class="num">0,156</td><td class="num">0,71</td><td class="num">0,256</td><td class="num">0,826</td></tr>
+          <tr class="final"><td>Random Forest + zona k-means</td><td class="num">0,771</td><td class="num">0,160</td><td class="num">0,70</td><td class="num">0,261</td><td class="num">0,830</td></tr>
         </tbody>
       </table>
       <p class="note anim" style="--d:.24s; margin-top:30px; max-width:none">El modelo final combina <em style="font-style:italic">técnicas</em>: la zona geográfica de k-means entra como variable sintética del Random Forest, ajustada dentro de cada fold para no filtrar validación. Criterio de impureza Gini, con poda preventiva contra el sobreajuste. Mejor F1-Score de la comparación.</p>
@@ -547,7 +547,7 @@
   <!-- 15 · MODELO FINAL -->
   <section class="slide" data-label="Modelo final">
     <div class="eyebrow"><span class="ey-num">05</span><span class="ey-sec">Clasificación · clases 7–8</span><span class="ey-line"></span></div>
-    <h2 class="title sm anim">El modelo final detecta <em>72 de cada 100</em> siniestros severos</h2>
+    <h2 class="title sm anim">El modelo final detecta <em>73 de cada 100</em> siniestros severos</h2>
     <div class="content" style="justify-content:center">
       <div class="grid2" style="grid-template-columns:1.15fr 1fr; gap:72px; align-items:center">
         <div class="anim" style="--d:.12s">
@@ -580,13 +580,13 @@
   <!-- 16 · ÁRBOL INTERPRETABLE -->
   <section class="slide" data-label="Árbol interpretable">
     <div class="eyebrow"><span class="ey-num">05</span><span class="ey-sec">Clasificación · clases 7–8</span><span class="ey-line"></span></div>
-    <h2 class="title sm anim">Un árbol legible: 92% de recall para hacer screening</h2>
+    <h2 class="title sm anim">Un árbol legible: 93% de recall para hacer screening</h2>
     <div class="content" style="justify-content:center">
       <div class="grid2" style="grid-template-columns:1fr 1.1fr; gap:72px; align-items:center">
         <div class="anim" style="--d:.12s">
-          <div class="stat-num" style="font-size:150px; color:var(--green)">0,92</div>
+          <div class="stat-num" style="font-size:150px; color:var(--green)">0,93</div>
           <div class="stat-lab" style="margin-top:6px">Recall severo · árbol de decisión d=4</div>
-          <p class="body" style="font-size:25px; margin-top:26px">Atrapa <strong>92 de cada 100</strong> siniestros severos. Sacrifica precisión, pero como red de seguridad para revisar casos es exactamente lo que se quiere.</p>
+          <p class="body" style="font-size:25px; margin-top:26px">Atrapa <strong>93 de cada 100</strong> siniestros severos. Sacrifica precisión, pero como red de seguridad para revisar casos es exactamente lo que se quiere.</p>
           <p class="note" style="margin-top:22px">Criterio Gini, profundidad 4, reglas si-entonces legibles con <span class="mono">plot_tree</span>. La interpretabilidad es el punto: se puede auditar cada decisión.</p>
         </div>
         <div class="anim" style="--d:.24s">
@@ -732,7 +732,7 @@
       <div class="grid2" style="grid-template-columns:1.1fr 1fr; gap:80px; align-items:center">
         <div>
           <h2 class="title anim" style="font-size:76px; color:var(--paper)">Gracias.</h2>
-          <p class="lead anim" style="--d:.1s; color:var(--mute-d); margin-top:24px; max-width:38ch">Un pipeline reproducible de 90 celdas que corre de punta a punta, sin APIs en runtime, con semillas fijas y un protocolo de validación único.</p>
+          <p class="lead anim" style="--d:.1s; color:var(--mute-d); margin-top:24px; max-width:38ch">Un pipeline reproducible que corre de punta a punta, sin APIs en runtime, con semillas fijas y un protocolo de validación único.</p>
           <div class="row anim" style="--d:.2s; gap:14px; margin-top:34px; flex-wrap:wrap">
             <span class="tag" style="border-color:var(--hair-d); color:var(--mute-d)">25 gráficos</span>
             <span class="tag" style="border-color:var(--hair-d); color:var(--mute-d)">4 mapas interactivos</span>
@@ -763,7 +763,7 @@
   "Buenas. Nuestro trabajo es sobre siniestros viales en la Ciudad de Buenos Aires. Trabajamos con un dataset real de casi treinta y ocho mil siniestros, entre 2021 y 2024, y la pregunta de fondo que nos guió fue: ¿qué hace que un siniestro termine grave? A partir de ahí armamos un pipeline completo de ciencia de datos, desde la ingesta de los datos hasta tres modelos distintos. En los próximos minutos vamos a contar qué encontramos, y sobre todo cómo lo validamos.",
   "El trabajo en realidad responde tres preguntas, y cada una es un tipo de problema distinto de la materia. La primera es de clasificación: dado un siniestro que ya pasó, ¿es leve o severo? Ahí usamos Random Forest, clases 7 y 8. La segunda es de regresión: ¿cuántos siniestros va a haber mañana en la ciudad? Y la tercera es descriptiva, no supervisada: dónde y a quién, con k-means, DBSCAN y reglas de asociación. Todo encuadrado en el proceso KDD, que es el marco que vimos en clase.",
   "Antes de modelar, una decisión metodológica que para nosotros es central: evaluamos la integración de los datos antes de integrarla. No agarramos cualquier dataset y lo pegamos. Definimos un criterio explícito —que comparta una llave útil, que aporte señal medible y que cubra el período— y recién ahí decidíamos. Eso nos llevó a un resultado que normalmente no se muestra: demostrar, con números, qué datasets NO sirven.",
-  "Y acá está ese resultado. De los seis datasets externos de la consigna, cuatro no aportaban señal. El clima mensual es casi constante dentro de cada mes, o sea redundante con la estación. El flujo de los radares tenía entre 36 y 74 por ciento de datos faltantes y solo cubría autopistas. Lo demostramos con ablación por validación cruzada: agregar el clima mensual incluso empeoraba el modelo. Los reemplazamos por fuentes con la granularidad correcta: clima diario, feriados y peajes. Documentar lo que no funciona, con evidencia, es parte del valor del trabajo.",
+  "Y acá está ese resultado. De los seis datasets externos de la consigna, cuatro no aportaban señal. El clima mensual es casi constante dentro de cada mes, o sea redundante con la estación. El flujo de los radares tenía entre 36 y 74 por ciento de datos faltantes y solo cubría autopistas. La evidencia está en la granularidad, la cobertura y los nulos de cada dataset, documentados en el notebook. Los reemplazamos por fuentes con la granularidad correcta: clima diario, feriados y peajes. Documentar lo que no funciona, con evidencia, es parte del valor del trabajo.",
   "Pasemos al análisis exploratorio. El retrato general: casi treinta y ocho mil siniestros, unos veintiséis por día, y de esos, un cinco coma siete por ciento termina grave o mortal. La víctima más frecuente, lejos, es la moto, después el peatón. En el mapa de la derecha está la tasa por habitante por comuna: la Comuna 1, el microcentro, tiene la tasa más alta, más del doble que la más baja. Ojo con eso igual: al microcentro entran cientos de miles de personas por día que no viven ahí, así que la tasa por residente sobreestima el riesgo real.",
   "Un dato que asusta a primera vista: los siniestros crecieron un 35 por ciento entre 2021 y 2024. Pero antes de alarmarse, hay que hacerse una pregunta honesta: ¿empeoró la seguridad vial, o simplemente volvió el tránsito a la calle después de la pandemia? Esa pregunta es la que ordena el próximo slide, y es uno de los aportes de los que estamos más orgullosos.",
   "Para responderla normalizamos por exposición, usando los peajes de autopistas como proxy del tránsito, que es el único conteo vehicular continuo que tiene la ciudad. Y el resultado es claro: dos tercios de ese 35 por ciento es simplemente más autos en la calle. El tránsito creció 22 por ciento; la tasa de siniestros por vehículo subió solo 10. Tránsito y siniestros se mueven juntos, con una correlación de 0,88. La moraleja: sin normalizar por exposición, el número crudo engaña.",
@@ -774,8 +774,8 @@
   "Cerrando el exploratorio, el perfil de mayor riesgo de exposición: joven, de madrugada, de fin de semana. Los jóvenes pasan de ser el 29 por ciento de las víctimas entre semana al 33 el finde, y en la madrugada de finde casi la mitad de los siniestros involucra a menores de 30. Ese perfil duplica frecuencia y severidad. Pero ojo con un matiz fino: la severidad individual por edad la dominan los mayores de 65, por fragilidad, no los jóvenes. Exposición y vulnerabilidad son dos cosas distintas.",
   "Ahora el modelado. Lo primero que hay que entender de la clasificación es el desbalance. Solo el 5,7 por ciento de los siniestros es severo. Eso significa que un modelo tonto que diga siempre 'leve' acierta el 94 por ciento de las veces. La accuracy, sola, miente. Por eso reagrupamos el target en binario, leve contra severo, usamos class_weight balanceado, y medimos con precision, recall, F1 y ROC-AUC sobre validación cruzada estratificada. Elegir bien la métrica fue media batalla.",
   "Comparamos cuatro familias de modelos bajo exactamente el mismo protocolo. De arriba a abajo van mejorando en F1: el árbol simple, el árbol más profundo, la regresión logística, el Random Forest. El ganador es el Random Forest combinado con la zona de k-means como variable sintética. Eso último es un detalle que nos gusta: en vez de combinar modelos —probamos stacking y no aportaba— combinamos técnicas. La zona se ajusta dentro de cada fold para no filtrar información de validación.",
-  "El modelo final detecta el 72 por ciento de los siniestros severos, con un ROC-AUC de 0,83. En la matriz de confusión se ve la lógica: atrapa 73 de cada 100 severos reales, a costa de bastantes falsos positivos. Y eso es a propósito. Funciona como un screening: para priorizar inspecciones o política pública, marcar de más es tolerable; lo que no querés es perder un caso grave. Es un modelo explicativo, sirve para entender factores, no para predecir antes de que ocurra.",
-  "Junto al Random Forest mantuvimos a propósito un árbol de decisión simple, de profundidad 4. ¿Por qué? Porque tiene 92 por ciento de recall y, sobre todo, porque es legible. Podés seguir cada decisión: ¿hay un peatón?, ¿es de madrugada?, ¿la víctima es mayor?, ¿es avenida o autopista? Cada pregunta sube el riesgo. Sacrifica precisión, pero como red de seguridad auditable es ideal. Un modelo que el evaluador puede leer vale más que uno que solo da un número.",
+  "El modelo final detecta el 73 por ciento de los siniestros severos, con un ROC-AUC de 0,83. En la matriz de confusión se ve la lógica: atrapa 73 de cada 100 severos reales, a costa de bastantes falsos positivos. Y eso es a propósito. Funciona como un screening: para priorizar inspecciones o política pública, marcar de más es tolerable; lo que no querés es perder un caso grave. Es un modelo explicativo, sirve para entender factores, no para predecir antes de que ocurra.",
+  "Junto al Random Forest mantuvimos a propósito un árbol de decisión simple, de profundidad 4. ¿Por qué? Porque tiene 93 por ciento de recall y, sobre todo, porque es legible. Podés seguir cada decisión: ¿hay un peatón?, ¿es de madrugada?, ¿la víctima es mayor?, ¿es avenida o autopista? Cada pregunta sube el riesgo. Sacrifica precisión, pero como red de seguridad auditable es ideal. Un modelo que el evaluador puede leer vale más que uno que solo da un número.",
   "Segunda pregunta: la regresión, cuántos siniestros por día. Esto sirve para dimensionar recursos, por ejemplo guardias del SAME. Lo más fuerte, lejos, es el feriado: nueve siniestros y medio menos por día, más que cualquier variable de clima. Después el fin de semana y la lluvia, también para abajo. Gana la regresión lineal, no los árboles, porque los árboles no extrapolan la tendencia creciente. Y reemplazar la 'tendencia' abstracta por el tránsito real del mes la explica por su mecanismo. Validamos sobre 2024, un año que el modelo nunca vio.",
   "Del lado no supervisado, las reglas de asociación con Apriori. Cada siniestro es una canasta de ítems, y el lift mide cuánto multiplica una combinación la probabilidad base de ser severo. Un peatón en avenida, o la madrugada, duplican el riesgo. Lo bueno de esto, frente al modelo, es que es directamente accionable y se explica solo: 'un peatón atropellado en avenida tiene el doble de chances de terminar grave' no necesita ningún modelo para comunicarse a quien toma decisiones.",
   "Y el último del no supervisado, DBSCAN para encontrar esquinas peligrosas. Veintinueve micro-hotspots concentran casi el 5 por ciento de todos los siniestros. El más cargado tiene 153 siniestros en un solo punto, en los accesos de General Paz. Esto es lo más concreto del análisis geográfico: si tuvieras que intervenir mañana, acá están las esquinas. De paso, el PCA nos dijo que no conviene reducir dimensiones, porque las variables son casi ortogonales.",

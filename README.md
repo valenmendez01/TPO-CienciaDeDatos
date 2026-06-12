@@ -25,7 +25,7 @@ Análisis de siniestros viales en CABA con foco en gravedad del siniestro, frecu
 | Lluvia/temperatura mensual | ❌ DESCARTADO — redundante con `mes`/estación |
 | Flujo AUSA y Anillo Digital | ❌ DESCARTADO — 36-74% NaN, cobertura insuficiente |
 
-De los 6 datasets de la consigna, 4 no aportaban señal: se demostró con ablación por CV y se reemplazaron por fuentes con la granularidad correcta. El detalle está en la celda 1 del notebook y en `PLAN.md`.
+De los 6 datasets de la consigna, 4 no aportaban señal: se demostró con ablación por CV y se reemplazaron por fuentes con la granularidad correcta. El detalle está en la celda 1 del notebook.
 
 ## Estructura
 
@@ -34,7 +34,7 @@ De los 6 datasets de la consigna, 4 no aportaban señal: se demostró con ablaci
 - `datasets_externos/`: datasets estáticos complementarios usados por el notebook.
 - `generar_informe.py`: script para regenerar el informe PDF a partir de los gráficos en `outputs/`.
 - `informe_tpo.pdf`: informe final en PDF.
-- `PLAN.md`: plan de trabajo, decisiones de integración y resultados por fase.
+- `informe_assets/`: capturas estáticas de los mapas interactivos (folium genera HTML, no PNG) que usa el informe.
 - `requirements.txt`: dependencias de Python.
 - `NOTAS_QA_ANALISIS.md`: validaciones y advertencias metodológicas.
 - `DEFENSA.md`: preguntas probables de la defensa con sus respuestas.
@@ -45,8 +45,7 @@ De los 6 datasets de la consigna, 4 no aportaban señal: se demostró con ablaci
 
 - Notebook: `siniestros_viales_pipeline.ipynb`, corre end-to-end sin APIs externas.
 - Informe PDF: `informe_tpo.pdf`, regenerable con `python generar_informe.py` después de ejecutar el notebook.
-- Presentación: Google Slides en Drive, carpeta "TPO Ciencia de Datos — Siniestros Viales CABA" (actualizable con `gws` CLI):  
-  `https://docs.google.com/presentation/d/1x74N1XuflQ0JhJOylUInuEbnH7jKyY7YTv-ht4Ea2VQ`
+- Presentación: deck de defensa HTML en `webapp/` — https://siniestros-viales-caba.pages.dev/defensa/ (ver sección siguiente).
 
 ## Web interactiva y deck de defensa
 
