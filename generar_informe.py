@@ -16,14 +16,14 @@ doc = SimpleDocTemplate('informe_tpo.pdf', pagesize=A4,
 
 ss = getSampleStyleSheet()
 H1 = ParagraphStyle('H1x', parent=ss['Heading1'], fontSize=16, spaceBefore=18, spaceAfter=8,
-                    textColor=colors.HexColor('#1a3a5c'))
+                    textColor=colors.HexColor('#1C1813'))   # ink (sistema de marca)
 H2 = ParagraphStyle('H2x', parent=ss['Heading2'], fontSize=13, spaceBefore=12, spaceAfter=6,
-                    textColor=colors.HexColor('#2c5f8a'))
+                    textColor=colors.HexColor('#C0391F'))   # severe (acento de subsección)
 P  = ParagraphStyle('Px', parent=ss['Normal'], fontSize=10, leading=14, spaceAfter=6)
-PC = ParagraphStyle('PCx', parent=P, fontSize=8.5, textColor=colors.HexColor('#555555'),
-                    spaceBefore=2, spaceAfter=12)
+PC = ParagraphStyle('PCx', parent=P, fontSize=8.5, textColor=colors.HexColor('#6E6456'),
+                    spaceBefore=2, spaceAfter=12)             # mute
 TIT = ParagraphStyle('TITx', parent=ss['Title'], fontSize=22, leading=28)
-SUB = ParagraphStyle('SUBx', parent=ss['Normal'], fontSize=12, alignment=1, textColor=colors.HexColor('#444444'))
+SUB = ParagraphStyle('SUBx', parent=ss['Normal'], fontSize=12, alignment=1, textColor=colors.HexColor('#6E6456'))
 
 def img(path, width=15.5*cm, caption=None):
     el = []
@@ -41,12 +41,12 @@ def img(path, width=15.5*cm, caption=None):
 def tabla(data, col_widths=None, font=8.5):
     t = Table(data, colWidths=col_widths, hAlign='LEFT')
     t.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#1a3a5c')),
+        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#3E5A66')),   # slate
         ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
         ('FONTSIZE', (0, 0), (-1, -1), font),
         ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-        ('GRID', (0, 0), (-1, -1), 0.4, colors.HexColor('#cccccc')),
-        ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor('#f2f6fa')]),
+        ('GRID', (0, 0), (-1, -1), 0.4, colors.HexColor('#D7CFBF')),   # hair
+        ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor('#EDE7DA')]),  # paper-2
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
         ('TOPPADDING', (0, 0), (-1, -1), 4), ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
     ]))
