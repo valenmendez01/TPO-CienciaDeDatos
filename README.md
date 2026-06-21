@@ -50,7 +50,7 @@ De los 6 datasets de la consigna, 4 no aportaban señal: se demostró con ablaci
 ## Web interactiva y deck de defensa
 
 - **App interactiva**: https://siniestros-viales-caba.pages.dev — 6 pestañas (Panorama · Explorar · Predecir · Mapa · Reglas · Modelos) con los datos reales preprocesados y dos predictores corriendo en vivo en el navegador. Botón "Ajustes" en el rail: tema Papel/Tinta, acento, densidad y animaciones.
-- **Deck de defensa (HTML)**: https://siniestros-viales-caba.pages.dev/defensa/ — 22 slides navegables con ←/→, rail de miniaturas y notas del orador.
+- **Deck de defensa (HTML)**: https://siniestros-viales-caba.pages.dev/defensa/ — 24 slides navegables con ←/→, rail de miniaturas y notas del orador.
 
 ### Cómo editar
 

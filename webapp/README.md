@@ -6,7 +6,7 @@ Seis pestañas: Panorama · Explorar · Predecir (predictores en vivo) · Mapa (
 Reglas (Apriori) · Modelos. Botón **Ajustes** en el rail: tema Papel/Tinta, acento,
 densidad y animaciones (persisten en localStorage).
 
-El **deck de defensa** (22 slides, navegación ←/→, notas del orador) se sirve en
+El **deck de defensa** (24 slides, navegación ←/→, notas del orador) se sirve en
 **https://siniestros-viales-caba.pages.dev/defensa/** — fuente en `src/defensa/index.html`
 (slides como `<section>` dentro de `<deck-stage>`).
 

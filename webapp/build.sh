@@ -14,7 +14,7 @@ npx -y esbuild src/app/*.jsx --loader:.jsx=jsx --jsx=transform --outdir=public/a
 # 2. estáticos
 cp src/index.html src/styles.css public/
 cp src/data/aggregates.js src/data/comunas.geojson public/data/
-cp -R src/defensa public/   # deck de defensa (22 slides) → /defensa/
+cp -R src/defensa public/   # deck de defensa (24 slides) → /defensa/
 
 # 3. vendor (solo si faltan — pineados, self-hosted)
 fetch() { [ -f "public/vendor/$1" ] || curl -sfL "$2" -o "public/vendor/$1"; }
