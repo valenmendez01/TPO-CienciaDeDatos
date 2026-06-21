@@ -1,0 +1,120 @@
+/* ============================================================
+   @cdd/charts — sistema visual Papel/Tinta (Siniestros Viales CABA)
+   Tokens + estilos base de los gráficos. La animación de entrada
+   está gateada por `html.ready`; sin esa clase, el estado base de
+   cada elemento ya es el estado final visible (ideal para render
+   estático / previews).
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+:root {
+  --paper: #F4F0E8; --paper-2: #EDE7DA; --paper-3: #E5DDCC;
+  --ink: #1C1813; --ink-2: #3A332A;
+  --severe: #C0391F; --severe-br: #E05334;
+  --slate: #3E5A66; --slate-br: #5E8294;
+  --amber: #C28A2C; --green: #4E7A52;
+  --mute: #6E6456; --mute-2: #8A7F6E;
+  --hair: #D7CFBF; --hair-2: #C8BFAC;
+  --card: #FBF9F4; --card-line: #E2DACA;
+  --shadow: 0 18px 50px -28px rgba(28,24,19,.45);
+  --shadow-sm: 0 6px 20px -14px rgba(28,24,19,.5);
+  --ff-serif: 'Newsreader', Georgia, serif;
+  --ff-sans: 'Archivo', system-ui, sans-serif;
+  --ff-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --ease: cubic-bezier(.22,1,.36,1);
+
+  /* Escala tipográfica de slide (canvas 1920×1080) */
+  --t-hero: 88px; --t-stat: 120px; --t-title: 60px; --t-title-sm: 48px;
+  --t-sub: 38px; --t-lead: 34px; --t-body: 30px; --t-small: 24px; --t-eyebrow: 19px;
+  --pad-x: 112px; --pad-top: 84px; --pad-bot: 80px; --gap-item: 22px;
+  /* Variante oscura (secciones .dark) */
+  --dark: #1A1611; --mute-d: #A89D8C; --hair-d: #3A332A;
+}
+
+/* ============================================================
+   Sistema editorial (slides / posters) — primitivas del deck CDD
+   ============================================================ */
+section.slide {
+  background: var(--paper); color: var(--ink); font-family: var(--ff-sans);
+  padding: var(--pad-top) var(--pad-x) var(--pad-bot);
+  display: flex; flex-direction: column; overflow: hidden; position: relative;
+}
+section.slide.dark { background: var(--dark); color: var(--paper); }
+section.slide.paper-2 { background: var(--paper-2); }
+section.dark .ey-sec { color: var(--mute-d); }
+section.dark .title { color: var(--paper); }
+section.dark .title em { color: var(--severe-br); }
+section.dark .note { color: var(--mute-d); border-left-color: var(--hair-d); }
+section.dark .ey-line { background: var(--hair-d); }
+section.dark .bar-track { background: #2a241c; }
+section.dark .bar-val, section.dark .bar-label { color: var(--paper); }
+
+.content { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+
+/* eyebrow */
+.eyebrow { display: flex; align-items: center; gap: 16px; font-family: var(--ff-mono);
+  font-size: var(--t-eyebrow); letter-spacing: .18em; text-transform: uppercase; margin-bottom: 30px; }
+.ey-num { color: var(--severe); font-weight: 600; }
+.ey-sec { color: var(--mute); font-weight: 500; white-space: nowrap; }
+.ey-line { flex: 1; height: 1px; background: var(--hair); }
+
+/* títulos y texto */
+.title { font-family: var(--ff-serif); font-weight: 500; font-size: var(--t-title);
+  line-height: 1.04; letter-spacing: -.015em; color: var(--ink); max-width: 24ch; text-wrap: balance; }
+.title.sm { font-size: var(--t-title-sm); max-width: 30ch; }
+.title em { font-style: italic; color: var(--severe); }
+.lead { font-family: var(--ff-serif); font-size: var(--t-lead); line-height: 1.32; color: var(--ink); font-weight: 400; max-width: 40ch; }
+.body { font-size: var(--t-body); line-height: 1.42; color: var(--ink); max-width: 48ch; }
+.small { font-size: var(--t-small); line-height: 1.4; color: var(--mute); }
+.hl { color: var(--severe); font-weight: 600; }
+.hl-amber { color: var(--amber); font-weight: 600; }
+.hl-slate { color: var(--slate); font-weight: 600; }
+
+/* stat */
+.stat-num { font-family: var(--ff-serif); font-weight: 500; line-height: .92; letter-spacing: -.02em; }
+.stat-lab { font-family: var(--ff-mono); font-size: 16px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+
+/* barras editoriales */
+.barlist { display: flex; flex-direction: column; gap: var(--gap-item); }
+.bar { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 24px; }
+.bar-label { font-size: var(--t-small); font-weight: 500; color: var(--ink); }
+.bar-track { height: 30px; background: var(--paper-2); border-radius: 2px; overflow: hidden; position: relative; }
+.bar-fill { height: 100%; border-radius: 2px; }
+.bar-val { font-family: var(--ff-mono); font-weight: 600; font-size: var(--t-small); color: var(--ink); min-width: 64px; text-align: right; }
+
+/* tag / note */
+.note { font-family: var(--ff-mono); font-size: 17px; line-height: 1.5; color: var(--mute); letter-spacing: .01em;
+  border-left: 2px solid var(--hair); padding-left: 18px; max-width: 46ch; }
+.tag { display: inline-flex; align-items: center; gap: 8px; font-family: var(--ff-mono); font-size: 15px;
+  letter-spacing: .06em; text-transform: uppercase; padding: 7px 14px; border-radius: 3px;
+  border: 1px solid var(--hair); color: var(--mute); white-space: nowrap; }
+.dot { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+
+/* footer chrome de slide */
+.deck-foot { position: absolute; left: var(--pad-x); right: var(--pad-x); bottom: 38px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--ff-mono); font-size: 15px; letter-spacing: .06em; color: var(--mute);
+  padding-top: 14px; border-top: 1px solid var(--hair); text-transform: uppercase; }
+section.dark .deck-foot { color: var(--mute-d); border-top-color: var(--hair-d); }
+
+/* Ejes y etiquetas de los SVG */
+.axis-lab { font-family: var(--ff-mono); font-size: 11px; fill: var(--mute); letter-spacing: .03em; }
+.grid-line { stroke: var(--hair); stroke-width: 1; }
+.val-lab { font-family: var(--ff-mono); font-size: 11.5px; fill: var(--ink); font-weight: 500; }
+
+/* Estado base de las transformaciones animadas */
+.ch-growx { transform-origin: left; }
+
+/* Animaciones de entrada — solo cuando <html> tiene .ready (lo agrega el host al pintar).
+   En render estático no se aplican: el estado base ya es el final. */
+@keyframes chIn   { from { transform: translateY(8px) }  to { transform: none } }
+@keyframes chCol  { from { transform: scaleY(.5) }       to { transform: scaleY(1) } }
+@keyframes chGrowX{ from { transform: scaleX(.84) }      to { transform: scaleX(1) } }
+@keyframes chPop  { from { transform: scale(.96) }       to { transform: none } }
+
+html.ready svg .ch-col { transform-box: fill-box; transform-origin: 50% 100%; animation: chCol .6s var(--ease) both; }
+html.ready .ch-line { animation: chIn .7s var(--ease) both; }
+html.ready .ch-dot  { animation: chIn .5s var(--ease) both; }
+html.ready .ch-growx { animation: chGrowX .7s var(--ease) both; }
+html.ready .ch-heat { animation: chPop .42s var(--ease) both; }
+html.ready .ch-pop  { animation: chPop .6s var(--ease) both; }

@@ -3,3 +3,10 @@ outputs/
 __pycache__/
 .DS_Store
 PLAN.md
+
+# design-sync
+.ds-sync/
+ds-bundle/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules

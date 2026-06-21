@@ -1,0 +1,12 @@
+{
+  "pkg": "@cdd/charts",
+  "globalName": "CddCharts",
+  "projectId": "8a308952-3721-4e73-a98b-5b5b6f8e88cd",
+  "shape": "package",
+  "buildCmd": "npm --prefix cdd-charts run build",
+  "cssEntry": "styles.css",
+  "readmeHeader": ".design-sync/conventions.md",
+  "overrides": {
+    "SlideFrame": { "cardMode": "single", "viewport": "1920x1080" }
+  }
+}
