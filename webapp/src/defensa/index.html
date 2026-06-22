@@ -79,7 +79,7 @@
   /* ---------- footer chrome ---------- */
   .deck-foot{position:absolute; left:var(--pad-x); right:var(--pad-x); bottom:38px;
     display:flex; justify-content:space-between; align-items:center;
-    font-family:var(--ff-mono); font-size:15px; letter-spacing:.06em; color:var(--mute);
+    font-family:var(--ff-mono); font-size:18px; letter-spacing:.06em; color:var(--mute);
     padding-top:14px; border-top:1px solid var(--hair); text-transform:uppercase;}
 
   /* ---------- layout helpers ---------- */
@@ -91,7 +91,7 @@
   /* ---------- stat blocks ---------- */
   .statgrid{display:grid; gap:0}
   .stat-num{font-family:var(--ff-serif); font-weight:500; line-height:.92; letter-spacing:-.02em}
-  .stat-lab{font-family:var(--ff-mono); font-size:16px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute)}
+  .stat-lab{font-family:var(--ff-mono); font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute)}
 
   /* ---------- bars ---------- */
   .barlist{display:flex; flex-direction:column; gap:var(--gap-item)}
@@ -104,17 +104,17 @@
   section.dark .bar-val,section.dark .bar-label{color:var(--paper)}
 
   /* ---------- tags / notes ---------- */
-  .note{font-family:var(--ff-mono); font-size:17px; line-height:1.5; color:var(--mute); letter-spacing:.01em;
+  .note{font-family:var(--ff-mono); font-size:20px; line-height:1.5; color:var(--mute); letter-spacing:.01em;
     border-left:2px solid var(--hair); padding-left:18px; max-width:46ch}
   section.dark .note{color:var(--mute-d); border-left-color:var(--hair-d)}
-  .tag{display:inline-flex; align-items:center; gap:8px; font-family:var(--ff-mono); font-size:15px;
+  .tag{display:inline-flex; align-items:center; gap:8px; font-family:var(--ff-mono); font-size:18px;
     letter-spacing:.06em; text-transform:uppercase; padding:7px 14px; border-radius:3px;
     border:1px solid var(--hair); color:var(--mute); white-space:nowrap}
   .dot{width:11px; height:11px; border-radius:50%; flex:none}
 
   /* ---------- table ---------- */
   table.tbl{width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums}
-  table.tbl th{font-family:var(--ff-mono); font-size:15px; letter-spacing:.1em; text-transform:uppercase;
+  table.tbl th{font-family:var(--ff-mono); font-size:18px; letter-spacing:.1em; text-transform:uppercase;
     color:var(--mute); font-weight:500; text-align:right; padding:0 0 16px; border-bottom:1.5px solid var(--ink)}
   table.tbl th:first-child{text-align:left}
   table.tbl td{font-size:23px; padding:17px 0; border-bottom:1px solid var(--hair); text-align:right; color:var(--ink)}
@@ -134,16 +134,16 @@
   .pipe-step{flex:1; display:flex; flex-direction:column; gap:12px; padding:0 30px; position:relative}
   .pipe-step:not(:last-child)::after{content:"→"; position:absolute; right:-13px; top:6px;
     font-family:var(--ff-mono); color:var(--severe); font-size:26px}
-  .pipe-k{font-family:var(--ff-mono); font-size:15px; letter-spacing:.14em; color:var(--severe); font-weight:600}
-  .pipe-h{font-family:var(--ff-serif); font-size:27px; font-weight:500; color:var(--ink); line-height:1.1}
-  .pipe-b{font-size:18px; line-height:1.4; color:var(--mute)}
+  .pipe-k{font-family:var(--ff-mono); font-size:20px; letter-spacing:.14em; color:var(--severe); font-weight:600}
+  .pipe-h{font-family:var(--ff-serif); font-size:32px; font-weight:500; color:var(--ink); line-height:1.1}
+  .pipe-b{font-size:22px; line-height:1.45; color:var(--mute)}
 
   /* ---------- confusion matrix ---------- */
   .cm{display:grid; grid-template-columns:auto 1fr 1fr; grid-template-rows:auto 1fr 1fr; gap:8px}
   .cm-cell{border-radius:5px; padding:22px 24px; display:flex; flex-direction:column; justify-content:space-between; min-height:128px}
   .cm-pct{font-family:var(--ff-serif); font-size:46px; font-weight:500; line-height:1}
-  .cm-tag{font-family:var(--ff-mono); font-size:14px; letter-spacing:.08em; text-transform:uppercase}
-  .cm-axis{font-family:var(--ff-mono); font-size:15px; letter-spacing:.08em; text-transform:uppercase; color:var(--mute); display:flex; align-items:center; justify-content:center}
+  .cm-tag{font-family:var(--ff-mono); font-size:16px; letter-spacing:.08em; text-transform:uppercase}
+  .cm-axis{font-family:var(--ff-mono); font-size:18px; letter-spacing:.08em; text-transform:uppercase; color:var(--mute); display:flex; align-items:center; justify-content:center}
 
   /* ---------- conclusions ---------- */
   .concl{display:grid; grid-template-columns:1fr 1fr; gap:28px 64px}
@@ -163,22 +163,22 @@
   .app-embed .card{background:var(--card); border:1px solid var(--card-line); border-radius:16px; padding:30px 36px; box-shadow:var(--shadow-sm)}
   .app-embed .card-h{display:flex; justify-content:space-between; align-items:baseline; gap:16px; margin-bottom:18px}
   .app-embed .card-h h3{font-family:var(--ff-sans); font-weight:600; font-size:23px; color:var(--ink)}
-  .app-embed .card-h .cap{font-family:var(--ff-mono); font-size:15px; letter-spacing:.06em; color:var(--mute); text-transform:uppercase}
-  .app-embed .card-note{font-family:var(--ff-mono); font-size:16px; line-height:1.55; color:var(--mute); margin-top:20px; padding-top:16px; border-top:1px solid var(--hair)}
+  .app-embed .card-h .cap{font-family:var(--ff-mono); font-size:18px; letter-spacing:.06em; color:var(--mute); text-transform:uppercase}
+  .app-embed .card-note{font-family:var(--ff-mono); font-size:18px; line-height:1.55; color:var(--mute); margin-top:20px; padding-top:16px; border-top:1px solid var(--hair)}
   .app-embed .divider{height:1px; background:var(--hair); border:none}
   .app-embed .factor-row{display:flex; align-items:center; gap:18px; padding:14px 0; border-bottom:1px solid var(--hair)}
   .app-embed .factor-row:last-child{border-bottom:none}
   .app-embed .factor-name{font-size:18px; flex:1}
-  .app-embed .factor-lift{font-family:var(--ff-mono); font-size:17px; font-weight:600; min-width:64px; text-align:right}
+  .app-embed .factor-lift{font-family:var(--ff-mono); font-size:19px; font-weight:600; min-width:64px; text-align:right}
   .app-embed .factor-bar{height:10px; border-radius:5px; background:var(--paper-3); position:relative; overflow:hidden; width:160px; flex:none}
   .app-embed .factor-bar > span{position:absolute; left:50%; top:0; bottom:0; transition:width .5s var(--ease),transform .5s var(--ease)}
-  .app-embed .field-lab{font-family:var(--ff-mono); font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:10px; display:block}
-  .app-embed .tag{font-size:16px; padding:8px 16px}
+  .app-embed .field-lab{font-family:var(--ff-mono); font-size:16px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:10px; display:block}
+  .app-embed .tag{font-size:18px; padding:8px 16px}
   .app-embed .select-wrap{position:relative}
   .app-embed select{width:100%; font:500 17px var(--ff-sans) !important; color:var(--ink); background:var(--card); border:1px solid var(--hair-2); border-radius:10px; padding:12px 40px 12px 15px !important; cursor:pointer; appearance:none; -webkit-appearance:none; -moz-appearance:none; box-shadow:var(--shadow-sm); transition:border-color .15s var(--ease), box-shadow .15s var(--ease)}
   .app-embed select:hover{border-color:var(--mute-2)}
   .app-embed select:focus{outline:none; border-color:var(--severe); box-shadow:0 0 0 3px color-mix(in srgb,var(--severe) 16%,transparent)}
-  .app-embed select option{background:var(--card); color:var(--ink); font-size:15px}
+  .app-embed select option{background:var(--card); color:var(--ink); font-size:18px}
   .app-embed .select-chevron{position:absolute; right:14px; top:50%; transform:translateY(-50%); width:14px; height:14px; pointer-events:none; color:var(--mute)}
   .app-embed input[type=checkbox]{width:18px; height:18px}
   .app-embed input[type=range]{width:100%; cursor:pointer; accent-color:var(--slate)}
@@ -191,9 +191,9 @@
   .pred-slide .pred-check{display:flex; align-items:center; gap:11px; cursor:pointer; font-size:18px; color:var(--ink)}
   .pred-slide .pred-check input[type=checkbox]{width:20px; height:20px; accent-color:var(--severe)}
   .pred-slide.cant .pred-check input[type=checkbox]{accent-color:var(--slate)}
-  .pred-slide .pred-foot{margin-top:26px; font-family:var(--ff-mono); font-size:16px; line-height:1.55; color:var(--mute); border-top:1px solid var(--hair); padding-top:16px}
+  .pred-slide .pred-foot{margin-top:26px; font-family:var(--ff-mono); font-size:18px; line-height:1.55; color:var(--mute); border-top:1px solid var(--hair); padding-top:16px}
   .pred-slide .card-h h3{font-size:21px}
-  .pred-slide .field-lab{font-size:15px}
+  .pred-slide .field-lab{font-size:18px}
   /* compact in-app (Predecir tab) variant */
   .pred-embed .pred-result{align-items:flex-start; text-align:left}
   .pred-embed .pred-bignum{font-size:84px}
@@ -205,35 +205,52 @@
   .app-embed .g3{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
   .app-embed .leaflet-wrap{width:100%; height:500px; border-radius:14px; overflow:hidden; border:1px solid var(--card-line); background:var(--paper-3)}
   .app-embed .leaflet-container{font-family:var(--ff-sans) !important; background:var(--paper-3)}
-  .app-embed .map-legend{font-family:var(--ff-mono) !important; background:var(--card); color:var(--ink); padding:12px 15px; border-radius:10px; box-shadow:var(--shadow-sm); border:1px solid var(--card-line); font-size:14px; line-height:2; white-space:nowrap}
+  .app-embed .map-legend{font-family:var(--ff-mono) !important; background:var(--card); color:var(--ink); padding:12px 15px; border-radius:10px; box-shadow:var(--shadow-sm); border:1px solid var(--card-line); font-size:18px; line-height:2; white-space:nowrap}
   .app-embed .map-legend > div{display:flex; align-items:center}
   .app-embed .map-legend i{width:14px; height:14px; display:inline-block; margin-right:9px; border-radius:3px; flex:none}
   .app-embed .leaflet-popup-content-wrapper{background:var(--card); color:var(--ink); border-radius:10px}
   .app-embed .leaflet-popup-tip{background:var(--card)}
-  .app-embed .popup-t{font-family:var(--ff-mono); font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--mute)}
+  .app-embed .popup-t{font-family:var(--ff-mono); font-size:16px; letter-spacing:.08em; text-transform:uppercase; color:var(--mute)}
   .app-embed .popup-n{font-family:var(--ff-serif); font-size:30px; font-weight:500; margin:2px 0 4px}
   .mapa-embed .card{padding:20px 24px}
   /* Reglas (Apriori) + Perfiles (k-means/PCA) explorers */
   .app-embed .g-1-2{grid-template-columns:1fr 2fr}
-  .app-embed .note-box{font-family:var(--ff-mono); font-size:15px; line-height:1.6; color:var(--mute); border-left:2px solid var(--hair-2); padding:3px 0 3px 16px}
+  .app-embed .note-box{font-family:var(--ff-mono); font-size:18px; line-height:1.6; color:var(--mute); border-left:2px solid var(--hair-2); padding:3px 0 3px 16px}
   .app-embed .note-box b{color:var(--ink-2)}
-  .app-embed .badge{display:inline-flex; align-items:center; gap:6px; font-family:var(--ff-mono); font-size:13px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; padding:4px 9px; border-radius:5px}
+  .app-embed .badge{display:inline-flex; align-items:center; gap:6px; font-family:var(--ff-mono); font-size:16px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; padding:4px 9px; border-radius:5px}
   .app-embed .badge.leve{background:color-mix(in srgb,var(--green) 16%,transparent); color:var(--green)}
   .app-embed .badge.sev{background:color-mix(in srgb,var(--severe) 14%,transparent); color:var(--severe)}
   /* SVG chart primitives (Scatter, LineChart) — entrance anims are no-ops here
      (gated on html.ready) but the base state is the final visible one. */
-  .app-embed .axis-lab{font-family:var(--ff-mono); font-size:13px; fill:var(--mute); letter-spacing:.03em}
+  .app-embed .axis-lab{font-family:var(--ff-mono); font-size:17px; fill:var(--mute); letter-spacing:.03em}
   .app-embed .grid-line{stroke:var(--hair); stroke-width:1}
-  .app-embed .val-lab{font-family:var(--ff-mono); font-size:13px; fill:var(--ink); font-weight:500}
+  .app-embed .val-lab{font-family:var(--ff-mono); font-size:16px; fill:var(--ink); font-weight:500}
   .app-embed .legend{display:flex; gap:18px; flex-wrap:wrap; align-items:center}
-  .app-embed .legend .lg{display:flex; align-items:center; gap:7px; font-family:var(--ff-mono); font-size:14px; color:var(--mute)}
+  .app-embed .legend .lg{display:flex; align-items:center; gap:7px; font-family:var(--ff-mono); font-size:16px; color:var(--mute)}
   .app-embed .legend .sw{width:12px; height:12px; border-radius:3px; flex:none}
   .app-embed .legend .swatch-line{width:16px; height:3px; border-radius:2px}
   .explorar-embed .card{padding:22px 26px}
   /* heatmap día×franja: celdas más anchas/bajas para que las 7 filas + footer entren en el slide */
   .explorar-embed .ch-heat{aspect-ratio:3/1 !important}
   .reglas-embed .card{padding:24px 28px}
-  .perfiles-embed .card{padding:22px 26px}
+  /* Perfiles: las 5 personas son el dato — tarjetas grandes, sin scatter */
+  .perfiles-embed .perfiles-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:24px}
+  .perfiles-embed .pf-card{display:flex; flex-direction:column; padding:38px 28px 40px}
+  .perfiles-embed .pf-label{font-size:27px; font-weight:600; line-height:1.15; color:var(--ink)}
+  .perfiles-embed .pf-sub{font-size:18px; color:var(--mute-2); margin-top:9px; line-height:1.4; min-height:46px}
+  .perfiles-embed .pf-meta{font-family:var(--ff-mono); font-size:16px; letter-spacing:.03em; color:var(--mute); margin-top:22px}
+  .perfiles-embed .pf-pct{font-family:var(--ff-serif); font-weight:500; font-size:88px; line-height:1; margin-top:26px; letter-spacing:-.02em}
+  .perfiles-embed .pf-pct span{font-size:38px}
+  .perfiles-embed .pf-sevlab{font-family:var(--ff-mono); font-size:16px; text-transform:uppercase; letter-spacing:.08em; color:var(--mute); margin-top:6px}
+  .perfiles-embed .pf-bar{position:relative; height:12px; background:var(--paper-3); border-radius:6px; overflow:hidden; margin-top:28px}
+  .perfiles-embed .pf-fill{position:absolute; left:0; top:0; bottom:0; border-radius:6px}
+  .perfiles-embed .pf-base{position:absolute; top:0; bottom:0; width:2px; background:var(--ink); opacity:.55}
+  .perfiles-embed .pf-spread{display:flex; align-items:center; gap:56px; margin-top:48px; border-top:1px solid var(--hair); padding-top:38px}
+  .perfiles-embed .pf-stat{display:flex; flex-direction:column; flex:none}
+  .perfiles-embed .pf-stat span{font-family:var(--ff-serif); font-weight:500; font-size:64px; line-height:1; letter-spacing:-.02em}
+  .perfiles-embed .pf-stat label{font-family:var(--ff-mono); font-size:16px; letter-spacing:.08em; text-transform:uppercase; color:var(--mute); margin-top:10px}
+  .perfiles-embed .pf-msg{flex:1; font-family:var(--ff-serif); font-size:27px; line-height:1.42; color:var(--ink)}
+  .perfiles-embed .pf-msg em{font-style:italic; color:var(--severe)}
   /* live-embed slides are full-bleed interactive panels — drop the decorative
      footer (the deck-stage overlay already shows the slide count) so a tall
      embed never collides with it. */
@@ -246,6 +263,18 @@
     section[data-deck-active] .anim{animation:rise .62s var(--ease) both; animation-delay:var(--d,0s)}
     @keyframes rise{from{opacity:0; transform:translateY(16px)} to{opacity:1; transform:none}}
   }
+
+  /* ---------- botón pantalla completa (host, fuera del shadow del deck) ---------- */
+  #fs-btn{position:fixed; right:18px; bottom:18px; z-index:2147483647; width:42px; height:42px;
+    display:flex; align-items:center; justify-content:center; border:none; border-radius:10px;
+    background:rgba(20,18,14,.55); color:#fff; cursor:pointer; opacity:.4;
+    transition:opacity .18s ease, background .18s ease; -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px);}
+  #fs-btn:hover{opacity:1; background:rgba(20,18,14,.82)}
+  #fs-btn svg{width:20px; height:20px; display:block}
+  #fs-btn .ic-exit{display:none}
+  #fs-btn.on .ic-enter{display:none}
+  #fs-btn.on .ic-exit{display:block}
+  @media print{ #fs-btn{display:none !important} }
 </style>
 </head>
 <body>
@@ -277,17 +306,17 @@
     <div class="content" style="justify-content:center">
       <div class="row" style="gap:0; align-items:stretch">
         <div class="anim" style="--d:.05s; flex:1; padding:34px 40px 0 0; border-top:2px solid var(--severe)">
-          <p class="mono" style="font-size:16px; letter-spacing:.12em; color:var(--severe); margin-bottom:18px">CLASIFICACIÓN · CLASES 7–8</p>
+          <p class="mono" style="font-size:18px; letter-spacing:.12em; color:var(--severe); margin-bottom:18px">CLASIFICACIÓN · CLASES 7–8</p>
           <p class="lead" style="font-size:30px; margin-bottom:14px">¿Es <strong>leve o severo</strong>?</p>
           <p class="small">Dado un siniestro ocurrido, ¿termina grave o mortal? Random Forest explicativo, para entender los factores y priorizar.</p>
         </div>
         <div class="anim" style="--d:.15s; flex:1; padding:34px 40px 0; border-top:2px solid var(--amber)">
-          <p class="mono" style="font-size:16px; letter-spacing:.12em; color:var(--amber); margin-bottom:18px">REGRESIÓN · CLASE 9</p>
+          <p class="mono" style="font-size:18px; letter-spacing:.12em; color:var(--amber); margin-bottom:18px">REGRESIÓN · CLASE 9</p>
           <p class="lead" style="font-size:30px; margin-bottom:14px">¿<strong>Cuántos</strong> habrá mañana?</p>
           <p class="small">¿Cuántos siniestros tendrá CABA en un día dado? Regresión lineal validada sobre 2024, un año nunca visto.</p>
         </div>
         <div class="anim" style="--d:.25s; flex:1; padding:34px 0 0 40px; border-top:2px solid var(--slate)">
-          <p class="mono" style="font-size:16px; letter-spacing:.12em; color:var(--slate); margin-bottom:18px">DESCRIPTIVO · CLASE 10</p>
+          <p class="mono" style="font-size:18px; letter-spacing:.12em; color:var(--slate); margin-bottom:18px">DESCRIPTIVO · CLASE 10</p>
           <p class="lead" style="font-size:30px; margin-bottom:14px">¿<strong>Dónde y quién</strong>?</p>
           <p class="small">Zonas y perfiles de riesgo (k-means), esquinas peligrosas (DBSCAN) y reglas de asociación (Apriori).</p>
         </div>
@@ -310,7 +339,7 @@
         <div class="pipe-step anim" style="--d:.33s"><span class="pipe-k">05 EVALUACIÓN</span><span class="pipe-h">Patrones</span><span class="pipe-b">Métricas honestas, validación temporal y chequeos de robustez.</span></div>
       </div>
       <div class="anim" style="--d:.4s; background:var(--paper-2); border-radius:6px; padding:34px 40px; display:flex; gap:48px; align-items:center">
-        <p class="mono" style="font-size:16px; letter-spacing:.14em; color:var(--severe); text-transform:uppercase; white-space:nowrap">Criterio de integración</p>
+        <p class="mono" style="font-size:18px; letter-spacing:.14em; color:var(--severe); text-transform:uppercase; white-space:nowrap">Criterio de integración</p>
         <p class="body" style="max-width:none; font-size:25px; margin:0">Un dataset externo entra <strong>solo si</strong> (a) comparte llave a granularidad útil, (b) aporta señal medible contra el target, y (c) cubre el período de estudio. Documentar lo que <em style="font-style:italic">no</em> aporta también es parte del entregable.</p>
       </div>
     </div>
@@ -366,11 +395,11 @@
         <div class="anim" style="--d:.2s">
           <div class="figframe" style="aspect-ratio:380/360"><img src="assets/mapa_tasas_crop.png" alt="Tasa de siniestros por comuna"></div>
           <div style="display:flex; align-items:center; gap:12px; margin-top:18px">
-            <span class="mono" style="font-size:14px; color:var(--mute)">195</span>
+            <span class="mono" style="font-size:16px; color:var(--mute)">195</span>
             <span style="flex:1; height:10px; border-radius:2px; background:linear-gradient(90deg,#F7F3C8,#F4C04E,#E0681F,#9E1B1B)"></span>
-            <span class="mono" style="font-size:14px; color:var(--mute)">459</span>
+            <span class="mono" style="font-size:16px; color:var(--mute)">459</span>
           </div>
-          <p class="small mono" style="font-size:15px; margin-top:12px; letter-spacing:.02em">Siniestros / 100.000 hab / año · Censo 2022.<br>Comuna 1: <strong style="color:var(--severe)">458</strong> — 2,3× la Comuna 6.</p>
+          <p class="small mono" style="font-size:18px; margin-top:12px; letter-spacing:.02em">Siniestros / 100.000 hab / año · Censo 2022.<br>Comuna 1: <strong style="color:var(--severe)">458</strong> — 2,3× la Comuna 6.</p>
         </div>
       </div>
     </div>
@@ -426,16 +455,16 @@
     <div class="content" style="justify-content:center; gap:46px">
       <div class="anim" style="--d:.12s">
         <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:14px">
-          <span class="mono" style="font-size:17px; letter-spacing:.1em; color:var(--mute-d); text-transform:uppercase">Descomposición del +35,2% de siniestros · 2021 → 2024</span>
-          <span class="mono" style="font-size:17px; color:var(--mute-d)">r = 0,88 entre tránsito y siniestros</span>
+          <span class="mono" style="font-size:19px; letter-spacing:.1em; color:var(--mute-d); text-transform:uppercase">Descomposición del +35,2% de siniestros · 2021 → 2024</span>
+          <span class="mono" style="font-size:19px; color:var(--mute-d)">r = 0,88 entre tránsito y siniestros</span>
         </div>
         <div style="display:flex; height:124px; border-radius:5px; overflow:hidden">
           <div style="flex:0 0 64%; background:var(--amber); display:flex; flex-direction:column; justify-content:center; padding:0 36px; color:#241a08">
-            <span class="mono" style="font-size:16px; letter-spacing:.12em; text-transform:uppercase; opacity:.8">Exposición · 2/3</span>
+            <span class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; opacity:.8">Exposición · 2/3</span>
             <span style="font-family:var(--ff-serif); font-size:40px; font-weight:600; line-height:1.05">El tránsito creció +22,4%</span>
           </div>
           <div style="flex:1; background:var(--severe-br); display:flex; flex-direction:column; justify-content:center; padding:0 30px; color:#2a0c05">
-            <span class="mono" style="font-size:16px; letter-spacing:.12em; text-transform:uppercase; opacity:.85">Riesgo real · 1/3</span>
+            <span class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; opacity:.85">Riesgo real · 1/3</span>
             <span style="font-family:var(--ff-serif); font-size:34px; font-weight:600; line-height:1.05">Tasa +10,5%</span>
           </div>
         </div>
@@ -455,20 +484,20 @@
     <h2 class="title sm anim">Normalizar por tránsito reordena el ranking de avenidas</h2>
     <div class="content" style="justify-content:center; gap:40px">
       <div class="anim" style="--d:.12s">
-        <p class="mono" style="font-size:16px; letter-spacing:.12em; text-transform:uppercase; color:var(--slate); margin-bottom:20px">Avenidas · sensores de volumen 2024 (95 puntos)</p>
+        <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--slate); margin-bottom:20px">Avenidas · sensores de volumen 2024 (95 puntos)</p>
         <div class="row" style="gap:36px">
           <div style="flex:1; background:var(--paper-2); border-radius:6px; padding:30px 34px; display:flex; align-items:center; gap:28px">
             <div style="flex:1"><p style="font-family:var(--ff-serif); font-size:30px; font-weight:500">Av. Rivadavia</p><p class="small" style="margin-top:6px">Primera en crudo — y <strong>sigue primera</strong> normalizada (65/millón). Su volumen no la explica.</p></div>
-            <div style="text-align:right"><span class="mono" style="font-size:15px; color:var(--mute)">#1</span><div style="font-family:var(--ff-serif); font-size:46px; color:var(--severe); line-height:1">=</div><span class="mono" style="font-size:15px; color:var(--mute)">#1</span></div>
+            <div style="text-align:right"><span class="mono" style="font-size:18px; color:var(--mute)">#1</span><div style="font-family:var(--ff-serif); font-size:46px; color:var(--severe); line-height:1">=</div><span class="mono" style="font-size:18px; color:var(--mute)">#1</span></div>
           </div>
           <div style="flex:1; background:var(--paper-2); border-radius:6px; padding:30px 34px; display:flex; align-items:center; gap:28px">
             <div style="flex:1"><p style="font-family:var(--ff-serif); font-size:30px; font-weight:500">Av. Corrientes</p><p class="small" style="margin-top:6px">Top-5 en crudo, <strong>cae al último</strong> normalizada (19/millón). Su ranking era puro tránsito.</p></div>
-            <div style="text-align:right"><span class="mono" style="font-size:15px; color:var(--mute)">top-5</span><div style="font-family:var(--ff-serif); font-size:46px; color:var(--slate); line-height:1">↓</div><span class="mono" style="font-size:15px; color:var(--mute)">último</span></div>
+            <div style="text-align:right"><span class="mono" style="font-size:18px; color:var(--mute)">top-5</span><div style="font-family:var(--ff-serif); font-size:46px; color:var(--slate); line-height:1">↓</div><span class="mono" style="font-size:18px; color:var(--mute)">último</span></div>
           </div>
         </div>
       </div>
       <div class="anim" style="--d:.24s; border-top:1px solid var(--hair); padding-top:32px">
-        <p class="mono" style="font-size:16px; letter-spacing:.12em; text-transform:uppercase; color:var(--amber); margin-bottom:18px">Autopistas · peajes IDECBA, siniestros por millón de vehículos</p>
+        <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--amber); margin-bottom:18px">Autopistas · peajes IDECBA, siniestros por millón de vehículos</p>
         <div class="barlist">
           <div class="bar"><span class="bar-label" style="width:280px">Corredor oeste · 25 de Mayo + Perito Moreno</span><div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--amber)"></div></div><span class="bar-val">0,55</span></div>
           <div class="bar"><span class="bar-label" style="width:280px">Autopista Illia <span style="color:var(--severe); font-weight:600">· más severa</span></span><div class="bar-track"><div class="bar-fill" style="width:18%; background:var(--slate)"></div></div><span class="bar-val">0,10</span></div>
@@ -486,17 +515,17 @@
     <div class="content" style="justify-content:center">
       <div class="grid2" style="grid-template-columns:1.05fr 1fr; gap:72px; align-items:center">
         <div class="anim" style="--d:.12s">
-          <p class="mono" style="font-size:16px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:24px">Siniestros por día, según la lluvia</p>
+          <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:24px">Siniestros por día, según la lluvia</p>
           <div class="barlist" style="gap:30px">
             <div class="bar"><span class="bar-label" style="width:160px">Sin lluvia</span><div class="bar-track" style="height:38px"><div class="bar-fill" style="width:100%; background:var(--slate)"></div></div><span class="bar-val">26,6</span></div>
             <div class="bar"><span class="bar-label" style="width:160px">Con lluvia</span><div class="bar-track" style="height:38px"><div class="bar-fill" style="width:92%; background:var(--amber)"></div></div><span class="bar-val">24,5</span></div>
             <div class="bar"><span class="bar-label" style="width:160px">&gt; 20 mm</span><div class="bar-track" style="height:38px"><div class="bar-fill" style="width:79%; background:var(--severe)"></div></div><span class="bar-val">21,0</span></div>
           </div>
-          <p class="small mono" style="margin-top:22px; font-size:16px">−8% con lluvia · <strong style="color:var(--severe)">−21%</strong> con lluvia fuerte. Dosis-dependiente.</p>
+          <p class="small mono" style="margin-top:22px; font-size:18px">−8% con lluvia · <strong style="color:var(--severe)">−21%</strong> con lluvia fuerte. Dosis-dependiente.</p>
         </div>
         <div class="anim" style="--d:.24s">
           <p class="lead" style="font-size:31px; margin-bottom:22px">Es una caída general de <strong>exposición</strong> — circula menos gente. La gravedad del siniestro individual no cambia: <span class="mono" style="font-size:26px">5,7%</span> vs <span class="mono" style="font-size:26px">5,9%</span> severo.</p>
-          <p class="mono" style="font-size:15px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin:26px 0 14px">Confirmado por 3 fuentes independientes</p>
+          <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin:26px 0 14px">Confirmado por 3 fuentes independientes</p>
           <div style="display:flex; flex-direction:column; gap:12px">
             <span class="tag" style="justify-content:flex-start"><span class="dot" style="background:var(--slate)"></span>Diaria · Meteostat → −8%</span>
             <span class="tag" style="justify-content:flex-start"><span class="dot" style="background:var(--amber)"></span>Horaria · Open-Meteo → −4,9%, gravedad igual</span>
@@ -515,7 +544,7 @@
     <div class="content" style="justify-content:center">
       <div class="grid2" style="grid-template-columns:1.4fr 1fr; gap:72px; align-items:center">
         <div class="anim" style="--d:.12s">
-          <p class="mono" style="font-size:16px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:24px">% de siniestros severos, por tipo de vía</p>
+          <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:24px">% de siniestros severos, por tipo de vía</p>
           <div class="barlist" style="gap:24px">
             <div class="bar"><span class="bar-label" style="width:230px">Zona peatonal · 20 km/h</span><div class="bar-track" style="height:36px"><div class="bar-fill" style="width:24%; background:var(--slate)"></div></div><span class="bar-val">3,4%</span></div>
             <div class="bar"><span class="bar-label" style="width:230px">Calle · 40 km/h</span><div class="bar-track" style="height:36px"><div class="bar-fill" style="width:27%; background:var(--green)"></div></div><span class="bar-val">3,8%</span></div>
@@ -534,10 +563,10 @@
 
   <!-- 11 · PERFILES K-MEANS · SCATTER PCA EN VIVO (React embebido) -->
   <section class="slide" data-label="Perfiles de riesgo">
-    <div class="eyebrow"><span class="ey-num">11</span><span class="ey-sec">Aprendizaje no supervisado · k-means + PCA</span><span class="ey-line"></span></div>
+    <div class="eyebrow"><span class="ey-num">11</span><span class="ey-sec">Aprendizaje no supervisado · k-means (k=5)</span><span class="ey-line"></span></div>
     <h2 class="title sm anim" style="margin-bottom:22px">La gravedad no es un lugar: es un <em>perfil</em></h2>
-    <div class="content" style="justify-content:flex-start">
-      <div class="anim" style="--d:.1s">
+    <div class="content" style="justify-content:center">
+      <div class="anim" style="--d:.1s; width:100%">
         <div class="app-embed perfiles-embed" id="perfiles-mount"></div>
       </div>
     </div>
@@ -551,7 +580,7 @@
     <div class="content" style="justify-content:center">
       <div class="grid2" style="grid-template-columns:1fr 1fr; gap:72px; align-items:center">
         <div class="anim" style="--d:.12s">
-          <p class="mono" style="font-size:16px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:22px">Víctimas de 18–29 años, % del total</p>
+          <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:22px">Víctimas de 18–29 años, % del total</p>
           <div style="display:flex; gap:50px; align-items:flex-end; height:300px; border-bottom:2px solid var(--ink); padding:0 30px">
             <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%">
               <span class="mono" style="font-size:30px; font-weight:600; margin-bottom:12px">28,8%</span>
@@ -598,7 +627,7 @@
           <p class="body anim" style="--d:.25s; color:var(--mute-d); margin-top:20px; font-size:25px">Predecir siempre "LEVE" acierta el 94% de las veces. Con un target tan desbalanceado, la <em style="font-style:italic">accuracy</em> miente.</p>
         </div>
         <div class="anim" style="--d:.3s">
-          <p class="mono" style="font-size:16px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute-d); margin-bottom:20px">El target original, reagrupado</p>
+          <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute-d); margin-bottom:20px">El target original, reagrupado</p>
           <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:34px">
             <div class="bar"><span class="bar-label" style="width:120px; color:var(--paper)">LEVE</span><div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--slate)"></div></div><span class="bar-val">94,3%</span></div>
             <div class="bar"><span class="bar-label" style="width:120px; color:var(--paper)">GRAVE</span><div class="bar-track"><div class="bar-fill" style="width:9%; background:var(--severe-br)"></div></div><span class="bar-val">4,6%</span></div>
@@ -618,17 +647,17 @@
     <div class="content" style="justify-content:center">
       <div class="grid2" style="grid-template-columns:1.25fr 1fr; gap:64px; align-items:center">
         <div class="anim" style="--d:.12s">
-          <p class="mono" style="font-size:16px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:24px">Del registro crudo a la matriz del modelo</p>
+          <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:24px">Del registro crudo a la matriz del modelo</p>
           <div style="display:flex; flex-direction:column; gap:19px">
-            <div style="display:flex; gap:18px; align-items:baseline"><span class="mono" style="width:152px; flex:none; color:var(--slate); font-size:14px; letter-spacing:.05em">AGREGADOS</span><span class="body" style="font-size:21px"><strong>edad_media</strong>, <strong>pct_masculino</strong>, n_víctimas — promediando las víctimas de cada siniestro</span></div>
-            <div style="display:flex; gap:18px; align-items:baseline"><span class="mono" style="width:152px; flex:none; color:var(--slate); font-size:14px; letter-spacing:.05em">FLAGS CURADOS</span><span class="body" style="font-size:21px">hay_peatón, hay_moto, hay_mayor (65+), hay_menor</span></div>
-            <div style="display:flex; gap:18px; align-items:baseline"><span class="mono" style="width:152px; flex:none; color:var(--slate); font-size:14px; letter-spacing:.05em">TEMPORALES</span><span class="body" style="font-size:21px">hora, día de semana, mes, finde, feriado</span></div>
-            <div style="display:flex; gap:18px; align-items:baseline"><span class="mono" style="width:152px; flex:none; color:var(--slate); font-size:14px; letter-spacing:.05em">CONTEXTO</span><span class="body" style="font-size:21px">franja horaria, estación, tipo de calle, víctima, acusado, sexo</span></div>
-            <div style="display:flex; gap:18px; align-items:baseline"><span class="mono" style="width:152px; flex:none; color:var(--severe); font-size:14px; letter-spacing:.05em">SINTÉTICA</span><span class="body" style="font-size:21px"><strong>zona</strong> — k-means geográfico <span class="mono" style="font-size:15px; color:var(--mute)">→ slide siguiente</span></span></div>
+            <div style="display:flex; gap:18px; align-items:baseline"><span class="mono" style="width:152px; flex:none; color:var(--slate); font-size:16px; letter-spacing:.05em">AGREGADOS</span><span class="body" style="font-size:21px"><strong>edad_media</strong>, <strong>pct_masculino</strong>, n_víctimas — promediando las víctimas de cada siniestro</span></div>
+            <div style="display:flex; gap:18px; align-items:baseline"><span class="mono" style="width:152px; flex:none; color:var(--slate); font-size:16px; letter-spacing:.05em">FLAGS CURADOS</span><span class="body" style="font-size:21px">hay_peatón, hay_moto, hay_mayor (65+), hay_menor</span></div>
+            <div style="display:flex; gap:18px; align-items:baseline"><span class="mono" style="width:152px; flex:none; color:var(--slate); font-size:16px; letter-spacing:.05em">TEMPORALES</span><span class="body" style="font-size:21px">hora, día de semana, mes, finde, feriado</span></div>
+            <div style="display:flex; gap:18px; align-items:baseline"><span class="mono" style="width:152px; flex:none; color:var(--slate); font-size:16px; letter-spacing:.05em">CONTEXTO</span><span class="body" style="font-size:21px">franja horaria, estación, tipo de calle, víctima, acusado, sexo</span></div>
+            <div style="display:flex; gap:18px; align-items:baseline"><span class="mono" style="width:152px; flex:none; color:var(--severe); font-size:16px; letter-spacing:.05em">SINTÉTICA</span><span class="body" style="font-size:21px"><strong>zona</strong> — k-means geográfico <span class="mono" style="font-size:18px; color:var(--mute)">→ slide siguiente</span></span></div>
           </div>
         </div>
         <div class="anim" style="--d:.24s">
-          <p class="mono" style="font-size:16px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:22px">Importancia en el RF · top 5 (Gini)</p>
+          <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:22px">Importancia en el RF · top 5 (Gini)</p>
           <div class="barlist" style="gap:16px">
             <div class="bar"><span class="bar-label" style="width:185px">edad_media</span><div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--severe)"></div></div><span class="bar-val">0,15</span></div>
             <div class="bar"><span class="bar-label" style="width:185px">víctima DESCONOCIDA</span><div class="bar-track"><div class="bar-fill" style="width:72%; background:var(--amber)"></div></div><span class="bar-val">0,11</span></div>
@@ -651,17 +680,17 @@
       <div class="grid2" style="grid-template-columns:1fr 1.05fr; gap:60px; align-items:center">
         <div class="anim" style="--d:.12s; display:flex; flex-direction:column; gap:20px">
           <div style="background:var(--paper-2); border-radius:6px; padding:24px 28px">
-            <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:10px"><span style="font-family:var(--ff-serif); font-size:24px; font-weight:600; color:var(--slate)">k-means de PERFILES</span><span class="mono" style="font-size:15px; color:var(--mute)">k = 5 · descriptivo</span></div>
-            <p class="body" style="font-size:20px">Agrupa siniestros por flags curados (hay_moto, hay_peatón, hay_mayor…) para responder <em style="font-style:italic">qué perfil es más grave</em>. <span class="mono" style="font-size:15px; color:var(--mute)">→ slide 11</span></p>
-            <p class="small mono" style="margin-top:12px; font-size:15px; color:var(--mute)">No one-hotea víctima/acusado enteros: 20+ dimensiones binarias diluyen las distancias (maldición de la dimensionalidad).</p>
+            <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:10px"><span style="font-family:var(--ff-serif); font-size:24px; font-weight:600; color:var(--slate)">k-means de PERFILES</span><span class="mono" style="font-size:18px; color:var(--mute)">k = 5 · descriptivo</span></div>
+            <p class="body" style="font-size:20px">Agrupa siniestros por flags curados (hay_moto, hay_peatón, hay_mayor…) para responder <em style="font-style:italic">qué perfil es más grave</em>. <span class="mono" style="font-size:18px; color:var(--mute)">→ slide 11</span></p>
+            <p class="small mono" style="margin-top:12px; font-size:18px; color:var(--mute)">No one-hotea víctima/acusado enteros: 20+ dimensiones binarias diluyen las distancias (maldición de la dimensionalidad).</p>
           </div>
           <div style="background:var(--paper-2); border-radius:6px; padding:24px 28px; border-left:3px solid var(--severe)">
-            <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:10px"><span style="font-family:var(--ff-serif); font-size:24px; font-weight:600; color:var(--severe)">k-means de ZONA</span><span class="mono" style="font-size:15px; color:var(--mute)">k = 8 · feature</span></div>
+            <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:10px"><span style="font-family:var(--ff-serif); font-size:24px; font-weight:600; color:var(--severe)">k-means de ZONA</span><span class="mono" style="font-size:18px; color:var(--mute)">k = 8 · feature</span></div>
             <p class="body" style="font-size:20px">Agrupa por coordenadas <span class="mono">(lat, lon)</span> → <span class="mono">Z0…Z7 + SIN_GPS</span>, que entra <strong>one-hot al Random Forest</strong>.</p>
           </div>
         </div>
         <div class="anim" style="--d:.24s">
-          <p class="mono" style="font-size:16px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:18px">La zona alimenta al Random Forest</p>
+          <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:18px">La zona alimenta al Random Forest</p>
           <p class="mono" style="font-size:18px; color:var(--ink); margin-bottom:24px; line-height:1.7">(lat, lon) <span style="color:var(--severe)">→</span> k-means(8) <span style="color:var(--severe)">→</span> Z0…Z7 <span style="color:var(--severe)">→</span> one-hot <span style="color:var(--severe)">→</span> RF</p>
           <p class="body" style="font-size:23px; margin-bottom:22px">Ajustado <strong>dentro de cada fold</strong>: el <span class="mono">KMeansZonaAdder</span> se entrena solo con el train del fold y asigna el de validación con <span class="mono">predict</span> — sin leakage de validación.</p>
           <div style="display:flex; gap:40px; margin:26px 0">
@@ -683,7 +712,7 @@
       <table class="tbl anim" style="--d:.12s">
         <thead><tr><th>Modelo</th><th>Accuracy</th><th>Precisión sev.</th><th>Recall sev.</th><th>F1 sev.</th><th>ROC-AUC</th></tr></thead>
         <tbody>
-          <tr><td>Árbol de decisión · d=4 <span class="mono" style="color:var(--mute); font-size:17px">interpretable</span></td><td class="num">0,491</td><td class="num">0,096</td><td class="num" style="color:var(--green); font-weight:600">0,93</td><td class="num">0,174</td><td class="num">0,764</td></tr>
+          <tr><td>Árbol de decisión · d=4 <span class="mono" style="color:var(--mute); font-size:19px">interpretable</span></td><td class="num">0,491</td><td class="num">0,096</td><td class="num" style="color:var(--green); font-weight:600">0,93</td><td class="num">0,174</td><td class="num">0,764</td></tr>
           <tr><td>Árbol de decisión · d=7</td><td class="num">0,649</td><td class="num">0,121</td><td class="num">0,80</td><td class="num">0,209</td><td class="num">0,789</td></tr>
           <tr><td>Regresión logística</td><td class="num">0,714</td><td class="num">0,137</td><td class="num">0,75</td><td class="num">0,231</td><td class="num">0,815</td></tr>
           <tr><td>Random Forest · n=300, d=10</td><td class="num">0,764</td><td class="num">0,156</td><td class="num">0,71</td><td class="num">0,256</td><td class="num">0,826</td></tr>
@@ -702,17 +731,17 @@
     <div class="content" style="justify-content:center">
       <div class="grid2" style="grid-template-columns:1.15fr 1fr; gap:72px; align-items:center">
         <div class="anim" style="--d:.12s">
-          <p class="mono" style="font-size:16px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:20px">Matriz de confusión · normalizada por clase real</p>
+          <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:20px">Matriz de confusión · normalizada por clase real</p>
           <div style="display:grid; grid-template-columns:130px 1fr 1fr; grid-template-rows:auto 1fr 1fr; gap:10px">
             <div></div>
-            <div style="font-family:var(--ff-mono); font-size:14px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); text-align:center; padding-bottom:4px">Predijo leve</div>
-            <div style="font-family:var(--ff-mono); font-size:14px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); text-align:center; padding-bottom:4px">Predijo severo</div>
-            <div style="font-family:var(--ff-mono); font-size:14px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); writing-mode:vertical-rl; transform:rotate(180deg); text-align:center; display:flex; align-items:center; justify-content:center">Es leve</div>
-            <div style="background:rgba(62,90,102,.16); border-radius:5px; padding:20px 22px; min-height:120px; display:flex; flex-direction:column; justify-content:space-between"><span class="mono" style="font-size:13px; letter-spacing:.06em; color:var(--slate)">VERD. NEGATIVO</span><span style="font-family:var(--ff-serif); font-size:44px; font-weight:500">76%</span></div>
-            <div style="background:rgba(194,138,44,.16); border-radius:5px; padding:20px 22px; display:flex; flex-direction:column; justify-content:space-between"><span class="mono" style="font-size:13px; letter-spacing:.06em; color:var(--amber)">FALSO POSITIVO</span><span style="font-family:var(--ff-serif); font-size:44px; font-weight:500">24%</span></div>
-            <div style="font-family:var(--ff-mono); font-size:14px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); writing-mode:vertical-rl; transform:rotate(180deg); text-align:center; display:flex; align-items:center; justify-content:center">Es severo</div>
-            <div style="background:rgba(192,57,31,.14); border-radius:5px; padding:20px 22px; display:flex; flex-direction:column; justify-content:space-between"><span class="mono" style="font-size:13px; letter-spacing:.06em; color:var(--severe)">FALSO NEGATIVO</span><span style="font-family:var(--ff-serif); font-size:44px; font-weight:500; color:var(--severe)">27%</span></div>
-            <div style="background:rgba(78,122,82,.18); border-radius:5px; padding:20px 22px; display:flex; flex-direction:column; justify-content:space-between"><span class="mono" style="font-size:13px; letter-spacing:.06em; color:var(--green)">VERD. POSITIVO</span><span style="font-family:var(--ff-serif); font-size:44px; font-weight:500; color:var(--green)">73%</span></div>
+            <div style="font-family:var(--ff-mono); font-size:16px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); text-align:center; padding-bottom:4px">Predijo leve</div>
+            <div style="font-family:var(--ff-mono); font-size:16px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); text-align:center; padding-bottom:4px">Predijo severo</div>
+            <div style="font-family:var(--ff-mono); font-size:16px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); writing-mode:vertical-rl; transform:rotate(180deg); text-align:center; display:flex; align-items:center; justify-content:center">Es leve</div>
+            <div style="background:rgba(62,90,102,.16); border-radius:5px; padding:20px 22px; min-height:120px; display:flex; flex-direction:column; justify-content:space-between"><span class="mono" style="font-size:16px; letter-spacing:.06em; color:var(--slate)">VERD. NEGATIVO</span><span style="font-family:var(--ff-serif); font-size:44px; font-weight:500">76%</span></div>
+            <div style="background:rgba(194,138,44,.16); border-radius:5px; padding:20px 22px; display:flex; flex-direction:column; justify-content:space-between"><span class="mono" style="font-size:16px; letter-spacing:.06em; color:var(--amber)">FALSO POSITIVO</span><span style="font-family:var(--ff-serif); font-size:44px; font-weight:500">24%</span></div>
+            <div style="font-family:var(--ff-mono); font-size:16px; letter-spacing:.06em; text-transform:uppercase; color:var(--mute); writing-mode:vertical-rl; transform:rotate(180deg); text-align:center; display:flex; align-items:center; justify-content:center">Es severo</div>
+            <div style="background:rgba(192,57,31,.14); border-radius:5px; padding:20px 22px; display:flex; flex-direction:column; justify-content:space-between"><span class="mono" style="font-size:16px; letter-spacing:.06em; color:var(--severe)">FALSO NEGATIVO</span><span style="font-family:var(--ff-serif); font-size:44px; font-weight:500; color:var(--severe)">27%</span></div>
+            <div style="background:rgba(78,122,82,.18); border-radius:5px; padding:20px 22px; display:flex; flex-direction:column; justify-content:space-between"><span class="mono" style="font-size:16px; letter-spacing:.06em; color:var(--green)">VERD. POSITIVO</span><span style="font-family:var(--ff-serif); font-size:44px; font-weight:500; color:var(--green)">73%</span></div>
           </div>
         </div>
         <div class="anim" style="--d:.24s">
@@ -741,12 +770,12 @@
           <p class="note" style="margin-top:22px">Criterio Gini, profundidad 4, reglas si-entonces legibles con <span class="mono">plot_tree</span>. La interpretabilidad es el punto: se puede auditar cada decisión.</p>
         </div>
         <div class="anim" style="--d:.24s">
-          <p class="mono" style="font-size:16px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:22px">Cómo decide, en factores</p>
+          <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:22px">Cómo decide, en factores</p>
           <div style="display:flex; flex-direction:column; gap:16px">
-            <div style="display:flex; align-items:center; gap:22px; background:var(--paper-2); border-radius:6px; padding:22px 26px"><span style="font-family:var(--ff-serif); font-size:26px; font-weight:500; flex:1">¿Hay un peatón?</span><span class="mono" style="font-size:15px; color:var(--mute)">riesgo</span><span style="width:140px; height:14px; border-radius:3px; background:linear-gradient(90deg,var(--slate),var(--severe))"></span></div>
-            <div style="display:flex; align-items:center; gap:22px; background:var(--paper-2); border-radius:6px; padding:22px 26px"><span style="font-family:var(--ff-serif); font-size:26px; font-weight:500; flex:1">¿Es de madrugada?</span><span class="mono" style="font-size:15px; color:var(--mute)">riesgo</span><span style="width:140px; height:14px; border-radius:3px; background:linear-gradient(90deg,var(--slate),var(--severe))"></span></div>
-            <div style="display:flex; align-items:center; gap:22px; background:var(--paper-2); border-radius:6px; padding:22px 26px"><span style="font-family:var(--ff-serif); font-size:26px; font-weight:500; flex:1">¿La víctima es mayor de 65?</span><span class="mono" style="font-size:15px; color:var(--mute)">riesgo</span><span style="width:140px; height:14px; border-radius:3px; background:linear-gradient(90deg,var(--slate),var(--severe))"></span></div>
-            <div style="display:flex; align-items:center; gap:22px; background:var(--paper-2); border-radius:6px; padding:22px 26px"><span style="font-family:var(--ff-serif); font-size:26px; font-weight:500; flex:1">¿En avenida o autopista?</span><span class="mono" style="font-size:15px; color:var(--mute)">riesgo</span><span style="width:140px; height:14px; border-radius:3px; background:linear-gradient(90deg,var(--slate),var(--severe))"></span></div>
+            <div style="display:flex; align-items:center; gap:22px; background:var(--paper-2); border-radius:6px; padding:22px 26px"><span style="font-family:var(--ff-serif); font-size:26px; font-weight:500; flex:1">¿Hay un peatón?</span><span class="mono" style="font-size:18px; color:var(--mute)">riesgo</span><span style="width:140px; height:14px; border-radius:3px; background:linear-gradient(90deg,var(--slate),var(--severe))"></span></div>
+            <div style="display:flex; align-items:center; gap:22px; background:var(--paper-2); border-radius:6px; padding:22px 26px"><span style="font-family:var(--ff-serif); font-size:26px; font-weight:500; flex:1">¿Es de madrugada?</span><span class="mono" style="font-size:18px; color:var(--mute)">riesgo</span><span style="width:140px; height:14px; border-radius:3px; background:linear-gradient(90deg,var(--slate),var(--severe))"></span></div>
+            <div style="display:flex; align-items:center; gap:22px; background:var(--paper-2); border-radius:6px; padding:22px 26px"><span style="font-family:var(--ff-serif); font-size:26px; font-weight:500; flex:1">¿La víctima es mayor de 65?</span><span class="mono" style="font-size:18px; color:var(--mute)">riesgo</span><span style="width:140px; height:14px; border-radius:3px; background:linear-gradient(90deg,var(--slate),var(--severe))"></span></div>
+            <div style="display:flex; align-items:center; gap:22px; background:var(--paper-2); border-radius:6px; padding:22px 26px"><span style="font-family:var(--ff-serif); font-size:26px; font-weight:500; flex:1">¿En avenida o autopista?</span><span class="mono" style="font-size:18px; color:var(--mute)">riesgo</span><span style="width:140px; height:14px; border-radius:3px; background:linear-gradient(90deg,var(--slate),var(--severe))"></span></div>
           </div>
         </div>
       </div>
@@ -761,14 +790,14 @@
     <div class="content" style="justify-content:center">
       <div class="grid2" style="grid-template-columns:1.35fr 1fr; gap:72px; align-items:center">
         <div class="anim" style="--d:.12s">
-          <p class="mono" style="font-size:16px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:22px">Coeficientes · efecto en siniestros por día</p>
+          <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:22px">Coeficientes · efecto en siniestros por día</p>
           <div style="display:flex; flex-direction:column; gap:16px">
             <div style="display:grid; grid-template-columns:200px 1fr 1fr 78px; align-items:center"><span class="bar-label">Feriado</span><div style="display:flex; justify-content:flex-end"><div style="width:100%; height:26px; background:var(--severe); border-radius:2px 0 0 2px"></div></div><div style="border-left:2px solid var(--ink)"></div><span class="bar-val" style="text-align:left; padding-left:14px">−9,6</span></div>
             <div style="display:grid; grid-template-columns:200px 1fr 1fr 78px; align-items:center"><span class="bar-label">Fin de semana</span><div style="display:flex; justify-content:flex-end"><div style="width:55%; height:26px; background:var(--severe-br); border-radius:2px 0 0 2px"></div></div><div style="border-left:2px solid var(--ink)"></div><span class="bar-val" style="text-align:left; padding-left:14px">−5,3</span></div>
             <div style="display:grid; grid-template-columns:200px 1fr 1fr 78px; align-items:center"><span class="bar-label">Día de lluvia</span><div style="display:flex; justify-content:flex-end"><div style="width:18%; height:26px; background:var(--amber); border-radius:2px 0 0 2px"></div></div><div style="border-left:2px solid var(--ink)"></div><span class="bar-val" style="text-align:left; padding-left:14px">−1,7</span></div>
             <div style="display:grid; grid-template-columns:200px 1fr 1fr 78px; align-items:center"><span class="bar-label">Tránsito del mes</span><div></div><div style="border-left:2px solid var(--ink); display:flex"><div style="width:30%; height:26px; background:var(--slate); border-radius:0 2px 2px 0"></div></div><span class="bar-val" style="text-align:left; padding-left:14px">+2,9</span></div>
           </div>
-          <p class="small mono" style="margin-top:18px; font-size:15px">Por millón de vehículos extra · escala en siniestros/día</p>
+          <p class="small mono" style="margin-top:18px; font-size:18px">Por millón de vehículos extra · escala en siniestros/día</p>
         </div>
         <div class="anim" style="--d:.24s">
           <div style="display:flex; gap:46px; margin-bottom:26px">
@@ -834,7 +863,7 @@
     <div class="content" style="justify-content:center">
       <div class="grid2" style="grid-template-columns:1fr 1.1fr; gap:80px; align-items:center">
         <div class="anim" style="--d:.12s">
-          <p class="mono" style="font-size:16px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute-d); margin-bottom:18px">Chequeo de robustez · solo casos con datos completos</p>
+          <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute-d); margin-bottom:18px">Chequeo de robustez · solo casos con datos completos</p>
           <div style="display:flex; align-items:baseline; gap:22px">
             <span class="stat-num" style="font-size:96px; color:var(--mute-d)">0,83</span>
             <span style="font-family:var(--ff-serif); font-size:54px; color:var(--severe-br)">→</span>
@@ -884,7 +913,7 @@
           </div>
         </div>
         <div class="anim" style="--d:.25s">
-          <p class="mono" style="font-size:16px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute-d); margin-bottom:22px">Integrantes</p>
+          <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute-d); margin-bottom:22px">Integrantes</p>
           <div style="display:flex; flex-direction:column; gap:0">
             <div style="display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--hair-d)"><span style="color:var(--paper); font-size:23px">Valentín Mendez Morante</span><span class="mono" style="color:var(--mute-d); font-size:19px">1194063</span></div>
             <div style="display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--hair-d)"><span style="color:var(--paper); font-size:23px">Mariano Gimenez Zalcman</span><span class="mono" style="color:var(--mute-d); font-size:19px">1130285</span></div>
@@ -968,6 +997,37 @@
       }
     });
   })();
+</script>
+<!-- Pantalla completa (host page): botón + tecla F; sincroniza el modo presentación del deck -->
+<button id="fs-btn" type="button" aria-label="Pantalla completa" title="Pantalla completa (F)">
+  <svg class="ic-enter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+  <svg class="ic-exit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M4 16v2a2 2 0 0 0 2 2h2M16 20h2a2 2 0 0 0 2-2v-2"/></svg>
+</button>
+<script>
+(function(){
+  var btn = document.getElementById('fs-btn');
+  var fsEl = function(){ return document.fullscreenElement || document.webkitFullscreenElement; };
+  function enter(){ var el = document.documentElement; (el.requestFullscreen || el.webkitRequestFullscreen).call(el); }
+  function exit(){ (document.exitFullscreen || document.webkitExitFullscreen).call(document); }
+  function toggle(){ fsEl() ? exit() : enter(); }
+  btn.addEventListener('click', toggle);
+  window.addEventListener('keydown', function(e){
+    if (e.key !== 'f' && e.key !== 'F') return;
+    var t = e.target, tag = t && t.tagName;
+    if (tag === 'SELECT' || tag === 'INPUT' || tag === 'TEXTAREA' || (t && t.isContentEditable)) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    e.preventDefault(); toggle();
+  });
+  function sync(){
+    var on = !!fsEl();
+    btn.classList.toggle('on', on);
+    btn.title = on ? 'Salir de pantalla completa (F / Esc)' : 'Pantalla completa (F)';
+    // Modo presentación del deck: oculta el rail de miniaturas y el chrome.
+    try { window.postMessage({ __omelette_presenting: on }, '*'); } catch (err) {}
+  }
+  document.addEventListener('fullscreenchange', sync);
+  document.addEventListener('webkitfullscreenchange', sync);
+})();
 </script>
 <script src="deck-stage.js"></script>
 </body>

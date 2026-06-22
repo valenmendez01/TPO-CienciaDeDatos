@@ -121,7 +121,7 @@ function Heat({ matrix, rows, cols, metric = "rate", fmt }) {
     const t = (vv - min) / (max - min || 1);
     return `color-mix(in srgb, var(--severe) ${(8 + t * 82).toFixed(0)}%, var(--paper-2))`;
   };
-  return /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: `58px repeat(${cols.length},1fr)`, gap: 6 } }, /* @__PURE__ */ React.createElement("div", null), cols.map((c, j) => /* @__PURE__ */ React.createElement("div", { key: j, style: { fontFamily: "var(--ff-mono)", fontSize: 10.5, letterSpacing: ".04em", color: "var(--mute)", textAlign: "center", textTransform: "capitalize" } }, c.toLowerCase())), rows.map((r, i) => /* @__PURE__ */ React.createElement(React.Fragment, { key: i }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: "var(--ff-mono)", fontSize: 11.5, color: "var(--mute)", display: "flex", alignItems: "center", justifyContent: "flex-end", paddingRight: 6 } }, r), cols.map((c, j) => {
+  return /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: `58px repeat(${cols.length},1fr)`, gap: 6 } }, /* @__PURE__ */ React.createElement("div", null), cols.map((c, j) => /* @__PURE__ */ React.createElement("div", { key: j, style: { fontFamily: "var(--ff-mono)", fontSize: 13, letterSpacing: ".04em", color: "var(--mute)", textAlign: "center", textTransform: "capitalize" } }, c.toLowerCase())), rows.map((r, i) => /* @__PURE__ */ React.createElement(React.Fragment, { key: i }, /* @__PURE__ */ React.createElement("div", { style: { fontFamily: "var(--ff-mono)", fontSize: 13, color: "var(--mute)", display: "flex", alignItems: "center", justifyContent: "flex-end", paddingRight: 6 } }, r), cols.map((c, j) => {
     const cell = matrix[i][j];
     const vv = metric === "rate" ? cell.n ? cell.s / cell.n : 0 : cell.n;
     const on = hover && hover[0] === i && hover[1] === j;
@@ -141,7 +141,7 @@ function Heat({ matrix, rows, cols, metric = "rate", fmt }) {
           alignItems: "center",
           justifyContent: "center",
           fontFamily: "var(--ff-mono)",
-          fontSize: 11.5,
+          fontSize: 13,
           fontWeight: 600,
           color: t > 0.55 ? "#fff" : "var(--ink)",
           cursor: "default",

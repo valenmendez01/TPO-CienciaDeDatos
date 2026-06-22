@@ -128,15 +128,15 @@ function Heat({ matrix, rows, cols, metric='rate', fmt }) {
   return (
     <div style={{display:'grid',gridTemplateColumns:`58px repeat(${cols.length},1fr)`,gap:6}}>
       <div></div>
-      {cols.map((c,j)=><div key={j} style={{fontFamily:'var(--ff-mono)',fontSize:10.5,letterSpacing:'.04em',color:'var(--mute)',textAlign:'center',textTransform:'capitalize'}}>{c.toLowerCase()}</div>)}
+      {cols.map((c,j)=><div key={j} style={{fontFamily:'var(--ff-mono)',fontSize:13,letterSpacing:'.04em',color:'var(--mute)',textAlign:'center',textTransform:'capitalize'}}>{c.toLowerCase()}</div>)}
       {rows.map((r,i)=>(
         <React.Fragment key={i}>
-          <div style={{fontFamily:'var(--ff-mono)',fontSize:11.5,color:'var(--mute)',display:'flex',alignItems:'center',justifyContent:'flex-end',paddingRight:6}}>{r}</div>
+          <div style={{fontFamily:'var(--ff-mono)',fontSize:13,color:'var(--mute)',display:'flex',alignItems:'center',justifyContent:'flex-end',paddingRight:6}}>{r}</div>
           {cols.map((c,j)=>{ const cell=matrix[i][j]; const vv=metric==='rate'?(cell.n?cell.s/cell.n:0):cell.n;
             const on=hover&&hover[0]===i&&hover[1]===j; const t=(vv-min)/(max-min||1);
             return <div key={j} className="ch-heat" onMouseEnter={()=>setHover([i,j])} onMouseLeave={()=>setHover(null)}
               style={{aspectRatio:'1.7/1',borderRadius:6,background:color(vv),display:'flex',alignItems:'center',justifyContent:'center',
-                fontFamily:'var(--ff-mono)',fontSize:11.5,fontWeight:600,color:t>.55?'#fff':'var(--ink)',cursor:'default',
+                fontFamily:'var(--ff-mono)',fontSize:13,fontWeight:600,color:t>.55?'#fff':'var(--ink)',cursor:'default',
                 outline:on?'2px solid var(--ink)':'none',outlineOffset:-2,animationDelay:`${(i*cols.length+j)*0.012}s`}}>
               {fmt? fmt(metric==='rate'?vv:cell.n) : (metric==='rate'?(vv*100).toFixed(1):nf(cell.n))}
             </div>;

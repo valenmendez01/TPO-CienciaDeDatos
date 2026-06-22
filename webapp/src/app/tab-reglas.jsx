@@ -18,7 +18,7 @@ function Reglas({ slide = false } = {}) {
         <Card title="Cómo leer el lift" cap="base 5,7%">
           <div style={{display:'flex',flexDirection:'column',gap:16}}>
             <div>
-              <div style={{fontFamily:'var(--ff-mono)',fontSize:11,letterSpacing:'.08em',textTransform:'uppercase',color:'var(--mute)',marginBottom:6}}>probabilidad base de severo</div>
+              <div style={{fontFamily:'var(--ff-mono)',fontSize:13,letterSpacing:'.08em',textTransform:'uppercase',color:'var(--mute)',marginBottom:6}}>probabilidad base de severo</div>
               <div style={{fontFamily:'var(--ff-serif)',fontSize:40,fontWeight:500}}>{pct(base,1)}</div>
             </div>
             <div className="note-box">Lift <b>×2,1</b> sobre la base significa que esa combinación llega a <b>~12%</b> de severos: más del doble. Se filtran reglas con consecuente exactamente <span className="mono">{`{${conseq}}`}</span> y lift ≥ 1,2, excluyendo tautologías.</div>
@@ -35,19 +35,19 @@ function Reglas({ slide = false } = {}) {
 
         <Card title={`Reglas → ${conseq}`} cap={`${rules.length} regla${rules.length!==1?'s':''} · lift ≥ ${minLift.toFixed(1).replace('.',',')}`}>
           <div style={{display:'flex',flexDirection:'column',gap:16}}>
-            {rules.length===0 && <div style={{color:'var(--mute)',fontSize:13,padding:'20px 0',textAlign:'center'}}>No hay reglas por encima de ese lift.</div>}
+            {rules.length===0 && <div style={{color:'var(--mute)',fontSize:15,padding:'20px 0',textAlign:'center'}}>No hay reglas por encima de ese lift.</div>}
             {rules.map((r,i)=>{
               const w=Math.min((r.lift-1)/(maxLift-1)*100,100);
               return <div key={i}>
                 <div style={{display:'flex',justifyContent:'space-between',alignItems:'baseline',marginBottom:7,gap:12}}>
-                  <span style={{fontSize:14,fontWeight:500}}>{r.ante} {r.niche && <span className="badge leve" style={{marginLeft:6}}>nicho leve</span>}</span>
-                  <span style={{fontFamily:'var(--ff-mono)',fontWeight:600,fontSize:14,color:conseq==='SEVERO'?'var(--severe)':'var(--green)'}}>×{r.lift.toFixed(2).replace('.',',')}</span>
+                  <span style={{fontSize:16,fontWeight:500}}>{r.ante} {r.niche && <span className="badge leve" style={{marginLeft:6}}>nicho leve</span>}</span>
+                  <span style={{fontFamily:'var(--ff-mono)',fontWeight:600,fontSize:16,color:conseq==='SEVERO'?'var(--severe)':'var(--green)'}}>×{r.lift.toFixed(2).replace('.',',')}</span>
                 </div>
                 <div style={{height:12,background:'var(--paper-3)',borderRadius:6,position:'relative',overflow:'hidden'}}>
                   <div className="grow-x" style={{position:'absolute',left:0,top:0,bottom:0,width:w+'%',background:conseq==='SEVERO'?'var(--severe)':'var(--green)',borderRadius:6,transition:`width .8s var(--ease) ${i*0.05}s`}}/>
                 </div>
-                {r.prob && <div style={{fontFamily:'var(--ff-mono)',fontSize:11,color:'var(--mute)',marginTop:5}}>→ {pct(r.prob,1)} de severos · soporte {pct(r.sup,1)}</div>}
-                {r.niche && <div style={{fontFamily:'var(--ff-mono)',fontSize:11,color:'var(--mute)',marginTop:5}}>cohorte muy cohesiva de siniestros leves en hora pico</div>}
+                {r.prob && <div style={{fontFamily:'var(--ff-mono)',fontSize:13,color:'var(--mute)',marginTop:5}}>→ {pct(r.prob,1)} de severos · soporte {pct(r.sup,1)}</div>}
+                {r.niche && <div style={{fontFamily:'var(--ff-mono)',fontSize:13,color:'var(--mute)',marginTop:5}}>cohorte muy cohesiva de siniestros leves en hora pico</div>}
               </div>;
             })}
           </div>
@@ -71,7 +71,7 @@ function Reglas({ slide = false } = {}) {
           {t:'Transporte público',v:'×9,9',d:'Hacia LEVE: nicho cohesivo de choques de tráfico en hora pico.',c:'green'}].map((x,i)=>(
           <Card key={i} title={x.t} cap="lift">
             <div style={{fontFamily:'var(--ff-serif)',fontSize:46,fontWeight:500,color:`var(--${x.c})`,lineHeight:1}}>{x.v}</div>
-            <div style={{fontSize:13,color:'var(--mute)',marginTop:8,lineHeight:1.45}}>{x.d}</div>
+            <div style={{fontSize:15,color:'var(--mute)',marginTop:8,lineHeight:1.45}}>{x.d}</div>
           </Card>
         ))}
       </div>

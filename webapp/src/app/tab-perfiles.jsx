@@ -62,7 +62,37 @@ function Perfiles({ slide = false } = {}) {
       </div>
   );
 
-  if (slide) return <div className="app-embed perfiles-embed">{scatterCard}{personCards}</div>;
+  if (slide) {
+    const sevMax = Math.max(...P.meta.map(m=>m.sevRate)), sevMin = Math.min(...P.meta.map(m=>m.sevRate));
+    const mult = sevMax / sevMin;
+    const fp = v => v.toFixed(1).replace('.', ',');
+    return (
+      <div className="app-embed perfiles-embed">
+        <div className="perfiles-grid">
+          {P.meta.map(m=>(
+            <div key={m.perfil} className="card pf-card" style={{borderTop:`4px solid ${m.color}`}}>
+              <div className="pf-label">{m.label}</div>
+              <div className="pf-sub">{m.sub}</div>
+              <div className="pf-meta">edad {m.edad} · {nf(m.n)} casos</div>
+              <div className="pf-pct" style={{color:m.color}}>
+                <CountUp value={m.sevRate*100} fmt={v=>v.toFixed(1).replace('.',',')}/><span>%</span>
+              </div>
+              <div className="pf-sevlab">severo</div>
+              <div className="pf-bar">
+                <div className="pf-fill" style={{width:(m.sevRate/maxSev*100)+'%',background:m.color}}/>
+                <div className="pf-base" style={{left:(base/maxSev*100)+'%'}}/>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="pf-spread">
+          <div className="pf-stat"><span style={{color:'var(--severe)'}}><CountUp value={mult} fmt={v=>Math.round(v)}/>×</span><label>entre perfiles</label></div>
+          <div className="pf-stat"><span style={{color:'var(--slate)'}}>1,2×</span><label>entre zonas geográficas</label></div>
+          <p className="pf-msg">El perfil más grave (<strong>{fp(sevMax*100)}%</strong>) es <strong>{Math.round(mult)} veces</strong> más severo que el más leve (<strong>{fp(sevMin*100)}%</strong>); entre barrios la gravedad es casi pareja. La línea marca la base global de <strong>{pct(base,1)}</strong>: el <em>quién</em> manda sobre el <em>dónde</em>.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="view wide">

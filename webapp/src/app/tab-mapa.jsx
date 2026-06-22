@@ -60,7 +60,7 @@ function Mapa({ slide = false } = {}) {
       // labels
       const lg=L.layerGroup(); geoRef.current.features.forEach(f=>{ const c=comById[f.properties.comuna]; if(!c) return;
         const ll=centroid(f.geometry);
-        L.marker(ll,{interactive:false,icon:L.divIcon({className:'',html:`<div style="font-family:var(--ff-mono);font-size:11px;font-weight:600;color:var(--ink);text-shadow:0 1px 3px var(--card),0 0 4px var(--card);text-align:center;white-space:nowrap">${metric==='tasa'?Math.round(c.tasa):metric==='rate'?(c.rate*100).toFixed(1):c.n}</div>`,iconSize:[40,16]})}).addTo(lg);
+        L.marker(ll,{interactive:false,icon:L.divIcon({className:'',html:`<div style="font-family:var(--ff-mono);font-size:13px;font-weight:600;color:var(--ink);text-shadow:0 1px 3px var(--card),0 0 4px var(--card);text-align:center;white-space:nowrap">${metric==='tasa'?Math.round(c.tasa):metric==='rate'?(c.rate*100).toFixed(1):c.n}</div>`,iconSize:[40,16]})}).addTo(lg);
       }); lg.addTo(map); labelRef.current=lg;
     }
 
@@ -100,7 +100,7 @@ function Mapa({ slide = false } = {}) {
       <div style={{position:'relative'}}>
         <div ref={elRef} className="leaflet-wrap"/>
         <div className="map-legend" style={{position:'absolute',bottom:16,left:16,zIndex:500}}>
-          <div style={{fontWeight:600,marginBottom:6,fontSize:10.5,letterSpacing:'.08em',textTransform:'uppercase'}}>
+          <div style={{fontWeight:600,marginBottom:6,fontSize:14,letterSpacing:'.08em',textTransform:'uppercase'}}>
             {mode==='comunas'?(metric==='tasa'?'Tasa /100k hab/año':metric==='rate'?'% que termina severo':'Siniestros 2021–24'):mode==='hotspots'?'Severidad del hotspot':'Densidad de siniestros'}
           </div>
           {legendItems.map((l,i)=><div key={i}><i style={{background:l.c}}/>{l.t}</div>)}
@@ -110,15 +110,15 @@ function Mapa({ slide = false } = {}) {
       <div className="grid g3" style={{marginTop:20}}>
         <Card title="Hotspot principal" cap="DBSCAN · 60 m">
           <div style={{fontFamily:'var(--ff-serif)',fontSize:44,fontWeight:500,color:'var(--severe)',lineHeight:1}}><CountUp value={D.hotspots[0].n}/></div>
-          <div style={{fontSize:13,color:'var(--mute)',marginTop:6,lineHeight:1.4}}>siniestros en un acceso · Gral. Paz, Comuna 12</div>
+          <div style={{fontSize:15,color:'var(--mute)',marginTop:6,lineHeight:1.4}}>siniestros en un acceso · Gral. Paz, Comuna 12</div>
         </Card>
         <Card title="Concentración" cap="29 hotspots">
           <div style={{fontFamily:'var(--ff-serif)',fontSize:44,fontWeight:500,color:'var(--amber)',lineHeight:1}}><CountUp value={4.6} fmt={v=>v.toFixed(1).replace('.',',')}/>%</div>
-          <div style={{fontSize:13,color:'var(--mute)',marginTop:6}}>de todos los siniestros caen en 29 micro-esquinas</div>
+          <div style={{fontSize:15,color:'var(--mute)',marginTop:6}}>de todos los siniestros caen en 29 micro-esquinas</div>
         </Card>
-        <Card title="Spread de severidad" cap="entre comunas">
-          <div style={{fontFamily:'var(--ff-serif)',fontSize:44,fontWeight:500,color:'var(--slate)',lineHeight:1}}><CountUp value={0.9} fmt={v=>v.toFixed(1).replace('.',',')}/> pp</div>
-          <div style={{fontSize:13,color:'var(--mute)',marginTop:6}}>vs 10,9 pp entre perfiles: la gravedad es un perfil, no un barrio</div>
+        <Card title="Severidad entre comunas" cap="casi pareja">
+          <div style={{fontFamily:'var(--ff-serif)',fontSize:44,fontWeight:500,color:'var(--slate)',lineHeight:1}}>1,2×</div>
+          <div style={{fontSize:15,color:'var(--mute)',marginTop:6}}>vs 6× entre perfiles: la gravedad es un perfil, no un barrio</div>
         </Card>
       </div>
     </React.Fragment>
