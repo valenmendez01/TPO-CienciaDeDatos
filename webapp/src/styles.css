@@ -234,6 +234,7 @@ html.ready .ch-pop{animation:chPop .6s var(--ease) both}
 /* animations off */
 html.no-anim *{animation:none!important; transition:none!important}
 
+.select-wrap select{width:100%;appearance:none;font:500 13.5px var(--ff-sans);color:var(--ink);background:var(--paper-2);border:1px solid var(--hair-2);border-radius:8px;padding:9px 30px 9px 12px;cursor:pointer}
 select option{background:var(--card); color:var(--ink)}
 input[type=range]{cursor:pointer}
 input[type=checkbox]{cursor:pointer}

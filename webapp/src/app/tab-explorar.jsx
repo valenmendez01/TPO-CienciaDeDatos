@@ -1,11 +1,34 @@
 /* ============ tab-explorar.jsx ============ */
-function Explorar() {
+function Explorar({ slide = false } = {}) {
   const D = window.TPO_DATA;
   const [metric, setMetric] = useState('vol');     // vol | sev
   const [comMode, setComMode] = useState('n');     // n | tasa | rate
   const [yearF, setYearF] = useState('todos');
   const isSev = metric==='sev';
   const barColor = isSev ? 'var(--severe)' : 'var(--slate)';
+
+  if (slide) return (
+    <div className="app-embed explorar-embed">
+      <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:16,marginBottom:18,flexWrap:'wrap'}}>
+        <Seg value={metric} onChange={setMetric} options={[{v:'vol',label:'Volumen'},{v:'sev',label:'% Severo'}]}/>
+        <Legend items={isSev
+          ? [{color:'var(--severe)',label:'% que termina severo'}]
+          : [{color:'var(--slate)',label:'Cantidad de siniestros'},{color:'var(--severe)',line:true,label:'% severo (eje der.)'}]}/>
+      </div>
+      <div className="grid g2">
+        <Card title="Cuándo: siniestros por hora del día" cap={isSev?'% severo':'volumen + % severo'}
+          note="El volumen pica en la hora pico vespertina (17–19h). Pero la franja más severa es la madrugada: pocos siniestros, mucha gravedad — velocidad real en calles vacías.">
+          <Columns data={D.byHour} yKey="n" rateKey="rate" height={300} color="var(--slate)" fmtX={(h)=>h+'h'} />
+        </Card>
+        <Card title="Día × franja horaria" cap={isSev?'% severo':'volumen'}
+          note="Madrugada de sábado y domingo: el doble de siniestros que un martes, y 12,1% severos vs 5,5% del resto.">
+          <Heat matrix={D.heat} rows={D.dowNames} cols={D.franjaOrder} metric={isSev?'rate':'n'}
+            fmt={isSev? (v)=>(v*100).toFixed(0) : (n)=>n>=1000?(n/1000).toFixed(1)+'k':n}/>
+          <div style={{marginTop:14}}><Legend items={[{color:'var(--paper-2)',label:'menos'},{color:'var(--severe)',label:isSev?'más severo':'más volumen'}]}/></div>
+        </Card>
+      </div>
+    </div>
+  );
 
   const serie = yearF==='todos' ? D.serie : D.serie.filter(d=>d.ym.startsWith(yearF));
   const victs = D.byVictima.slice(0,8);
@@ -60,9 +83,9 @@ function Explorar() {
       </div>
 
       <Card title="La banda crítica de edad es 65+, no los jóvenes" cap="% severo por edad media de las víctimas" style={{marginTop:20}}
-        note="Los jóvenes aportan exposición (más siniestros el finde); los mayores de 65 aportan vulnerabilidad: 13,1% severo, más del doble de la base.">
-        <Columns data={D.byAge.map(a=>({k:a.k,n:a.rate*100,rate:a.rate}))} yKey="n" height={230} color="var(--severe)"
-          fmtVal={(v)=>v.toFixed(1).replace('.',',')+'%'} fmtX={(k)=>k}/>
+        note="La curva es en J: cae entre los jóvenes y adultos (la franja de más exposición) y se dispara en los 65+ —13,1% severo, más del doble de la base. Los jóvenes aportan volumen; los mayores, vulnerabilidad.">
+        <LineChart data={D.byAge.map(a=>({k:a.k,rate:+(a.rate*100).toFixed(2)}))} xKey="k" yKey="rate" height={230} color="var(--severe)"
+          fmtX={(k)=>k} fmtYTick={(v)=>Math.round(v)+'%'} fmtY={(v)=>v.toFixed(1).replace('.',',')+'%'} unit="severo" fmtTip={(k)=>'Edad '+k}/>
       </Card>
     </div>
   );

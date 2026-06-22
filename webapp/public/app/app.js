@@ -4,6 +4,7 @@ const TABS = [
   { id: "predecir", label: "Predecir", Comp: "Predecir" },
   { id: "mapa", label: "Mapa", Comp: "Mapa" },
   { id: "reglas", label: "Reglas", Comp: "Reglas" },
+  { id: "perfiles", label: "Perfiles", Comp: "Perfiles" },
   { id: "modelos", label: "Modelos", Comp: "Modelos" }
 ];
 const TWEAK_DEFAULTS = (

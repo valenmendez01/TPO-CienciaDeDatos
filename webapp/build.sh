@@ -12,9 +12,14 @@ mkdir -p public/app public/data public/vendor
 npx -y esbuild src/app/*.jsx --loader:.jsx=jsx --jsx=transform --outdir=public/app
 
 # 2. estáticos
-cp src/index.html src/styles.css public/
+#    La presentación interactiva (deck) es el único artefacto y se sirve en el
+#    ROOT: embebe en vivo los componentes React de app/ (predictor, mapa, reglas,
+#    perfiles, explorador). La vieja app por pestañas quedó retirada — sus
+#    componentes se reusan dentro de las slides.
+cp src/defensa/index.html public/index.html       # deck = página raíz
+cp src/defensa/deck-stage.js public/deck-stage.js
+cp -R src/defensa/assets public/assets
 cp src/data/aggregates.js src/data/comunas.geojson public/data/
-cp -R src/defensa public/   # deck de defensa (24 slides) → /defensa/
 
 # 3. vendor (solo si faltan — pineados, self-hosted)
 fetch() { [ -f "public/vendor/$1" ] || curl -sfL "$2" -o "public/vendor/$1"; }

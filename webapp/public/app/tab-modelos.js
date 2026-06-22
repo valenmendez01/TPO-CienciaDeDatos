@@ -24,7 +24,7 @@ function Modelos() {
   return /* @__PURE__ */ React.createElement("div", { className: "view wide" }, /* @__PURE__ */ React.createElement(
     PageHead,
     {
-      num: "06",
+      num: "07",
       kicker: "Modelos",
       title: "Cinco modelos, un mismo protocolo, un <em>ganador</em>",
       lead: "Validaci\xF3n cruzada estratificada de 5 folds. No se ordena por accuracy \u2014acertar el 94% es predecir 'siempre leve'\u2014 sino por capacidad de <strong>detectar severos</strong> (recall y ROC-AUC)."

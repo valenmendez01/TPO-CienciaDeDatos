@@ -1,10 +1,37 @@
-function Explorar() {
+function Explorar({ slide = false } = {}) {
   const D = window.TPO_DATA;
   const [metric, setMetric] = useState("vol");
   const [comMode, setComMode] = useState("n");
   const [yearF, setYearF] = useState("todos");
   const isSev = metric === "sev";
   const barColor = isSev ? "var(--severe)" : "var(--slate)";
+  if (slide) return /* @__PURE__ */ React.createElement("div", { className: "app-embed explorar-embed" }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, marginBottom: 18, flexWrap: "wrap" } }, /* @__PURE__ */ React.createElement(Seg, { value: metric, onChange: setMetric, options: [{ v: "vol", label: "Volumen" }, { v: "sev", label: "% Severo" }] }), /* @__PURE__ */ React.createElement(Legend, { items: isSev ? [{ color: "var(--severe)", label: "% que termina severo" }] : [{ color: "var(--slate)", label: "Cantidad de siniestros" }, { color: "var(--severe)", line: true, label: "% severo (eje der.)" }] })), /* @__PURE__ */ React.createElement("div", { className: "grid g2" }, /* @__PURE__ */ React.createElement(
+    Card,
+    {
+      title: "Cu\xE1ndo: siniestros por hora del d\xEDa",
+      cap: isSev ? "% severo" : "volumen + % severo",
+      note: "El volumen pica en la hora pico vespertina (17\u201319h). Pero la franja m\xE1s severa es la madrugada: pocos siniestros, mucha gravedad \u2014 velocidad real en calles vac\xEDas."
+    },
+    /* @__PURE__ */ React.createElement(Columns, { data: D.byHour, yKey: "n", rateKey: "rate", height: 300, color: "var(--slate)", fmtX: (h) => h + "h" })
+  ), /* @__PURE__ */ React.createElement(
+    Card,
+    {
+      title: "D\xEDa \xD7 franja horaria",
+      cap: isSev ? "% severo" : "volumen",
+      note: "Madrugada de s\xE1bado y domingo: el doble de siniestros que un martes, y 12,1% severos vs 5,5% del resto."
+    },
+    /* @__PURE__ */ React.createElement(
+      Heat,
+      {
+        matrix: D.heat,
+        rows: D.dowNames,
+        cols: D.franjaOrder,
+        metric: isSev ? "rate" : "n",
+        fmt: isSev ? (v) => (v * 100).toFixed(0) : (n) => n >= 1e3 ? (n / 1e3).toFixed(1) + "k" : n
+      }
+    ),
+    /* @__PURE__ */ React.createElement("div", { style: { marginTop: 14 } }, /* @__PURE__ */ React.createElement(Legend, { items: [{ color: "var(--paper-2)", label: "menos" }, { color: "var(--severe)", label: isSev ? "m\xE1s severo" : "m\xE1s volumen" }] }))
+  )));
   const serie = yearF === "todos" ? D.serie : D.serie.filter((d) => d.ym.startsWith(yearF));
   const victs = D.byVictima.slice(0, 8);
   const comunaData = [...D.byComuna].sort((a, b) => comMode === "tasa" ? b.tasa - a.tasa : comMode === "rate" ? b.rate - a.rate : b.n - a.n).map((c) => ({ k: "Comuna " + c.comuna, n: c.n, rate: c.rate, tasa: c.tasa }));
@@ -105,17 +132,21 @@ function Explorar() {
       title: "La banda cr\xEDtica de edad es 65+, no los j\xF3venes",
       cap: "% severo por edad media de las v\xEDctimas",
       style: { marginTop: 20 },
-      note: "Los j\xF3venes aportan exposici\xF3n (m\xE1s siniestros el finde); los mayores de 65 aportan vulnerabilidad: 13,1% severo, m\xE1s del doble de la base."
+      note: "La curva es en J: cae entre los j\xF3venes y adultos (la franja de m\xE1s exposici\xF3n) y se dispara en los 65+ \u201413,1% severo, m\xE1s del doble de la base. Los j\xF3venes aportan volumen; los mayores, vulnerabilidad."
     },
     /* @__PURE__ */ React.createElement(
-      Columns,
+      LineChart,
       {
-        data: D.byAge.map((a) => ({ k: a.k, n: a.rate * 100, rate: a.rate })),
-        yKey: "n",
+        data: D.byAge.map((a) => ({ k: a.k, rate: +(a.rate * 100).toFixed(2) })),
+        xKey: "k",
+        yKey: "rate",
         height: 230,
         color: "var(--severe)",
-        fmtVal: (v) => v.toFixed(1).replace(".", ",") + "%",
-        fmtX: (k) => k
+        fmtX: (k) => k,
+        fmtYTick: (v) => Math.round(v) + "%",
+        fmtY: (v) => v.toFixed(1).replace(".", ",") + "%",
+        unit: "severo",
+        fmtTip: (k) => "Edad " + k
       }
     )
   ));

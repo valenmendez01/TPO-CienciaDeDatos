@@ -1,5 +1,5 @@
 /* ============ tab-reglas.jsx ============ */
-function Reglas() {
+function Reglas({ slide = false } = {}) {
   const D = window.TPO_DATA;
   const base = D.lifts.base;
   const [minLift, setMinLift] = useState(1.2);
@@ -13,12 +13,8 @@ function Reglas() {
   const rules = (conseq==='SEVERO'?sevRules:leveRules).filter(r=>r.lift>=minLift);
   const maxLift = conseq==='SEVERO'?2.4:Math.max(...leveRules.map(r=>r.lift));
 
-  return (
-    <div className="view wide">
-      <PageHead num="05" kicker="Reglas de asociación · Apriori" title="Combinaciones que <em>duplican</em> el riesgo"
-        lead="Cada siniestro es una canasta de ítems (franja, vía, víctima, contraparte, finde). Apriori encuentra qué combinaciones aparecen junto a <strong>SEVERO</strong> más de lo esperado. El <strong>lift</strong> es cuánto multiplican la probabilidad base." />
-
-      <div className="grid g-1-2">
+  const explorer = (
+    <div className="grid g-1-2">
         <Card title="Cómo leer el lift" cap="base 5,7%">
           <div style={{display:'flex',flexDirection:'column',gap:16}}>
             <div>
@@ -58,6 +54,16 @@ function Reglas() {
           {conseq==='SEVERO' && <div className="card-note">El valor sobre el clasificador: estas reglas son <b>directamente accionables</b>. "Un peatón atropellado en avenida tiene el doble de chances de terminar grave" no necesita modelo para comunicarse — y es la base del predictor en vivo.</div>}
         </Card>
       </div>
+  );
+
+  if (slide) return <div className="app-embed reglas-embed">{explorer}</div>;
+
+  return (
+    <div className="view wide">
+      <PageHead num="05" kicker="Reglas de asociación · Apriori" title="Combinaciones que <em>duplican</em> el riesgo"
+        lead="Cada siniestro es una canasta de ítems (franja, vía, víctima, contraparte, finde). Apriori encuentra qué combinaciones aparecen junto a <strong>SEVERO</strong> más de lo esperado. El <strong>lift</strong> es cuánto multiplican la probabilidad base." />
+
+      {explorer}
 
       <div className="grid g3" style={{marginTop:20}}>
         {[{t:'Peatón en avenida',v:'×2,2',d:'La regla más accionable: cruce peatonal en vía rápida.',c:'severe'},

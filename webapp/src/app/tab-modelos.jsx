@@ -26,7 +26,7 @@ function Modelos() {
 
   return (
     <div className="view wide">
-      <PageHead num="06" kicker="Modelos" title="Cinco modelos, un mismo protocolo, un <em>ganador</em>"
+      <PageHead num="07" kicker="Modelos" title="Cinco modelos, un mismo protocolo, un <em>ganador</em>"
         lead="Validación cruzada estratificada de 5 folds. No se ordena por accuracy —acertar el 94% es predecir 'siempre leve'— sino por capacidad de <strong>detectar severos</strong> (recall y ROC-AUC)." />
 
       <Card title="Comparación de modelos" cap="CV 5-fold · binario LEVE vs SEVERO">

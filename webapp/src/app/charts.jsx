@@ -32,10 +32,10 @@ const nf = (n) => n.toLocaleString('es-AR');
 const pct = (x, d=1) => (x*100).toFixed(d).replace('.', ',') + '%';
 
 /* ============ LINE / AREA ============ */
-function LineChart({ data, xKey, yKey, height = 260, color = 'var(--slate)', fill = true, fmtX, fmtTip, markers = [] }) {
+function LineChart({ data, xKey, yKey, height = 260, color = 'var(--slate)', fill = true, fmtX, fmtTip, markers = [], unit = 'siniestros', fmtY = nf, fmtYTick = (v)=>Math.round(v), yMax }) {
   const W = 900, H = height, padL = 46, padR = 18, padT = 18, padB = 34;
   const ys = data.map(d=>d[yKey]);
-  const maxY = Math.max(...ys) * 1.12, minY = 0;
+  const maxY = yMax != null ? yMax : Math.max(...ys) * 1.12, minY = 0;
   const px = (i) => padL + (i/(data.length-1)) * (W-padL-padR);
   const py = (vv) => H-padB - ((vv-minY)/(maxY-minY)) * (H-padT-padB);
   const line = data.map((d,i)=>`${i===0?'M':'L'}${px(i).toFixed(1)},${py(d[yKey]).toFixed(1)}`).join(' ');
@@ -48,7 +48,7 @@ function LineChart({ data, xKey, yKey, height = 260, color = 'var(--slate)', fil
       onMouseMove={(e)=>{ const r=e.currentTarget.getBoundingClientRect(); const xr=(e.clientX-r.left)/r.width*W; let best=0,bd=1e9; data.forEach((d,i)=>{const dd=Math.abs(px(i)-xr); if(dd<bd){bd=dd;best=i;}}); setHover(best); }}>
       {Array.from({length:yticks+1}).map((_,i)=>{ const vv=maxY*i/yticks, y=py(vv); return <g key={i}>
         <line x1={padL} x2={W-padR} y1={y} y2={y} className="grid-line" opacity={i===0?0:.6}/>
-        <text x={padL-9} y={y+4} textAnchor="end" className="axis-lab">{Math.round(vv)}</text></g>; })}
+        <text x={padL-9} y={y+4} textAnchor="end" className="axis-lab">{fmtYTick(vv)}</text></g>; })}
       {fill && <path d={area} fill={color} opacity=".10"/>}
       <path className="ch-line" d={line} pathLength="1" fill="none" stroke={color} strokeWidth="2.5" strokeLinejoin="round" strokeLinecap="round" strokeDasharray="1"/>
       {markers.map((m,i)=>{ const idx=data.findIndex(d=>d[xKey]===m.at); if(idx<0) return null;
@@ -62,7 +62,7 @@ function LineChart({ data, xKey, yKey, height = 260, color = 'var(--slate)', fil
         <g transform={`translate(${Math.min(px(hover)+10, W-150)},${padT+6})`}>
           <rect width="142" height="46" rx="7" fill="var(--ink)" opacity=".94"/>
           <text x="12" y="19" fill="var(--paper)" style={{font:'600 12px var(--ff-mono)'}}>{fmtTip?fmtTip(data[hover][xKey]):fmtX?fmtX(data[hover][xKey]):data[hover][xKey]}</text>
-          <text x="12" y="36" fill="var(--paper)" style={{font:'500 12px var(--ff-sans)',opacity:.85}}>{nf(data[hover][yKey])} siniestros</text>
+          <text x="12" y="36" fill="var(--paper)" style={{font:'500 12px var(--ff-sans)',opacity:.85}}>{fmtY(data[hover][yKey])}{unit?' '+unit:''}</text>
         </g>
       </g>}
     </svg>
@@ -163,4 +163,40 @@ function Donut({ segments, size=180, thickness=26, center }) {
   );
 }
 
-Object.assign(window, { CountUp, useMounted, LineChart, Columns, Bars, Heat, Donut, COL, nf, pct });
+/* ============ SCATTER (PCA cluster projection) ============ */
+function Scatter({ pts, centroids=[], colorByPerfil, labelByPerfil={}, height=440, xLabel='PC1', yLabel='PC2', highlight=null, onHover, dotR=2.3 }) {
+  const W=900, H=height, padL=26, padR=26, padT=24, padB=30;
+  const xs=pts.map(p=>p[0]), ys=pts.map(p=>p[1]);
+  let minX=Math.min(...xs), maxX=Math.max(...xs), minY=Math.min(...ys), maxY=Math.max(...ys);
+  const ex=(maxX-minX)*0.06, ey=(maxY-minY)*0.08; minX-=ex; maxX+=ex; minY-=ey; maxY+=ey;
+  const px=x=>padL+((x-minX)/(maxX-minX))*(W-padL-padR);
+  const py=y=>H-padB-((y-minY)/(maxY-minY))*(H-padT-padB);
+  const x0=px(0), y0=py(0);
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{display:'block'}} onMouseLeave={()=>onHover&&onHover(null)}>
+      {/* zero axes */}
+      <line x1={padL} x2={W-padR} y1={y0} y2={y0} stroke="var(--hair)" strokeWidth="1" strokeDasharray="2 4"/>
+      <line x1={x0} x2={x0} y1={padT} y2={H-padB} stroke="var(--hair)" strokeWidth="1" strokeDasharray="2 4"/>
+      {/* points */}
+      <g className="ch-pop">
+        {pts.map((p,i)=>{ const on = highlight==null || highlight===p[2];
+          return <circle key={i} cx={px(p[0]).toFixed(1)} cy={py(p[1]).toFixed(1)} r={dotR} fill={colorByPerfil[p[2]]} opacity={on?0.5:0.05}/>; })}
+      </g>
+      {/* centroids */}
+      {centroids.map((c,i)=>{ const lab=labelByPerfil[c.perfil]; const col=colorByPerfil[c.perfil];
+        const dim = highlight!=null && highlight!==c.perfil; const lx=px(c.pc1), ly=py(c.pc2);
+        const right = lx < W-150; const tx = right ? lx+13 : lx-13;
+        return <g key={i} style={{opacity:dim?0.32:1, transition:'opacity .18s', cursor:'default'}}
+          onMouseEnter={()=>onHover&&onHover(c.perfil)}>
+          <circle cx={lx} cy={ly} r="11" fill="none" stroke={col} strokeWidth="1.5" opacity=".5"/>
+          <circle cx={lx} cy={ly} r="5.5" fill={col} stroke="var(--card)" strokeWidth="2"/>
+          {lab && <text x={tx} y={ly+4} textAnchor={right?'start':'end'} style={{font:'600 12.5px var(--ff-sans)',fill:'var(--ink)'}}>{lab}</text>}
+        </g>; })}
+      {/* axis labels */}
+      <text x={W-padR} y={y0-8} textAnchor="end" className="axis-lab">{xLabel} →</text>
+      <text x={x0+8} y={padT+4} textAnchor="start" className="axis-lab">↑ {yLabel}</text>
+    </svg>
+  );
+}
+
+Object.assign(window, { CountUp, useMounted, LineChart, Columns, Bars, Heat, Donut, Scatter, COL, nf, pct });

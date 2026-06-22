@@ -1,7 +1,7 @@
 /* ============ tab-mapa.jsx ============ */
-function Mapa() {
+function Mapa({ slide = false } = {}) {
   const D = window.TPO_DATA;
-  const [mode, setMode] = useState('comunas');   // comunas | hotspots | calor
+  const [mode, setMode] = useState(slide ? 'hotspots' : 'comunas');   // comunas | hotspots | calor
   const [metric, setMetric] = useState('tasa');  // tasa | rate | n
   const mapRef = useRef(null);
   const elRef = useRef(null);
@@ -16,9 +16,13 @@ function Mapa() {
     L.control.attribution({prefix:false}).addAttribution('© OpenStreetMap · CARTO · Datos: GCBA').addTo(map);
     L.tileLayer(`https://{s}.basemaps.cartocdn.com/${dark?'dark_all':'rastertiles/voyager_nolabels'}/{z}/{x}/{y}{r}.png`, { subdomains:'abcd', maxZoom:19 }).addTo(map);
     mapRef.current = map;
-    fetch('data/comunas.geojson').then(r=>r.json()).then(gj=>{ geoRef.current = gj; draw(); });
+    fetch((window.TPO_ASSET_BASE||'') + 'data/comunas.geojson').then(r=>r.json()).then(gj=>{ geoRef.current = gj; draw(); });
     setTimeout(()=>map.invalidateSize(), 200);
-    return ()=> map.remove();
+    // When embedded in a hidden deck slide, Leaflet sizes itself before the
+    // slide is shown; recompute on activation so tiles fill the container.
+    const onSlide = (e)=>{ if(e.detail && e.detail.slide && e.detail.slide.contains(elRef.current)) setTimeout(()=>map.invalidateSize(), 60); };
+    if (slide) document.addEventListener('slidechange', onSlide);
+    return ()=>{ map.remove(); if (slide) document.removeEventListener('slidechange', onSlide); };
   }, []);
 
   useEffect(()=>{ if(geoRef.current) draw(); }, [mode, metric]);
@@ -86,11 +90,8 @@ function Mapa() {
     : mode==='calor' ? [{c:'var(--slate)',t:'menos denso'},{c:'var(--severe)',t:'más denso'}]
     : [{c:'var(--paper-3)',t:'menos'},{c:metric==='rate'?'var(--severe)':'var(--slate)',t:'más'}];
 
-  return (
-    <div className="view wide">
-      <PageHead num="04" kicker="Mapa" title="La gravedad <em>no</em> se concentra en un lugar"
-        lead="El volumen sí: el corredor oeste motero y el Microcentro. Pero la severidad es geográficamente plana. Lo accionable son las <strong>29 esquinas</strong> que el DBSCAN aísla." />
-
+  const body = (
+    <React.Fragment>
       <div style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:16,marginBottom:18,flexWrap:'wrap'}}>
         <Seg value={mode} onChange={setMode} options={[{v:'comunas',label:'Comunas'},{v:'hotspots',label:'Hotspots DBSCAN'},{v:'calor',label:'Mapa de calor'}]}/>
         {mode==='comunas' && <Seg value={metric} onChange={setMetric} options={[{v:'tasa',label:'Per cápita'},{v:'rate',label:'% Severo'},{v:'n',label:'Volumen'}]}/>}
@@ -109,7 +110,7 @@ function Mapa() {
       <div className="grid g3" style={{marginTop:20}}>
         <Card title="Hotspot principal" cap="DBSCAN · 60 m">
           <div style={{fontFamily:'var(--ff-serif)',fontSize:44,fontWeight:500,color:'var(--severe)',lineHeight:1}}><CountUp value={D.hotspots[0].n}/></div>
-          <div style={{fontSize:13,color:'var(--mute)',marginTop:6}}>siniestros en un solo acceso (zona Gral. Paz, Comuna 12)</div>
+          <div style={{fontSize:13,color:'var(--mute)',marginTop:6,lineHeight:1.4}}>siniestros en un acceso · Gral. Paz, Comuna 12</div>
         </Card>
         <Card title="Concentración" cap="29 hotspots">
           <div style={{fontFamily:'var(--ff-serif)',fontSize:44,fontWeight:500,color:'var(--amber)',lineHeight:1}}><CountUp value={4.6} fmt={v=>v.toFixed(1).replace('.',',')}/>%</div>
@@ -120,6 +121,16 @@ function Mapa() {
           <div style={{fontSize:13,color:'var(--mute)',marginTop:6}}>vs 10,9 pp entre perfiles: la gravedad es un perfil, no un barrio</div>
         </Card>
       </div>
+    </React.Fragment>
+  );
+
+  if (slide) return <div className="app-embed mapa-embed">{body}</div>;
+
+  return (
+    <div className="view wide">
+      <PageHead num="04" kicker="Mapa" title="La gravedad <em>no</em> se concentra en un lugar"
+        lead="El volumen sí: el corredor oeste motero y el Microcentro. Pero la severidad es geográficamente plana. Lo accionable son las <strong>29 esquinas</strong> que el DBSCAN aísla." />
+      {body}
     </div>
   );
 }

@@ -27,10 +27,10 @@ function useMounted() {
 const COL = { severe: "var(--severe)", slate: "var(--slate)", amber: "var(--amber)", green: "var(--green)", ink: "var(--ink)", mute: "var(--mute)" };
 const nf = (n) => n.toLocaleString("es-AR");
 const pct = (x, d = 1) => (x * 100).toFixed(d).replace(".", ",") + "%";
-function LineChart({ data, xKey, yKey, height = 260, color = "var(--slate)", fill = true, fmtX, fmtTip, markers = [] }) {
+function LineChart({ data, xKey, yKey, height = 260, color = "var(--slate)", fill = true, fmtX, fmtTip, markers = [], unit = "siniestros", fmtY = nf, fmtYTick = (v) => Math.round(v), yMax }) {
   const W = 900, H = height, padL = 46, padR = 18, padT = 18, padB = 34;
   const ys = data.map((d) => d[yKey]);
-  const maxY = Math.max(...ys) * 1.12, minY = 0;
+  const maxY = yMax != null ? yMax : Math.max(...ys) * 1.12, minY = 0;
   const px = (i) => padL + i / (data.length - 1) * (W - padL - padR);
   const py = (vv) => H - padB - (vv - minY) / (maxY - minY) * (H - padT - padB);
   const line = data.map((d, i) => `${i === 0 ? "M" : "L"}${px(i).toFixed(1)},${py(d[yKey]).toFixed(1)}`).join(" ");
@@ -60,7 +60,7 @@ function LineChart({ data, xKey, yKey, height = 260, color = "var(--slate)", fil
     },
     Array.from({ length: yticks + 1 }).map((_, i) => {
       const vv = maxY * i / yticks, y = py(vv);
-      return /* @__PURE__ */ React.createElement("g", { key: i }, /* @__PURE__ */ React.createElement("line", { x1: padL, x2: W - padR, y1: y, y2: y, className: "grid-line", opacity: i === 0 ? 0 : 0.6 }), /* @__PURE__ */ React.createElement("text", { x: padL - 9, y: y + 4, textAnchor: "end", className: "axis-lab" }, Math.round(vv)));
+      return /* @__PURE__ */ React.createElement("g", { key: i }, /* @__PURE__ */ React.createElement("line", { x1: padL, x2: W - padR, y1: y, y2: y, className: "grid-line", opacity: i === 0 ? 0 : 0.6 }), /* @__PURE__ */ React.createElement("text", { x: padL - 9, y: y + 4, textAnchor: "end", className: "axis-lab" }, fmtYTick(vv)));
     }),
     fill && /* @__PURE__ */ React.createElement("path", { d: area, fill: color, opacity: ".10" }),
     /* @__PURE__ */ React.createElement("path", { className: "ch-line", d: line, pathLength: "1", fill: "none", stroke: color, strokeWidth: "2.5", strokeLinejoin: "round", strokeLinecap: "round", strokeDasharray: "1" }),
@@ -70,7 +70,7 @@ function LineChart({ data, xKey, yKey, height = 260, color = "var(--slate)", fil
       return /* @__PURE__ */ React.createElement("g", { key: i }, /* @__PURE__ */ React.createElement("line", { x1: px(idx), x2: px(idx), y1: padT, y2: H - padB, stroke: "var(--severe)", strokeWidth: "1", strokeDasharray: "3 3", opacity: ".5" }), /* @__PURE__ */ React.createElement("text", { x: px(idx) + 6, y: padT + 12, className: "axis-lab", fill: "var(--severe)" }, m.label));
     }),
     data.map((d, i) => (i % Math.ceil(data.length / 8) === 0 || i === data.length - 1) && /* @__PURE__ */ React.createElement("text", { key: i, x: px(i), y: H - 12, textAnchor: "middle", className: "axis-lab" }, fmtX ? fmtX(d[xKey]) : d[xKey])),
-    hover != null && /* @__PURE__ */ React.createElement("g", null, /* @__PURE__ */ React.createElement("line", { x1: px(hover), x2: px(hover), y1: padT, y2: H - padB, stroke: "var(--ink)", strokeWidth: "1", opacity: ".25" }), /* @__PURE__ */ React.createElement("circle", { cx: px(hover), cy: py(data[hover][yKey]), r: "4.5", fill: color, stroke: "var(--card)", strokeWidth: "2" }), /* @__PURE__ */ React.createElement("g", { transform: `translate(${Math.min(px(hover) + 10, W - 150)},${padT + 6})` }, /* @__PURE__ */ React.createElement("rect", { width: "142", height: "46", rx: "7", fill: "var(--ink)", opacity: ".94" }), /* @__PURE__ */ React.createElement("text", { x: "12", y: "19", fill: "var(--paper)", style: { font: "600 12px var(--ff-mono)" } }, fmtTip ? fmtTip(data[hover][xKey]) : fmtX ? fmtX(data[hover][xKey]) : data[hover][xKey]), /* @__PURE__ */ React.createElement("text", { x: "12", y: "36", fill: "var(--paper)", style: { font: "500 12px var(--ff-sans)", opacity: 0.85 } }, nf(data[hover][yKey]), " siniestros")))
+    hover != null && /* @__PURE__ */ React.createElement("g", null, /* @__PURE__ */ React.createElement("line", { x1: px(hover), x2: px(hover), y1: padT, y2: H - padB, stroke: "var(--ink)", strokeWidth: "1", opacity: ".25" }), /* @__PURE__ */ React.createElement("circle", { cx: px(hover), cy: py(data[hover][yKey]), r: "4.5", fill: color, stroke: "var(--card)", strokeWidth: "2" }), /* @__PURE__ */ React.createElement("g", { transform: `translate(${Math.min(px(hover) + 10, W - 150)},${padT + 6})` }, /* @__PURE__ */ React.createElement("rect", { width: "142", height: "46", rx: "7", fill: "var(--ink)", opacity: ".94" }), /* @__PURE__ */ React.createElement("text", { x: "12", y: "19", fill: "var(--paper)", style: { font: "600 12px var(--ff-mono)" } }, fmtTip ? fmtTip(data[hover][xKey]) : fmtX ? fmtX(data[hover][xKey]) : data[hover][xKey]), /* @__PURE__ */ React.createElement("text", { x: "12", y: "36", fill: "var(--paper)", style: { font: "500 12px var(--ff-sans)", opacity: 0.85 } }, fmtY(data[hover][yKey]), unit ? " " + unit : "")))
   );
 }
 function Columns({ data, yKey = "n", height = 260, color = "var(--slate)", rateKey, fmtX, fmtVal = nf, gap = 0.28 }) {
@@ -164,4 +164,39 @@ function Donut({ segments, size = 180, thickness = 26, center }) {
     return /* @__PURE__ */ React.createElement("circle", { key: i, cx, cy: cx, r, fill: "none", stroke: s.color, strokeWidth: thickness, strokeDasharray: `${dash} ${C}`, strokeDashoffset: -off });
   })), center && /* @__PURE__ */ React.createElement("div", { style: { position: "absolute", inset: 0, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" } }, center));
 }
-Object.assign(window, { CountUp, useMounted, LineChart, Columns, Bars, Heat, Donut, COL, nf, pct });
+function Scatter({ pts, centroids = [], colorByPerfil, labelByPerfil = {}, height = 440, xLabel = "PC1", yLabel = "PC2", highlight = null, onHover, dotR = 2.3 }) {
+  const W = 900, H = height, padL = 26, padR = 26, padT = 24, padB = 30;
+  const xs = pts.map((p) => p[0]), ys = pts.map((p) => p[1]);
+  let minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+  const ex = (maxX - minX) * 0.06, ey = (maxY - minY) * 0.08;
+  minX -= ex;
+  maxX += ex;
+  minY -= ey;
+  maxY += ey;
+  const px = (x) => padL + (x - minX) / (maxX - minX) * (W - padL - padR);
+  const py = (y) => H - padB - (y - minY) / (maxY - minY) * (H - padT - padB);
+  const x0 = px(0), y0 = py(0);
+  return /* @__PURE__ */ React.createElement("svg", { viewBox: `0 0 ${W} ${H}`, width: "100%", style: { display: "block" }, onMouseLeave: () => onHover && onHover(null) }, /* @__PURE__ */ React.createElement("line", { x1: padL, x2: W - padR, y1: y0, y2: y0, stroke: "var(--hair)", strokeWidth: "1", strokeDasharray: "2 4" }), /* @__PURE__ */ React.createElement("line", { x1: x0, x2: x0, y1: padT, y2: H - padB, stroke: "var(--hair)", strokeWidth: "1", strokeDasharray: "2 4" }), /* @__PURE__ */ React.createElement("g", { className: "ch-pop" }, pts.map((p, i) => {
+    const on = highlight == null || highlight === p[2];
+    return /* @__PURE__ */ React.createElement("circle", { key: i, cx: px(p[0]).toFixed(1), cy: py(p[1]).toFixed(1), r: dotR, fill: colorByPerfil[p[2]], opacity: on ? 0.5 : 0.05 });
+  })), centroids.map((c, i) => {
+    const lab = labelByPerfil[c.perfil];
+    const col = colorByPerfil[c.perfil];
+    const dim = highlight != null && highlight !== c.perfil;
+    const lx = px(c.pc1), ly = py(c.pc2);
+    const right = lx < W - 150;
+    const tx = right ? lx + 13 : lx - 13;
+    return /* @__PURE__ */ React.createElement(
+      "g",
+      {
+        key: i,
+        style: { opacity: dim ? 0.32 : 1, transition: "opacity .18s", cursor: "default" },
+        onMouseEnter: () => onHover && onHover(c.perfil)
+      },
+      /* @__PURE__ */ React.createElement("circle", { cx: lx, cy: ly, r: "11", fill: "none", stroke: col, strokeWidth: "1.5", opacity: ".5" }),
+      /* @__PURE__ */ React.createElement("circle", { cx: lx, cy: ly, r: "5.5", fill: col, stroke: "var(--card)", strokeWidth: "2" }),
+      lab && /* @__PURE__ */ React.createElement("text", { x: tx, y: ly + 4, textAnchor: right ? "start" : "end", style: { font: "600 12.5px var(--ff-sans)", fill: "var(--ink)" } }, lab)
+    );
+  }), /* @__PURE__ */ React.createElement("text", { x: W - padR, y: y0 - 8, textAnchor: "end", className: "axis-lab" }, xLabel, " \u2192"), /* @__PURE__ */ React.createElement("text", { x: x0 + 8, y: padT + 4, textAnchor: "start", className: "axis-lab" }, "\u2191 ", yLabel));
+}
+Object.assign(window, { CountUp, useMounted, LineChart, Columns, Bars, Heat, Donut, Scatter, COL, nf, pct });
