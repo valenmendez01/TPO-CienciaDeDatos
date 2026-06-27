@@ -70,7 +70,7 @@ function Perfiles({ slide = false } = {}) {
       <div className="app-embed perfiles-embed">
         <div className="perfiles-grid">
           {P.meta.map(m=>(
-            <div key={m.perfil} className="card pf-card" style={{borderTop:`4px solid ${m.color}`}}>
+            <div key={m.perfil} className="card pf-card">
               <div className="pf-label">{m.label}</div>
               <div className="pf-sub">{m.sub}</div>
               <div className="pf-meta">edad {m.edad} · {nf(m.n)} casos</div>

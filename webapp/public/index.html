@@ -172,7 +172,7 @@
   .hito{display:flex; flex-direction:column; gap:16px}
   .hito-top{display:flex; align-items:center}
   .hito-disc{width:66px; height:66px; flex:none; border-radius:50%; background:var(--panel); color:var(--panel-ink); display:flex; align-items:center; justify-content:center; font-family:var(--ff-sans); font-weight:800; font-size:26px}
-  .hito-disc.end{background:var(--severe); color:#fff}
+  .hito-disc.end{background:var(--asphalt); color:#fff}
   .hito-conn{flex:1; height:4px; opacity:var(--dash-op); background:repeating-linear-gradient(90deg,#C9C3B2 0 14px,transparent 14px 26px)}
   .hito-h{font-family:var(--ff-sans); font-weight:700; font-size:30px; color:var(--ink)}
   .hito-b{font-family:var(--ff-mono); font-size:18px; line-height:1.45; color:var(--mute)}
@@ -199,7 +199,7 @@
   .concl{display:grid; grid-template-columns:1fr 1fr; gap:26px 60px}
   .cc{display:grid; grid-template-columns:auto 1fr; gap:22px; align-items:start}
   .cc-n{width:58px; height:58px; flex:none; border-radius:50%; background:var(--panel); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--ff-sans); font-weight:800; font-size:28px}
-  .cc-n.end{background:var(--severe)}
+  .cc-n.end{background:var(--asphalt)}
   .cc-t{font-size:22px; line-height:1.4; color:var(--body)}
   .cc-t b{color:var(--ink); font-weight:700}
 
@@ -215,7 +215,7 @@
   .app-embed{font-family:var(--ff-sans); color:var(--ink); width:100%; max-width:1520px; margin:0 auto}
   .app-embed .grid{display:grid; gap:34px}
   .app-embed .g2{grid-template-columns:1fr 1fr}
-  .app-embed .card{background:var(--card); border:1px solid var(--card-line); border-radius:16px; padding:30px 36px; box-shadow:var(--shadow-sm)}
+  .app-embed .card{background:var(--card); border-radius:12px; padding:30px 36px; box-shadow:inset 0 0 0 3px var(--inset), var(--plaque-lift)}
   .app-embed .card-h{display:flex; justify-content:space-between; align-items:baseline; gap:16px; margin-bottom:18px}
   .app-embed .card-h h3{font-family:var(--ff-sans); font-weight:600; font-size:23px; color:var(--ink)}
   .app-embed .card-h .cap{font-family:var(--ff-mono); font-size:18px; letter-spacing:.06em; color:var(--mute); text-transform:uppercase}
@@ -345,7 +345,7 @@
 </div>
 <div class="content" style="justify-content:center">
   <div class="cartel-wrap anim" style="--d:.1s">
-    <div class="cartel-tab">RUTA TPO · SALIDA 0</div>
+    <div class="cartel-tab">RUTA TPO · SALIDA 00</div>
     <div class="cartel"><h1>Análisis y clasificación de la <span class="hi">gravedad</span> de los siniestros viales en <span class="hi">CABA</span></h1></div>
   </div>
   <p class="lead anim" style="--d:.2s; font-size:32px; max-width:1180px; margin-top:34px">Un pipeline reproducible — de la ingesta a la predicción — sobre <strong>37.849</strong> siniestros reales: qué los hace graves, cuántos habrá, y dónde.</p>
@@ -360,12 +360,12 @@
 
   <section class="slide alt" data-label="Tres preguntas">
 <div class="content" style="justify-content:center; gap:46px">
-  <div class="cartel-wrap" style="position:relative; align-self:stretch; max-width:none">
-    <div class="salida-tab">SALIDA 01</div>
-    <div class="cartel notab anim" style="--d:.05s; padding:54px 62px"><div class="cartel-eyebrow">El problema</div><h2 style="font-size:88px">Tres preguntas sobre <span class="hi">37.849</span> siniestros en cuatro años</h2></div>
+  <div class="cartel-wrap anim" style="--d:.05s; align-self:stretch; max-width:none">
+    <div class="cartel-tab">RUTA TPO · SALIDA 01</div>
+    <div class="cartel" style="padding:48px 62px"><div class="cartel-eyebrow">El problema</div><h2 style="font-size:88px">Tres preguntas sobre <span class="hi">37.849</span> siniestros en cuatro años</h2></div>
   </div>
   <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:28px">
-<div class="placa anim" style="padding:26px 30px 22px; display:flex; flex-direction:column"><span class="bolt l red"></span><span class="bolt r red"></span><div style="display:inline-flex; align-self:flex-start; align-items:center; gap:10px; background:#C8301B; color:#fff; border-radius:22px; padding:7px 18px 7px 7px; font-family:var(--ff-mono); font-size:17px; font-weight:700; letter-spacing:.07em"><span style="width:28px;height:28px;border-radius:50%;background:#fff;color:#C8301B;display:flex;align-items:center;justify-content:center;font-family:var(--ff-sans);font-weight:800;font-size:17px">7</span>CLASIFICACIÓN</div><div style="font-family:var(--ff-sans); font-weight:800; font-size:34px; color:#15171B; margin-top:20px; line-height:1.04">¿Leve o severo?</div><div style="display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:18px"><span class="mono" style="font-size:20px; color:var(--mute); letter-spacing:.03em">Random Forest explicativo</span><span style="font-family:var(--ff-sans); font-weight:900; font-size:30px; color:#C8301B; line-height:1">&rsaquo;&rsaquo;&rsaquo;</span></div></div><div class="placa anim" style="padding:26px 30px 22px; display:flex; flex-direction:column"><span class="bolt l amber"></span><span class="bolt r amber"></span><div style="display:inline-flex; align-self:flex-start; align-items:center; gap:10px; background:#E0901F; color:#fff; border-radius:22px; padding:7px 18px 7px 7px; font-family:var(--ff-mono); font-size:17px; font-weight:700; letter-spacing:.07em"><span style="width:28px;height:28px;border-radius:50%;background:#fff;color:#E0901F;display:flex;align-items:center;justify-content:center;font-family:var(--ff-sans);font-weight:800;font-size:17px">9</span>REGRESIÓN</div><div style="font-family:var(--ff-sans); font-weight:800; font-size:34px; color:#15171B; margin-top:20px; line-height:1.04">¿Cuántos habrá?</div><div style="display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:18px"><span class="mono" style="font-size:20px; color:var(--mute); letter-spacing:.03em">Lineal · validada en 2024</span><span style="font-family:var(--ff-sans); font-weight:900; font-size:30px; color:#E0901F; line-height:1">&rsaquo;&rsaquo;&rsaquo;</span></div></div><div class="placa anim" style="padding:26px 30px 22px; display:flex; flex-direction:column"><span class="bolt l green"></span><span class="bolt r green"></span><div style="display:inline-flex; align-self:flex-start; align-items:center; gap:10px; background:#2E9E5B; color:#fff; border-radius:22px; padding:7px 18px 7px 7px; font-family:var(--ff-mono); font-size:17px; font-weight:700; letter-spacing:.07em"><span style="width:28px;height:28px;border-radius:50%;background:#fff;color:#2E9E5B;display:flex;align-items:center;justify-content:center;font-family:var(--ff-sans);font-weight:800;font-size:17px">10</span>NO SUPERVISADO</div><div style="font-family:var(--ff-sans); font-weight:800; font-size:34px; color:#15171B; margin-top:20px; line-height:1.04">¿Dónde y quién?</div><div style="display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:18px"><span class="mono" style="font-size:20px; color:var(--mute); letter-spacing:.03em">k-means · DBSCAN · Apriori</span><span style="font-family:var(--ff-sans); font-weight:900; font-size:30px; color:#2E9E5B; line-height:1">&rsaquo;&rsaquo;&rsaquo;</span></div></div>
+<div class="placa anim" style="padding:26px 30px 22px; display:flex; flex-direction:column"><span class="bolt l red"></span><span class="bolt r red"></span><div style="display:inline-flex; align-self:flex-start; align-items:center; gap:10px; background:#C8301B; color:#fff; border-radius:22px; padding:7px 18px 7px 7px; font-family:var(--ff-mono); font-size:18px; font-weight:700; letter-spacing:.07em"><span style="width:28px;height:28px;border-radius:50%;background:#fff;color:#C8301B;display:flex;align-items:center;justify-content:center;font-family:var(--ff-sans);font-weight:800;font-size:18px">7</span>CLASIFICACIÓN</div><div style="font-family:var(--ff-sans); font-weight:800; font-size:34px; color:#15171B; margin-top:20px; line-height:1.04">¿Leve o severo?</div><div style="display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:18px"><span class="mono" style="font-size:20px; color:var(--mute); letter-spacing:.03em">Random Forest explicativo</span><span style="font-family:var(--ff-sans); font-weight:900; font-size:30px; color:#C8301B; line-height:1">&rsaquo;&rsaquo;&rsaquo;</span></div></div><div class="placa anim" style="padding:26px 30px 22px; display:flex; flex-direction:column"><span class="bolt l amber"></span><span class="bolt r amber"></span><div style="display:inline-flex; align-self:flex-start; align-items:center; gap:10px; background:#E0901F; color:#fff; border-radius:22px; padding:7px 18px 7px 7px; font-family:var(--ff-mono); font-size:18px; font-weight:700; letter-spacing:.07em"><span style="width:28px;height:28px;border-radius:50%;background:#fff;color:#E0901F;display:flex;align-items:center;justify-content:center;font-family:var(--ff-sans);font-weight:800;font-size:18px">9</span>REGRESIÓN</div><div style="font-family:var(--ff-sans); font-weight:800; font-size:34px; color:#15171B; margin-top:20px; line-height:1.04">¿Cuántos habrá?</div><div style="display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:18px"><span class="mono" style="font-size:20px; color:var(--mute); letter-spacing:.03em">Lineal · validada en 2024</span><span style="font-family:var(--ff-sans); font-weight:900; font-size:30px; color:#E0901F; line-height:1">&rsaquo;&rsaquo;&rsaquo;</span></div></div><div class="placa anim" style="padding:26px 30px 22px; display:flex; flex-direction:column"><span class="bolt l green"></span><span class="bolt r green"></span><div style="display:inline-flex; align-self:flex-start; align-items:center; gap:10px; background:#2E9E5B; color:#fff; border-radius:22px; padding:7px 18px 7px 7px; font-family:var(--ff-mono); font-size:18px; font-weight:700; letter-spacing:.07em"><span style="width:28px;height:28px;border-radius:50%;background:#fff;color:#2E9E5B;display:flex;align-items:center;justify-content:center;font-family:var(--ff-sans);font-weight:800;font-size:18px">10</span>NO SUPERVISADO</div><div style="font-family:var(--ff-sans); font-weight:800; font-size:34px; color:#15171B; margin-top:20px; line-height:1.04">¿Dónde y quién?</div><div style="display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:18px"><span class="mono" style="font-size:20px; color:var(--mute); letter-spacing:.03em">k-means · DBSCAN · Apriori</span><span style="font-family:var(--ff-sans); font-weight:900; font-size:30px; color:#2E9E5B; line-height:1">&rsaquo;&rsaquo;&rsaquo;</span></div></div>
   </div>
   <p class="note anim" style="--d:.3s; max-width:none; border:none; padding:0; text-align:center; align-self:center">Todo el trabajo sigue el proceso KDD / CRISP-DM: selección, limpieza, transformación, minería y evaluación de patrones.</p>
 </div>
@@ -374,7 +374,7 @@
   <section class="slide" data-label="Pipeline KDD">
 <div class="eyebrow"><span class="rcode"><b>MET</b><i>03</i></span><span class="ey-sec">Metodología</span><span class="ey-line"></span></div>
 <h2 class="title anim">Evaluamos la integración <em>antes</em> de integrar</h2>
-<div class="content" style="justify-content:flex-start; gap:60px; padding-top:64px">
+<div class="content" style="justify-content:center; gap:60px; padding-top:40px">
   <div class="ruta anim" style="--d:.1s">
 <div class="hito"><div class="hito-top"><div class="hito-disc">01</div><div class="hito-conn"></div></div><div class="hito-h">Ingesta</div><div class="hito-b">6 datasets base + fuentes externas.</div></div><div class="hito"><div class="hito-top"><div class="hito-disc">02</div><div class="hito-conn"></div></div><div class="hito-h">Perfilado</div><div class="hito-b">Cobertura, nulos y llaves, una por una.</div></div><div class="hito"><div class="hito-top"><div class="hito-disc">03</div><div class="hito-conn"></div></div><div class="hito-h">Veredicto</div><div class="hito-b">Integra solo si aporta señal medible.</div></div><div class="hito"><div class="hito-top"><div class="hito-disc">04</div><div class="hito-conn"></div></div><div class="hito-h">Modelado</div><div class="hito-b">Clasificación, regresión, no supervisado.</div></div><div class="hito"><div class="hito-top"><div class="hito-disc end">05</div></div><div class="hito-h">Patrones</div><div class="hito-b">Métricas honestas y validación temporal.</div></div>
   </div>
@@ -384,26 +384,44 @@
 
   <section class="slide" data-label="Veredicto datasets">
 <div class="eyebrow"><span class="rcode"><b>MET</b><i>04</i></span><span class="ey-sec">Metodología</span><span class="ey-line"></span></div>
-<h2 class="title sm anim">De seis datasets externos, <em>cuatro</em> no aportaban señal</h2>
-<div class="content" style="justify-content:flex-start; gap:34px; padding-top:44px">
-  <div style="display:grid; grid-template-columns:1fr 1fr; gap:22px 30px">
-<div class="verdict"><div class="permiso"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.3L19 6.5"/></svg></div><div style="flex:1; display:flex; flex-direction:column; gap:11px"><div class="vt">Víctimas · 42.650</div><div style="display:flex; align-items:center; gap:13px; flex-wrap:wrap"><span class="pill" style="background:var(--safe)">Integrar</span><span class="vr">join 1:1, mejor predictor</span></div></div></div><div class="verdict"><div class="permiso"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.3L19 6.5"/></svg></div><div style="flex:1; display:flex; flex-direction:column; gap:11px"><div class="vt">Clima diario · Peajes · Feriados</div><div style="display:flex; align-items:center; gap:13px; flex-wrap:wrap"><span class="pill" style="background:var(--safe)">Agregar</span><span class="vr">granularidad correcta</span></div></div></div><div class="verdict no"><div class="prohib"><span></span></div><div style="flex:1; display:flex; flex-direction:column; gap:11px"><div class="vt">Lluvia / temp mensual</div><div style="display:flex; align-items:center; gap:13px; flex-wrap:wrap"><span class="pill" style="background:var(--severe)">Descartar</span><span class="vr">redundante con estación</span></div></div></div><div class="verdict no"><div class="prohib"><span></span></div><div style="flex:1; display:flex; flex-direction:column; gap:11px"><div class="vt">Flujo AUSA · Anillo Digital</div><div style="display:flex; align-items:center; gap:13px; flex-wrap:wrap"><span class="pill" style="background:var(--severe)">Descartar</span><span class="vr">36–74% NaN, solo autopistas</span></div></div></div>
+<h2 class="title sm anim">De seis datasets de la consigna, <em>cuatro</em> no aportaban señal</h2>
+<div class="content" style="justify-content:center; gap:26px">
+  <div class="anim" style="--d:.08s">
+    <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin-bottom:14px">La base y lo que integramos</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px 26px">
+<div class="verdict"><div class="permiso" style="background:var(--panel)"><span style="font-family:var(--ff-sans); font-weight:900; font-size:34px; color:#fff">★</span></div><div style="flex:1; display:flex; flex-direction:column; gap:11px"><div class="vt">Siniestros · 37.849</div><div style="display:flex; align-items:center; gap:13px; flex-wrap:wrap"><span class="pill" style="background:var(--panel)">Base</span><span class="vr">los hechos a explicar · 2021–24</span></div></div></div><div class="verdict"><div class="permiso"><svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.2 4.3L19 6.5"/></svg></div><div style="flex:1; display:flex; flex-direction:column; gap:11px"><div class="vt">Víctimas · 42.650</div><div style="display:flex; align-items:center; gap:13px; flex-wrap:wrap"><span class="pill" style="background:var(--safe)">Integrar</span><span class="vr">join 1:1, mejor predictor</span></div></div></div>
+    </div>
   </div>
-  <p class="body anim" style="--d:.2s; font-size:25px; max-width:88ch; border-left:4px solid var(--accent); padding-left:20px; margin-top:6px">Un dataset entra solo si comparte llave útil, aporta señal medible y cubre el período. Documentar el resultado negativo con números es parte del entregable.</p>
+  <div class="anim" style="--d:.18s">
+    <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--severe); margin-bottom:14px">No aportaban señal · 4 de 6</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px 26px">
+<div class="verdict no"><div class="prohib"><span></span></div><div style="flex:1; display:flex; flex-direction:column; gap:11px"><div class="vt">Lluvia mensual</div><div style="display:flex; align-items:center; gap:13px; flex-wrap:wrap"><span class="pill" style="background:var(--severe)">Descartar</span><span class="vr">ρ≈0,00 con severo · redunda con estación</span></div></div></div><div class="verdict no"><div class="prohib"><span></span></div><div style="flex:1; display:flex; flex-direction:column; gap:11px"><div class="vt">Temperatura mensual</div><div style="display:flex; align-items:center; gap:13px; flex-wrap:wrap"><span class="pill" style="background:var(--severe)">Descartar</span><span class="vr">sin señal vs target · proxy de estación</span></div></div></div><div class="verdict no"><div class="prohib"><span></span></div><div style="flex:1; display:flex; flex-direction:column; gap:11px"><div class="vt">Flujo AUSA</div><div style="display:flex; align-items:center; gap:13px; flex-wrap:wrap"><span class="pill" style="background:var(--severe)">Descartar</span><span class="vr">36% NaN · solo autopistas</span></div></div></div><div class="verdict no"><div class="prohib"><span></span></div><div style="flex:1; display:flex; flex-direction:column; gap:11px"><div class="vt">Flujo Anillo Digital</div><div style="display:flex; align-items:center; gap:13px; flex-wrap:wrap"><span class="pill" style="background:var(--severe)">Descartar</span><span class="vr">74% NaN · termina feb-2022</span></div></div></div>
+    </div>
+  </div>
+  <p class="body anim" style="--d:.26s; font-size:24px; max-width:none; border-left:4px solid var(--accent); padding-left:20px">Un dataset entra solo si comparte llave útil, aporta señal medible y cubre el período. Documentar el resultado negativo con números es parte del entregable.</p>
 </div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">04</span></span></span></div>
   </section>
 
+  <section class="slide" data-label="Reemplazos">
+<div class="eyebrow"><span class="rcode"><b>MET</b><i>05</i></span><span class="ey-sec">Metodología · reemplazos</span><span class="ey-line"></span></div>
+<h2 class="title sm anim">En su lugar, tres fuentes con la granularidad <em>correcta</em></h2>
+<div class="content" style="justify-content:center; gap:34px">
+  <div class="anim" style="--d:.1s; display:grid; grid-template-columns:repeat(3,1fr); gap:30px">
+<div class="placa" style="padding:34px 32px 32px; display:flex; flex-direction:column; gap:15px"><div style="display:flex; align-items:center; justify-content:space-between"><span class="pill" style="background:var(--safe)">Agregar</span><span class="mono" style="font-size:18px; letter-spacing:.08em; color:var(--mute)">DIARIO</span></div><div style="font-family:var(--ff-sans); font-weight:800; font-size:31px; color:var(--ink); line-height:1.05">Clima diario</div><div class="mono" style="font-size:20px; color:var(--panel)">Meteostat · Aeroparque</div><p class="body" style="font-size:23px; line-height:1.4">Precipitación y temperatura por día → la feature <span class="mono" style="font-size:20px">llovió_ese_día</span>, con variación real entre siniestros.</p><div class="mono" style="font-size:18px; color:var(--reason); margin-top:auto; padding-top:8px">↳ reemplaza al clima mensual</div></div><div class="placa" style="padding:34px 32px 32px; display:flex; flex-direction:column; gap:15px"><div style="display:flex; align-items:center; justify-content:space-between"><span class="pill" style="background:var(--safe)">Agregar</span><span class="mono" style="font-size:18px; letter-spacing:.08em; color:var(--mute)">CALENDARIO</span></div><div style="font-family:var(--ff-sans); font-weight:800; font-size:31px; color:var(--ink); line-height:1.05">Feriados</div><div class="mono" style="font-size:20px; color:var(--panel)">ArgentinaDatos</div><p class="body" style="font-size:23px; line-height:1.4">78 feriados 2021–24 → la feature <span class="mono" style="font-size:20px">es_feriado</span>, que complementa al fin de semana.</p><div class="mono" style="font-size:18px; color:var(--reason); margin-top:auto; padding-top:8px">↳ nuevo eje temporal</div></div><div class="placa" style="padding:34px 32px 32px; display:flex; flex-direction:column; gap:15px"><div style="display:flex; align-items:center; justify-content:space-between"><span class="pill" style="background:var(--safe)">Agregar</span><span class="mono" style="font-size:18px; letter-spacing:.08em; color:var(--mute)">MENSUAL</span></div><div style="font-family:var(--ff-sans); font-weight:800; font-size:31px; color:var(--ink); line-height:1.05">Peajes de autopistas</div><div class="mono" style="font-size:20px; color:var(--panel)">IDECBA</div><p class="body" style="font-size:23px; line-height:1.4">Vehículos por peaje — el único conteo vehicular <strong>continuo</strong> de CABA → proxy de exposición y tránsito.</p><div class="mono" style="font-size:18px; color:var(--reason); margin-top:auto; padding-top:8px">↳ reemplaza al flujo por radares</div></div>
+  </div>
+  <p class="body anim" style="--d:.26s; font-size:24px; max-width:none; border-left:4px solid var(--accent); padding-left:20px">Lo que define si un dato sirve es la <strong>granularidad</strong>, no la fuente: el clima diario varía entre siniestros del mismo mes; los peajes son el único conteo vehicular continuo de la Ciudad. Todo entra como archivos estáticos versionados — sin APIs en runtime.</p>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">05</span></span></span></div>
+  </section>
+
+
   <section class="slide" data-label="Panorama EDA">
-<div class="eyebrow"><span class="rcode"><b>EDA</b><i>05</i></span><span class="ey-sec">Análisis exploratorio</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>EDA</b><i>06</i></span><span class="ey-sec">Análisis exploratorio</span><span class="ey-line"></span></div>
 <h2 class="title sm anim">El retrato: moto, hora pico y un <em>5,7%</em> que termina grave</h2>
 <div class="content" style="justify-content:center">
-  <div class="grid2" style="grid-template-columns:1.25fr 1fr; gap:70px; align-items:center">
-    <div>
-      <div class="row anim" style="--d:.08s; gap:22px">
-<div class="placa" style="padding:34px 28px 24px"><span class="bolt l "></span><span class="bolt r "></span><div class="stat-num" style="font-size:72px; color:#15171B">37.849</div><div class="stat-lab">Siniestros · 2021–24</div></div><div class="placa" style="padding:34px 28px 24px"><span class="bolt l "></span><span class="bolt r "></span><div class="stat-num" style="font-size:72px; color:#15171B">25,9</div><div class="stat-lab">Por día</div></div>
-      </div>
-      <div class="row anim" style="--d:.16s; gap:22px; margin-top:22px">
-<div class="placa sev" style="padding:34px 28px 24px"><span class="bolt l red"></span><span class="bolt r red"></span><div class="stat-num" style="font-size:72px; color:#C8301B">5,7%</div><div class="stat-lab">Severos · grave+mortal</div></div><div class="placa" style="padding:34px 28px 24px"><span class="bolt l "></span><span class="bolt r "></span><div class="stat-num" style="font-size:72px; color:#0E6B3A">Moto</div><div class="stat-lab">Víctima más frecuente</div></div>
+  <div class="grid2" style="grid-template-columns:1.1fr 1fr; gap:70px; align-items:stretch">
+    <div style="display:flex; flex-direction:column; justify-content:center">
+      <div class="anim" style="--d:.08s; display:grid; grid-template-columns:1fr 1fr; gap:22px">
+<div class="placa" style="padding:38px 30px 28px; display:flex; flex-direction:column; justify-content:center"><span class="bolt l "></span><span class="bolt r "></span><div class="stat-num" style="font-size:76px; color:#15171B">37.849</div><div class="stat-lab">Siniestros · 2021–24</div></div><div class="placa" style="padding:38px 30px 28px; display:flex; flex-direction:column; justify-content:center"><span class="bolt l "></span><span class="bolt r "></span><div class="stat-num" style="font-size:76px; color:#15171B">25,9</div><div class="stat-lab">Por día</div></div><div class="placa sev" style="padding:38px 30px 28px; display:flex; flex-direction:column; justify-content:center"><span class="bolt l red"></span><span class="bolt r red"></span><div class="stat-num" style="font-size:76px; color:#C8301B">5,7%</div><div class="stat-lab">Severos · grave+mortal</div></div><div class="placa" style="padding:38px 30px 28px; display:flex; flex-direction:column; justify-content:center"><span class="bolt l "></span><span class="bolt r "></span><div class="stat-num" style="font-size:76px; color:#0E6B3A; letter-spacing:-.01em">Moto</div><div class="stat-lab">Víctima más frecuente</div></div>
       </div>
       <p class="note anim" style="--d:.24s; margin-top:28px; max-width:none">La hora pico de siniestros sigue la hora pico de tránsito. Tras la moto, el peatón; la contraparte más común es el auto.</p>
     </div>
@@ -417,35 +435,27 @@
       <p class="small mono" style="font-size:18px; margin-top:12px">Siniestros / 100.000 hab / año · Censo 2022.<br>Comuna 1: <strong style="color:var(--severe)">458</strong> — 2,3× la Comuna 6.</p>
     </div>
   </div>
-</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">05</span></span></span></div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">06</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Crecimiento +35%">
-<div class="eyebrow"><span class="rcode"><b>EDA</b><i>06</i></span><span class="ey-sec">Análisis exploratorio</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>EDA</b><i>07</i></span><span class="ey-sec">Análisis exploratorio</span><span class="ey-line"></span></div>
 <h2 class="title anim">Los siniestros crecieron <em>+35%</em> desde 2021</h2>
 <div class="content" style="justify-content:center">
   <div class="grid2" style="grid-template-columns:1.5fr 1fr; gap:80px; align-items:center">
     <div class="anim" style="--d:.12s">
-      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:40px; align-items:end; height:420px; border-bottom:3px solid var(--ink); padding:0 10px">
-<div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%"><span class="mono" style="font-size:22px; font-weight:700; margin-bottom:12px; color:#15171B">7.819</span><div style="width:100%; height:74%; background:#A8A49A; border-radius:3px 3px 0 0"></div></div><div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%"><span class="mono" style="font-size:22px; font-weight:700; margin-bottom:12px; color:#15171B">9.536</span><div style="width:100%; height:90%; background:#A8A49A; border-radius:3px 3px 0 0"></div></div><div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%"><span class="mono" style="font-size:22px; font-weight:700; margin-bottom:12px; color:#15171B">9.925</span><div style="width:100%; height:94%; background:#E0901F; border-radius:3px 3px 0 0"></div></div><div style="display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%"><span class="mono" style="font-size:22px; font-weight:700; margin-bottom:12px; color:#C8301B">10.569</span><div style="width:100%; height:100%; background:#C8301B; border-radius:3px 3px 0 0"></div></div>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:40px; margin-top:14px; padding:0 10px">
-        <span class="mono" style="text-align:center; color:var(--mute); font-size:18px">2021</span>
-        <span class="mono" style="text-align:center; color:var(--mute); font-size:18px">2022</span>
-        <span class="mono" style="text-align:center; color:var(--mute); font-size:18px">2023</span>
-        <span class="mono" style="text-align:center; color:var(--mute); font-size:18px">2024</span>
-      </div>
+      <div><svg viewBox="0 0 860 440" style="width:100%; height:auto; display:block"><line x1="58" y1="398.0" x2="808" y2="398.0" stroke="var(--hair)" stroke-width="1"/><text x="46" y="403.0" text-anchor="end" font-family="var(--ff-mono)" font-size="16" fill="var(--mute)">0</text><line x1="58" y1="312.5" x2="808" y2="312.5" stroke="var(--hair)" stroke-width="1"/><text x="46" y="317.5" text-anchor="end" font-family="var(--ff-mono)" font-size="16" fill="var(--mute)">250</text><line x1="58" y1="227.1" x2="808" y2="227.1" stroke="var(--hair)" stroke-width="1"/><text x="46" y="232.1" text-anchor="end" font-family="var(--ff-mono)" font-size="16" fill="var(--mute)">500</text><line x1="58" y1="141.6" x2="808" y2="141.6" stroke="var(--hair)" stroke-width="1"/><text x="46" y="146.6" text-anchor="end" font-family="var(--ff-mono)" font-size="16" fill="var(--mute)">750</text><line x1="58" y1="56.2" x2="808" y2="56.2" stroke="var(--hair)" stroke-width="1"/><text x="46" y="61.2" text-anchor="end" font-family="var(--ff-mono)" font-size="16" fill="var(--mute)">1.000</text><text x="820" y="403.0" text-anchor="start" font-family="var(--ff-mono)" font-size="16" fill="var(--severe)">0%</text><text x="820" y="215.0" text-anchor="start" font-family="var(--ff-mono)" font-size="16" fill="var(--severe)">6%</text><text x="820" y="27.0" text-anchor="start" font-family="var(--ff-mono)" font-size="16" fill="var(--severe)">12%</text><line x1="58.0" y1="398.0" x2="58.0" y2="405.0" stroke="var(--ink)" stroke-width="2"/><text x="58.0" y="424.0" text-anchor="start" font-family="var(--ff-mono)" font-size="18" fill="var(--mute)">2021</text><line x1="249.5" y1="398.0" x2="249.5" y2="405.0" stroke="var(--ink)" stroke-width="2"/><text x="249.5" y="424.0" text-anchor="middle" font-family="var(--ff-mono)" font-size="18" fill="var(--mute)">2022</text><line x1="441.0" y1="398.0" x2="441.0" y2="405.0" stroke="var(--ink)" stroke-width="2"/><text x="441.0" y="424.0" text-anchor="middle" font-family="var(--ff-mono)" font-size="18" fill="var(--mute)">2023</text><line x1="632.5" y1="398.0" x2="632.5" y2="405.0" stroke="var(--ink)" stroke-width="2"/><text x="632.5" y="424.0" text-anchor="middle" font-family="var(--ff-mono)" font-size="18" fill="var(--mute)">2024</text><path d="M 58.0,398.0 L 58.0,215.1 L 74.0,232.6 L 89.9,152.2 L 105.9,189.8 L 121.8,295.1 L 137.8,167.6 L 153.7,158.4 L 169.7,122.2 L 185.7,172.1 L 201.6,113.3 L 217.6,172.4 L 233.5,112.6 L 249.5,205.6 L 265.4,183.3 L 281.4,101.6 L 297.4,106.8 L 313.3,115.3 L 329.3,113.3 L 345.2,137.5 L 361.2,115.0 L 377.1,89.0 L 393.1,108.5 L 409.1,113.9 L 425.0,126.6 L 441.0,189.8 L 456.9,190.9 L 472.9,98.9 L 488.9,121.8 L 504.8,88.0 L 520.8,105.1 L 536.7,102.3 L 552.7,102.0 L 568.6,100.6 L 584.6,86.3 L 600.6,95.8 L 616.5,102.0 L 632.5,155.3 L 648.4,153.9 L 664.4,116.7 L 680.3,112.9 L 696.3,82.5 L 712.3,123.2 L 728.2,92.1 L 744.2,84.6 L 760.1,91.0 L 776.1,56.5 L 792.0,66.1 L 808.0,28.5 L 808.0,398.0 Z" fill="var(--slate)" opacity="0.13"/><polyline points="58.0,215.1 74.0,232.6 89.9,152.2 105.9,189.8 121.8,295.1 137.8,167.6 153.7,158.4 169.7,122.2 185.7,172.1 201.6,113.3 217.6,172.4 233.5,112.6 249.5,205.6 265.4,183.3 281.4,101.6 297.4,106.8 313.3,115.3 329.3,113.3 345.2,137.5 361.2,115.0 377.1,89.0 393.1,108.5 409.1,113.9 425.0,126.6 441.0,189.8 456.9,190.9 472.9,98.9 488.9,121.8 504.8,88.0 520.8,105.1 536.7,102.3 552.7,102.0 568.6,100.6 584.6,86.3 600.6,95.8 616.5,102.0 632.5,155.3 648.4,153.9 664.4,116.7 680.3,112.9 696.3,82.5 712.3,123.2 728.2,92.1 744.2,84.6 760.1,91.0 776.1,56.5 792.0,66.1 808.0,28.5" fill="none" stroke="var(--slate)" stroke-width="2.6" stroke-linejoin="round"/><path d="M 58.0,155.1 L 74.0,176.5 L 89.9,233.4 L 105.9,175.9 L 121.8,184.3 L 137.8,173.8 L 153.7,233.5 L 169.7,230.9 L 185.7,238.4 L 201.6,230.2 L 217.6,227.6 L 233.5,188.1 L 249.5,176.4 L 265.4,164.0 L 281.4,183.7 L 297.4,189.9 L 313.3,185.9 L 329.3,191.6 L 345.2,180.3 L 361.2,190.7 L 377.1,188.2 L 393.1,204.9 L 409.1,217.3 L 425.0,221.4 L 441.0,232.8 L 456.9,220.8 L 472.9,222.6 L 488.9,230.5 L 504.8,251.2 L 520.8,259.8 L 536.7,260.0 L 552.7,258.2 L 568.6,263.1 L 584.6,267.6 L 600.6,277.0 L 616.5,262.9 L 632.5,248.3 L 648.4,219.9 L 664.4,221.2 L 680.3,217.1 L 696.3,213.0 L 712.3,220.5 L 728.2,212.1 L 744.2,214.4 L 760.1,203.9 L 776.1,203.5 L 792.0,204.6 L 808.0,198.9" fill="none" stroke="var(--severe)" stroke-width="2.2" stroke-linejoin="round"/><line x1="58" y1="22" x2="58" y2="398.0" stroke="var(--ink)" stroke-width="2"/><line x1="58" y1="398.0" x2="808" y2="398.0" stroke="var(--ink)" stroke-width="2.5"/><line x1="808" y1="22" x2="808" y2="398.0" stroke="var(--severe)" stroke-width="1.5" opacity="0.5"/></svg></div><div style="display:flex; gap:26px; align-items:center; margin-top:14px; font-family:var(--ff-mono); font-size:18px; color:var(--mute)"><span style="display:flex; align-items:center; gap:8px"><span style="width:16px; height:10px; background:var(--slate); border-radius:2px; display:inline-block"></span>Siniestros / mes</span><span style="display:flex; align-items:center; gap:8px"><span style="width:18px; height:3px; background:var(--severe); display:inline-block"></span>% severo (media móvil 3m)</span></div>
     </div>
     <div class="anim" style="--d:.24s">
       <p class="lead" style="margin-bottom:28px">Crecimiento sostenido tras la pandemia: <strong>+35,2%</strong> entre 2021 y 2024.</p>
-      <p class="body" style="font-size:25px">Pero el número crudo esconde una pregunta: ¿empeoró la seguridad vial, o solo volvió el tránsito a la calle?</p>
+      <p class="body" style="font-size:25px; margin-bottom:18px">La <strong style="color:var(--severe)">línea roja</strong> —el % que termina severo— se mantiene en una banda baja: <strong>crece la cantidad, no la gravedad</strong>.</p><p class="body" style="font-size:25px">Pero el número crudo esconde una pregunta: ¿empeoró la seguridad vial, o solo volvió el tránsito a la calle?</p>
     </div>
   </div>
-</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">06</span></span></span></div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">07</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Tránsito 2 de 3">
-<div class="eyebrow"><span class="rcode"><b>EXP</b><i>07</i></span><span class="ey-sec">Exposición · normalización</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>EXP</b><i>08</i></span><span class="ey-sec">Exposición · normalización</span><span class="ey-line"></span></div>
 <h2 class="title anim">Dos tercios de ese +35% es <em>tránsito</em>, no más riesgo</h2>
 <div class="content" style="justify-content:center; gap:44px">
   <div class="anim" style="--d:.12s">
@@ -469,11 +479,11 @@
     <div style="flex:1; padding:0 44px; border-left:1px solid var(--hair)"><div class="stat-num" style="font-size:58px">+2,87</div><div class="stat-lab">Siniestros/día por millón extra</div></div>
     <div style="flex:1.3; padding-left:44px; border-left:1px solid var(--hair)"><p class="note" style="border:none; padding:0">Proxy: peajes de autopistas (IDECBA), el único conteo vehicular <em>continuo</em> de la Ciudad. Sin normalizar por exposición, el número crudo engaña.</p></div>
   </div>
-</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">07</span></span></span></div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">08</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Ranking normalizado">
-<div class="eyebrow"><span class="rcode"><b>EXP</b><i>08</i></span><span class="ey-sec">Exposición · normalización</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>EXP</b><i>09</i></span><span class="ey-sec">Exposición · normalización</span><span class="ey-line"></span></div>
 <h2 class="title sm anim">Normalizar por tránsito reordena el ranking de avenidas</h2>
 <div class="content" style="justify-content:center; gap:40px">
   <div class="anim" style="--d:.12s">
@@ -497,11 +507,11 @@
     </div>
     <p class="note" style="margin-top:18px; max-width:none">La Illia tiene 5× menos siniestros por vehículo pero la mayor severidad: menos choques, más graves (velocidad). El sensor mide un punto, no toda la arteria — índice comparativo.</p>
   </div>
-</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">08</span></span></span></div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">09</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Lluvia">
-<div class="eyebrow"><span class="rcode"><b>EDA</b><i>09</i></span><span class="ey-sec">Análisis exploratorio</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>EDA</b><i>10</i></span><span class="ey-sec">Análisis exploratorio</span><span class="ey-line"></span></div>
 <h2 class="title anim">La lluvia trae <em>menos</em> siniestros, no más graves</h2>
 <div class="content" style="justify-content:center">
   <div class="grid2" style="grid-template-columns:1.05fr 1fr; gap:72px; align-items:center">
@@ -524,11 +534,11 @@
       </div>
     </div>
   </div>
-</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">09</span></span></span></div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">10</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Velocidad y severidad">
-<div class="eyebrow"><span class="rcode"><b>EDA</b><i>10</i></span><span class="ey-sec">Análisis exploratorio</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>EDA</b><i>11</i></span><span class="ey-sec">Análisis exploratorio</span><span class="ey-line"></span></div>
 <h2 class="title sm anim">La velocidad de la vía ordena la severidad de punta a punta</h2>
 <div class="content" style="justify-content:center"><div style="display:flex; gap:56px; align-items:center">
   <div class="anim" style="--d:.12s; flex:1.55">
@@ -538,19 +548,61 @@
     <div class="rombo-warn"><span class="in"><span class="big">×4</span><span class="lab">SEVERIDAD</span></span></div>
     <p style="font-family:var(--ff-sans); font-size:26px; line-height:1.42; color:var(--body); text-align:center; max-width:30ch">De la zona peatonal a la autopista, los siniestros severos se <strong style="color:var(--ink)">multiplican por cuatro</strong>. El límite legal lo fija el tipo de vía.</p>
   </div>
-</div></div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">10</span></span></span></div>
+</div></div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">11</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Perfiles de riesgo">
-<div class="eyebrow"><span class="rcode"><b>NS</b><i>11</i></span><span class="ey-sec">Aprendizaje no supervisado · k-means (k=5)</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>NS</b><i>12</i></span><span class="ey-sec">Aprendizaje no supervisado · k-means (k=5)</span><span class="ey-line"></span></div>
 <h2 class="title sm anim" style="margin-bottom:22px">La gravedad no es un lugar: es un <em>perfil</em></h2>
 <div class="content" style="justify-content:center">
   <div class="anim" style="--d:.1s; width:100%"><div class="app-embed perfiles-embed" id="perfiles-mount"></div></div>
-</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">11</span></span></span></div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">12</span></span></span></div>
   </section>
 
+  <section class="slide" data-label="Método perfiles">
+<div class="eyebrow"><span class="rcode"><b>NS</b><i>13</i></span><span class="ey-sec">No supervisado · k-means · método</span><span class="ey-line"></span></div>
+<h2 class="title sm anim">Cómo se arman los <em>cinco</em> perfiles</h2>
+<div class="content" style="justify-content:center">
+  <div class="grid2" style="grid-template-columns:1fr 1.08fr; gap:60px; align-items:center">
+    <div class="anim" style="--d:.12s">
+      <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin-bottom:16px">La receta · 8 variables del siniestro</p>
+      <div style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:24px"><span class="tag" style="font-size:18px">hora</span><span class="tag" style="font-size:18px">fin de semana</span><span class="tag" style="font-size:18px">edad media</span><span class="tag" style="font-size:18px">% masculino</span><span class="tag" style="font-size:18px">n° víctimas</span><span class="tag" style="font-size:18px">hay moto</span><span class="tag" style="font-size:18px">hay peatón</span><span class="tag" style="font-size:18px">hay mayor</span></div>
+      <p class="body" style="font-size:23px; margin-bottom:26px">Imputación por <strong>mediana</strong> → <strong>StandardScaler</strong> (estandarizar evita que la edad domine por escala) → <strong>k-means</strong> (random_state=42, n_init=10).</p>
+      <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:10px">k elegido por el método del codo (k=2…8)</p>
+      <svg viewBox="0 0 380 176" style="width:100%; max-width:420px; height:auto; display:block"><line x1="199.0" y1="14" x2="199.0" y2="146.0" stroke="var(--severe)" stroke-width="1.5" stroke-dasharray="4 4"/><text x="205.0" y="26" font-family="var(--ff-mono)" font-size="13" fill="var(--severe)">k=5</text><polyline points="30.0,20.8 86.3,56.6 142.7,83.0 199.0,103.4 255.3,114.5 311.7,129.0 368.0,137.5" fill="none" stroke="var(--slate)" stroke-width="2.2"/><circle cx="30.0" cy="20.8" r="3.2" fill="var(--slate)"/><circle cx="86.3" cy="56.6" r="3.2" fill="var(--slate)"/><circle cx="142.7" cy="83.0" r="3.2" fill="var(--slate)"/><circle cx="199.0" cy="103.4" r="3.2" fill="var(--slate)"/><circle cx="255.3" cy="114.5" r="3.2" fill="var(--slate)"/><circle cx="311.7" cy="129.0" r="3.2" fill="var(--slate)"/><circle cx="368.0" cy="137.5" r="3.2" fill="var(--slate)"/><line x1="30" y1="146.0" x2="368" y2="146.0" stroke="var(--ink)" stroke-width="1.5"/><text x="30.0" y="166" text-anchor="middle" font-family="var(--ff-mono)" font-size="13" fill="var(--mute)">2</text><text x="86.3" y="166" text-anchor="middle" font-family="var(--ff-mono)" font-size="13" fill="var(--mute)">3</text><text x="142.7" y="166" text-anchor="middle" font-family="var(--ff-mono)" font-size="13" fill="var(--mute)">4</text><text x="199.0" y="166" text-anchor="middle" font-family="var(--ff-mono)" font-size="13" fill="var(--mute)">5</text><text x="255.3" y="166" text-anchor="middle" font-family="var(--ff-mono)" font-size="13" fill="var(--mute)">6</text><text x="311.7" y="166" text-anchor="middle" font-family="var(--ff-mono)" font-size="13" fill="var(--mute)">7</text><text x="368.0" y="166" text-anchor="middle" font-family="var(--ff-mono)" font-size="13" fill="var(--mute)">8</text><text x="24" y="18" text-anchor="end" font-family="var(--ff-mono)" font-size="12" fill="var(--mute)"></text><text x="190" y="176" text-anchor="middle" font-family="var(--ff-mono)" font-size="12" fill="var(--mute)"></text></svg>
+    </div>
+    <div class="anim" style="--d:.24s">
+      <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin-bottom:18px">Cómo se nombró cada cluster</p>
+      <table class="tbl"><thead><tr><th>Perfil</th><th style="text-align:left">Rasgo dominante</th><th>% severo</th></tr></thead><tbody><tr><td style="font-weight:600">Persona mayor</td><td style="text-align:left; color:var(--mute); font-family:var(--ff-mono); font-size:19px">edad 73 · sin moto</td><td class="num" style="color:var(--severe); font-weight:700">12,9%</td></tr><tr><td style="font-weight:600">Peatón adulto</td><td style="text-align:left; color:var(--mute); font-family:var(--ff-mono); font-size:19px">~36 · peatón</td><td class="num" style="color:#E0681F; font-weight:700">10,3%</td></tr><tr><td style="font-weight:600">Moto laboral</td><td style="text-align:left; color:var(--mute); font-family:var(--ff-mono); font-size:19px">~32 · 70% masc · semana</td><td class="num" style="color:var(--amber); font-weight:700">7,0%</td></tr><tr><td style="font-weight:600">Finde joven</td><td style="text-align:left; color:var(--mute); font-family:var(--ff-mono); font-size:19px">~32 · 100% finde</td><td class="num" style="color:#6FA63A; font-weight:700">6,3%</td></tr><tr><td style="font-weight:600">Vehicular leve</td><td style="text-align:left; color:var(--mute); font-family:var(--ff-mono); font-size:19px">auto vs auto · sin moto/peatón</td><td class="num" style="color:var(--safe); font-weight:700">2,0%</td></tr></tbody></table>
+      <p class="note" style="margin-top:24px">k-means devuelve grupos anónimos (0–4). Cada uno se etiquetó mirando la <strong style="color:var(--ink)">media de sus features</strong> por cluster —edad, % moto, % peatón, % finde— y su rasgo dominante.</p>
+    </div>
+  </div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">13</span></span></span></div>
+  </section>
+
+  <section class="slide" data-label="Método PCA">
+<div class="eyebrow"><span class="rcode"><b>NS</b><i>14</i></span><span class="ey-sec">No supervisado · PCA · método</span><span class="ey-line"></span></div>
+<h2 class="title sm anim">PCA: ¿conviene reducir dimensiones? <em>No.</em></h2>
+<div class="content" style="justify-content:center">
+  <div class="grid2" style="grid-template-columns:1fr 1.05fr; gap:60px; align-items:center">
+    <div class="anim" style="--d:.12s">
+      <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin-bottom:16px">Qué es y para qué lo usamos</p>
+      <p class="body" style="font-size:23px; margin-bottom:20px">PCA combina las 8 variables del perfil en <strong>componentes ortogonales</strong>, ordenados por cuánta varianza capturan. Le dimos <strong>dos usos</strong>:</p>
+      <p class="body" style="font-size:21px; margin-bottom:14px"><strong>1 · Visualizar</strong> — proyectar los 5 perfiles a 2D para ver que se separan (el scatter de la slide de perfiles).</p>
+      <p class="body" style="font-size:21px"><strong>2 · Decidir si reducir</strong> dimensiones antes de modelar — y la respuesta fue que no.</p>
+    </div>
+    <div class="anim" style="--d:.24s">
+      <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin-bottom:16px">Varianza acumulada por componente</p>
+<svg viewBox="0 0 420 210" style="width:100%; max-width:460px; height:auto; display:block"><line x1="42" y1="96.0" x2="406" y2="96.0" stroke="var(--hair)" stroke-width="1"/><text x="34" y="100.0" text-anchor="end" font-family="var(--ff-mono)" font-size="13" fill="var(--mute)">50%</text><line x1="42" y1="48.0" x2="406" y2="48.0" stroke="var(--hair)" stroke-width="1"/><text x="34" y="52.0" text-anchor="end" font-family="var(--ff-mono)" font-size="13" fill="var(--mute)">80%</text><line x1="42" y1="16.0" x2="406" y2="16.0" stroke="var(--hair)" stroke-width="1"/><text x="34" y="20.0" text-anchor="end" font-family="var(--ff-mono)" font-size="13" fill="var(--mute)">100%</text><line x1="269.5" y1="16" x2="269.5" y2="176.0" stroke="var(--panel)" stroke-width="1.5" stroke-dasharray="4 4"/><text x="275.5" y="28" font-family="var(--ff-mono)" font-size="13" fill="var(--panel)">6 comp.</text><polyline points="42.0,142.2 87.5,116.6 133.0,96.5 178.5,77.8 224.0,60.8 269.5,44.5 315.0,32.4 360.5,21.3 406.0,16.0" fill="none" stroke="var(--severe)" stroke-width="2.2"/><circle cx="42.0" cy="142.2" r="3" fill="var(--severe)"/><circle cx="87.5" cy="116.6" r="3" fill="var(--severe)"/><circle cx="133.0" cy="96.5" r="3" fill="var(--severe)"/><circle cx="178.5" cy="77.8" r="3" fill="var(--severe)"/><circle cx="224.0" cy="60.8" r="3" fill="var(--severe)"/><circle cx="269.5" cy="44.5" r="3" fill="var(--severe)"/><circle cx="315.0" cy="32.4" r="3" fill="var(--severe)"/><circle cx="360.5" cy="21.3" r="3" fill="var(--severe)"/><circle cx="406.0" cy="16.0" r="3" fill="var(--severe)"/><line x1="42" y1="176.0" x2="406" y2="176.0" stroke="var(--ink)" stroke-width="1.5"/><text x="42.0" y="198" text-anchor="middle" font-family="var(--ff-mono)" font-size="12" fill="var(--mute)">1</text><text x="87.5" y="198" text-anchor="middle" font-family="var(--ff-mono)" font-size="12" fill="var(--mute)">2</text><text x="133.0" y="198" text-anchor="middle" font-family="var(--ff-mono)" font-size="12" fill="var(--mute)">3</text><text x="178.5" y="198" text-anchor="middle" font-family="var(--ff-mono)" font-size="12" fill="var(--mute)">4</text><text x="224.0" y="198" text-anchor="middle" font-family="var(--ff-mono)" font-size="12" fill="var(--mute)">5</text><text x="269.5" y="198" text-anchor="middle" font-family="var(--ff-mono)" font-size="12" fill="var(--mute)">6</text><text x="315.0" y="198" text-anchor="middle" font-family="var(--ff-mono)" font-size="12" fill="var(--mute)">7</text><text x="360.5" y="198" text-anchor="middle" font-family="var(--ff-mono)" font-size="12" fill="var(--mute)">8</text><text x="406.0" y="198" text-anchor="middle" font-family="var(--ff-mono)" font-size="12" fill="var(--mute)">9</text><text x="224" y="210" text-anchor="middle" font-family="var(--ff-mono)" font-size="12" fill="var(--mute)">componentes principales</text></svg>      <p class="note" style="margin-top:18px">Hacen falta <strong style="color:var(--ink)">6 de 9 componentes</strong> para el 80% de la varianza: no hay un eje dominante. Las features son <strong style="color:var(--ink)">casi ortogonales</strong> → PCA <strong>no</strong> sirve para comprimir, solo para proyectar y poder ver los grupos.</p>
+    </div>
+  </div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">14</span></span></span></div>
+  </section>
+
+
+
   <section class="slide" data-label="Edad y fin de semana">
-<div class="eyebrow"><span class="rcode"><b>EDA</b><i>12</i></span><span class="ey-sec">Análisis exploratorio</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>EDA</b><i>15</i></span><span class="ey-sec">Análisis exploratorio</span><span class="ey-line"></span></div>
 <h2 class="title anim">Joven, de madrugada y de finde: el doble de todo</h2>
 <div class="content" style="justify-content:center">
   <div class="grid2" style="grid-template-columns:1fr 1fr; gap:72px; align-items:center">
@@ -558,8 +610,8 @@
       <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:22px">Víctimas de 18–29 años, % del total</p>
       <div style="display:flex; gap:50px; align-items:flex-end; height:300px; border-bottom:3px solid var(--ink); padding:0 30px">
         <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%">
-          <span class="mono" style="font-size:30px; font-weight:700; margin-bottom:12px">28,8%</span>
-          <div style="width:130px; height:74%; background:#A8A49A; border-radius:3px 3px 0 0"></div>
+          <span class="mono" style="font-size:30px; font-weight:700; margin-bottom:12px; color:var(--slate)">28,8%</span>
+          <div style="width:130px; height:74%; background:var(--slate); border-radius:3px 3px 0 0"></div>
         </div>
         <div style="flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; height:100%">
           <span class="mono" style="font-size:30px; font-weight:700; margin-bottom:12px; color:var(--severe)">33,5%</span>
@@ -576,17 +628,17 @@
       <p class="note">Matiz importante: la severidad individual por edad la dominan los mayores de 65 (12,9% severo, fragilidad), no los jóvenes (7,2%). Exposición y vulnerabilidad son mecanismos distintos.</p>
     </div>
   </div>
-</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">12</span></span></span></div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">15</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Explorar EDA">
-<div class="eyebrow"><span class="rcode"><b>EDA</b><i>13</i></span><span class="ey-sec">Análisis exploratorio · cambiá el lente</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>EDA</b><i>16</i></span><span class="ey-sec">Análisis exploratorio · cambiá el lente</span><span class="ey-line"></span></div>
 <h2 class="title sm anim" style="margin-bottom:24px">Volumen y gravedad casi nunca coinciden — <em>mirá el cuándo</em></h2>
 <div class="content"><div class="anim" style="--d:.1s"><div class="app-embed explorar-embed" id="explorar-mount"></div></div></div>
   </section>
 
   <section class="slide" data-label="Desbalance">
-<div class="eyebrow"><span class="rcode"><b>CLF</b><i>14</i></span><span class="ey-sec">Clasificación · clases 7–8</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>CLF</b><i>17</i></span><span class="ey-sec">Clasificación · clases 7–8</span><span class="ey-line"></span></div>
 <div class="content" style="justify-content:center">
   <div class="grid2" style="grid-template-columns:1fr 1fr; gap:80px; align-items:center">
     <div>
@@ -604,11 +656,11 @@
       <p class="note">Solución: binario <strong style="color:var(--ink)">LEVE vs SEVERO</strong> (5,7%), <strong style="color:var(--ink)">class_weight=balanced</strong>, y métricas honestas — precision, recall, F1-Score y ROC-AUC sobre validación cruzada estratificada de 5 particiones.</p>
     </div>
   </div>
-</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">14</span></span></span></div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">17</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Las variables">
-<div class="eyebrow"><span class="rcode"><b>CLF</b><i>15</i></span><span class="ey-sec">Clasificación · feature engineering</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>CLF</b><i>18</i></span><span class="ey-sec">Clasificación · feature engineering</span><span class="ey-line"></span></div>
 <h2 class="title sm anim">Diecinueve variables, construidas desde la <em>víctima</em></h2>
 <div class="content" style="justify-content:center">
   <div class="grid2" style="grid-template-columns:1.25fr 1fr; gap:64px; align-items:center">
@@ -630,11 +682,30 @@
       <p class="note" style="margin-top:24px">Categóricas → <span class="mono">OneHotEncoder(handle_unknown='ignore')</span>; numéricas → imputación por mediana + <span class="mono">StandardScaler</span>. Los flags <em>DESCONOCIDO</em> reflejan completitud del registro → ver Limitaciones.</p>
     </div>
   </div>
-</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">15</span></span></span></div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">18</span></span></span></div>
   </section>
 
+  <section class="slide" data-label="Método clasificador">
+<div class="eyebrow"><span class="rcode"><b>CLF</b><i>19</i></span><span class="ey-sec">Clasificación · método y validación</span><span class="ey-line"></span></div>
+<h2 class="title sm anim">Cómo entrenamos y <em>validamos</em> el clasificador</h2>
+<div class="content" style="justify-content:center">
+  <div class="grid2" style="grid-template-columns:1fr 1.05fr; gap:60px; align-items:center">
+    <div class="anim" style="--d:.12s">
+      <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin-bottom:14px">El pipeline · preproceso por tipo de columna</p>
+<div style="display:flex; gap:18px; align-items:baseline; padding:14px 0; border-bottom:1px solid var(--hair)"><span class="mono" style="width:150px; flex:none; color:var(--panel); font-size:18px; letter-spacing:.04em">NUMÉRICAS</span><span class="body" style="font-size:21px">imputación por <strong>mediana</strong> → <strong>StandardScaler</strong></span></div><div style="display:flex; gap:18px; align-items:baseline; padding:14px 0; border-bottom:1px solid var(--hair)"><span class="mono" style="width:150px; flex:none; color:var(--panel); font-size:18px; letter-spacing:.04em">CATEGÓRICAS</span><span class="body" style="font-size:21px">moda → <strong>OneHotEncoder</strong>(handle_unknown='ignore')</span></div><p class="body" style="font-size:21px; margin-top:20px">Todo el preproceso vive <strong>dentro</strong> del <span class="mono" style="font-size:18px">Pipeline</span> de scikit-learn: se ajusta solo con el train de cada fold, nunca con validación — <strong>sin leakage</strong>.</p>
+<p class="note" style="margin-top:18px">Modelo final: Random Forest · n=300 · max_depth=10 · min_samples_leaf=5 · + zona k-means in-fold.</p>
+    </div>
+    <div class="anim" style="--d:.24s">
+      <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin-bottom:18px">El protocolo de validación</p>
+      <div style="display:flex; flex-direction:column; gap:15px"><div style="display:flex; gap:18px; align-items:flex-start"><span style="width:42px; height:42px; border-radius:50%; background:var(--panel); color:#fff; font-family:var(--ff-sans); font-weight:800; font-size:21px; flex:none; display:flex; align-items:center; justify-content:center">1</span><p class="body" style="font-size:21px; line-height:1.4; padding-top:6px"><strong>Holdout 20%</strong> estratificado, intacto — toda la selección de modelos ocurre solo sobre el train.</p></div><div style="display:flex; gap:18px; align-items:flex-start"><span style="width:42px; height:42px; border-radius:50%; background:var(--panel); color:#fff; font-family:var(--ff-sans); font-weight:800; font-size:21px; flex:none; display:flex; align-items:center; justify-content:center">2</span><p class="body" style="font-size:21px; line-height:1.4; padding-top:6px">Validación cruzada <strong>estratificada de 5 folds</strong> (random_state=42), mismo protocolo para los 5 modelos.</p></div><div style="display:flex; gap:18px; align-items:flex-start"><span style="width:42px; height:42px; border-radius:50%; background:var(--panel); color:#fff; font-family:var(--ff-sans); font-weight:800; font-size:21px; flex:none; display:flex; align-items:center; justify-content:center">3</span><p class="body" style="font-size:21px; line-height:1.4; padding-top:6px"><strong>class_weight='balanced'</strong> — compensa que solo el 5,7% es severo.</p></div><div style="display:flex; gap:18px; align-items:flex-start"><span style="width:42px; height:42px; border-radius:50%; background:var(--panel); color:#fff; font-family:var(--ff-sans); font-weight:800; font-size:21px; flex:none; display:flex; align-items:center; justify-content:center">4</span><p class="body" style="font-size:21px; line-height:1.4; padding-top:6px">Árboles con criterio <strong>Gini</strong> + poda (max_depth, min_samples_leaf) contra el <strong>overfitting</strong>.</p></div><div style="display:flex; gap:18px; align-items:flex-start"><span style="width:42px; height:42px; border-radius:50%; background:var(--panel); color:#fff; font-family:var(--ff-sans); font-weight:800; font-size:21px; flex:none; display:flex; align-items:center; justify-content:center">5</span><p class="body" style="font-size:21px; line-height:1.4; padding-top:6px">Métricas honestas: <strong>precision · recall · F1 · ROC-AUC</strong> (no accuracy).</p></div></div>
+    </div>
+  </div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">19</span></span></span></div>
+  </section>
+
+
   <section class="slide" data-label="Dos k-means">
-<div class="eyebrow"><span class="rcode"><b>CLF</b><i>16</i></span><span class="ey-sec">Clasificación · técnica combinada</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>CLF</b><i>20</i></span><span class="ey-sec">Clasificación · técnica combinada</span><span class="ey-line"></span></div>
 <h2 class="title sm anim">Dos <em>k-means</em>, dos trabajos distintos</h2>
 <div class="content" style="justify-content:center">
   <div class="grid2" style="grid-template-columns:1fr 1.05fr; gap:60px; align-items:center">
@@ -660,11 +731,11 @@
       <p class="note">Por qué: el barrio captura estructura espacial que las coordenadas crudas no le dan a un árbol. <strong>Mejora chica, protocolo limpio.</strong></p>
     </div>
   </div>
-</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">16</span></span></span></div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">20</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Comparación de modelos">
-<div class="eyebrow"><span class="rcode"><b>CLF</b><i>17</i></span><span class="ey-sec">Clasificación · clases 7–8</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>CLF</b><i>21</i></span><span class="ey-sec">Clasificación · clases 7–8</span><span class="ey-line"></span></div>
 <h2 class="title sm anim">Cinco modelos, un mismo protocolo, un ganador</h2>
 <div class="content" style="justify-content:center">
   <table class="tbl anim" style="--d:.12s">
@@ -678,11 +749,11 @@
     </tbody>
   </table>
   <p class="note anim" style="--d:.24s; margin-top:30px; max-width:none">El modelo final combina <em>técnicas</em>: la zona geográfica de k-means entra como variable sintética del Random Forest, ajustada dentro de cada fold para no filtrar validación. Criterio de impureza Gini, con poda preventiva contra el sobreajuste. Mejor F1-Score de la comparación.</p>
-</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">17</span></span></span></div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">21</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Modelo final">
-<div class="eyebrow"><span class="rcode"><b>CLF</b><i>18</i></span><span class="ey-sec">Clasificación · clases 7–8</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>CLF</b><i>22</i></span><span class="ey-sec">Clasificación · clases 7–8</span><span class="ey-line"></span></div>
 <h2 class="title sm anim">El modelo final detecta <em>73 de cada 100</em> siniestros severos</h2>
 <div class="content" style="justify-content:center">
   <div class="grid2" style="grid-template-columns:1.15fr 1fr; gap:72px; align-items:center">
@@ -709,11 +780,11 @@
       <p class="note">Modelo explicativo / post-siniestro: su valor es identificar <em>factores</em> — peatón, 65+, madrugada, tipo de vía — no predecir antes del hecho.</p>
     </div>
   </div>
-</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">18</span></span></span></div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">22</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Árbol interpretable">
-<div class="eyebrow"><span class="rcode"><b>CLF</b><i>19</i></span><span class="ey-sec">Clasificación · clases 7–8</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>CLF</b><i>23</i></span><span class="ey-sec">Clasificación · clases 7–8</span><span class="ey-line"></span></div>
 <h2 class="title sm anim">Un árbol legible: 93% de recall para hacer screening</h2>
 <div class="content" style="justify-content:center">
   <div class="grid2" style="grid-template-columns:1fr 1.1fr; gap:72px; align-items:center">
@@ -730,11 +801,29 @@
       </div>
     </div>
   </div>
-</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">19</span></span></span></div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">23</span></span></span></div>
+  </section>
+
+  
+  <section class="slide" data-label="Método regresión">
+<div class="eyebrow"><span class="rcode"><b>REG</b><i>24</i></span><span class="ey-sec">Regresión · método · clase 9</span><span class="ey-line"></span></div>
+<h2 class="title sm anim">Cuántos siniestros por día: <em>validación temporal</em></h2>
+<div class="content" style="justify-content:center">
+  <div class="grid2" style="grid-template-columns:1fr 1.05fr; gap:60px; align-items:center">
+    <div class="anim" style="--d:.12s">
+      <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin-bottom:14px">La receta · una fila por día (1.461 días)</p>
+<div style="display:flex; gap:18px; align-items:baseline; padding:13px 0; border-bottom:1px solid var(--hair)"><span class="mono" style="width:140px; flex:none; color:var(--panel); font-size:18px; letter-spacing:.04em">CALENDARIO</span><span class="body" style="font-size:21px">día de semana, mes, finde, feriado — one-hot con <span class="mono" style="font-size:17px">get_dummies</span></span></div><div style="display:flex; gap:18px; align-items:baseline; padding:13px 0; border-bottom:1px solid var(--hair)"><span class="mono" style="width:140px; flex:none; color:var(--panel); font-size:18px; letter-spacing:.04em">CLIMA</span><span class="body" style="font-size:21px">llovió, precipitación, temperatura media y máxima</span></div><div style="display:flex; gap:18px; align-items:baseline; padding:13px 0; border-bottom:1px solid var(--hair)"><span class="mono" style="width:140px; flex:none; color:var(--panel); font-size:18px; letter-spacing:.04em">TENDENCIA</span><span class="body" style="font-size:21px">días desde el inicio — el nivel de tránsito que sube año a año</span></div><p class="body" style="font-size:21px; margin-top:20px">Validación <strong>temporal, no aleatoria</strong>: entrenamos con <strong>2021–2023</strong> y testeamos sobre <strong>2024</strong>, un año que el modelo <strong>nunca vio</strong>.</p>
+    </div>
+    <div class="anim" style="--d:.24s; display:flex; flex-direction:column; gap:16px">
+      <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute)">Tres modelos · gana la lineal</p>
+<div style="background:#fff; border-radius:12px; box-shadow:inset 0 0 0 3px #A9CFB4, 0 3px 0 #B9D6BF; padding:20px 26px; display:flex; align-items:center; gap:22px"><div style="flex:1"><div style="font-family:var(--ff-sans); font-weight:700; font-size:23px; color:var(--ink)">Regresión lineal (dummies)</div><div class="mono" style="font-size:17px; color:var(--mute); margin-top:4px">extrapola la tendencia creciente</div></div><div style="text-align:right"><div class="stat-num" style="font-size:34px; color:var(--safe)">0,40</div><div class="stat-lab" style="margin-top:4px">R² · 2024</div></div></div><div style="background:#fff; border-radius:12px; box-shadow:inset 0 0 0 2.5px var(--inset), var(--plaque-lift); padding:20px 26px; display:flex; align-items:center; gap:22px"><div style="flex:1"><div style="font-family:var(--ff-sans); font-weight:700; font-size:23px; color:var(--ink)">Árbol de regresión (d=5)</div><div class="mono" style="font-size:17px; color:var(--mute); margin-top:4px">no predice fuera del rango 2021–23</div></div><div style="text-align:right"><div class="stat-num" style="font-size:34px; color:var(--mute)">baja</div><div class="stat-lab" style="margin-top:4px">R² · 2024</div></div></div><div style="background:#fff; border-radius:12px; box-shadow:inset 0 0 0 2.5px var(--inset), var(--plaque-lift); padding:20px 26px; display:flex; align-items:center; gap:22px"><div style="flex:1"><div style="font-family:var(--ff-sans); font-weight:700; font-size:23px; color:var(--ink)">Random Forest regressor</div><div class="mono" style="font-size:17px; color:var(--mute); margin-top:4px">tampoco extrapola la tendencia</div></div><div style="text-align:right"><div class="stat-num" style="font-size:34px; color:var(--mute)">baja</div><div class="stat-lab" style="margin-top:4px">R² · 2024</div></div></div><p class="note" style="margin-top:8px">Los árboles solo predicen valores vistos en el train; la lineal <strong style="color:var(--ink)">proyecta</strong> la recuperación post-pandemia. Por eso gana acá.</p>
+    </div>
+  </div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">24</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Regresión diaria">
-<div class="eyebrow"><span class="rcode"><b>REG</b><i>20</i></span><span class="ey-sec">Regresión · clase 9</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>REG</b><i>25</i></span><span class="ey-sec">Regresión · clase 9</span><span class="ey-line"></span></div>
 <h2 class="title sm anim">Cuántos siniestros habrá mañana: gana la regresión lineal</h2>
 <div class="content" style="justify-content:center">
   <div class="grid2" style="grid-template-columns:1.35fr 1fr; gap:72px; align-items:center">
@@ -754,35 +843,75 @@
       <p class="note">Los árboles no extrapolan la tendencia creciente; la lineal sí. Reemplazar la "tendencia" abstracta por el tránsito real del mes la explica por su mecanismo: la recuperación post-pandemia.</p>
     </div>
   </div>
-</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">20</span></span></span></div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">25</span></span></span></div>
+  </section>
+
+  
+  <section class="slide" data-label="Método Apriori">
+<div class="eyebrow"><span class="rcode"><b>NS</b><i>26</i></span><span class="ey-sec">No supervisado · Apriori · método</span><span class="ey-line"></span></div>
+<h2 class="title sm anim">Reglas de asociación: soporte, confianza y <em>lift</em></h2>
+<div class="content" style="justify-content:center">
+  <div class="grid2" style="grid-template-columns:1fr 1.05fr; gap:60px; align-items:center">
+    <div class="anim" style="--d:.12s">
+      <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin-bottom:16px">La receta</p>
+      <p class="body" style="font-size:23px; margin-bottom:18px">Cada siniestro es una <strong>canasta de ítems</strong>: franja horaria, tipo de calle, víctima, acusado, finde/semana — más su etiqueta <strong>LEVE / SEVERO</strong>.</p>
+      <p class="body" style="font-size:23px; margin-bottom:22px">El algoritmo <strong>Apriori</strong> busca combinaciones frecuentes y arma reglas; nos quedamos solo con las que terminan en <span class="mono" style="font-size:20px">SEVERO</span> y las ordenamos por lift.</p>
+      <div class="mono" style="font-size:19px; color:var(--ink); line-height:1.9; background:#fff; border-radius:10px; box-shadow:inset 0 0 0 3px var(--inset), var(--plaque-lift); padding:18px 22px">canasta de ítems<br><span style="color:var(--severe)">→</span> apriori(soporte ≥ 1%)<br><span style="color:var(--severe)">→</span> reglas con lift ≥ 1,2<br><span style="color:var(--severe)">→</span> antecedente <span style="color:var(--severe)">→</span> SEVERO</div>
+    </div>
+    <div class="anim" style="--d:.24s; display:flex; flex-direction:column; gap:18px">
+      <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute)">Las tres métricas</p>
+<div class="placa" style="padding:26px 30px; display:flex; flex-direction:column; gap:10px"><div style="display:flex; align-items:baseline; justify-content:space-between"><span style="font-family:var(--ff-sans); font-weight:800; font-size:26px; color:var(--panel)">Soporte</span><span class="mono" style="font-size:18px; color:var(--mute)">sop(X)</span></div><p class="body" style="font-size:20px; line-height:1.4">Qué tan común es la combinación X — su frecuencia sobre los 37.849 siniestros. Pedimos <strong>≥ 1%</strong> para evitar reglas anecdóticas.</p></div><div class="placa" style="padding:26px 30px; display:flex; flex-direction:column; gap:10px"><div style="display:flex; align-items:baseline; justify-content:space-between"><span style="font-family:var(--ff-sans); font-weight:800; font-size:26px; color:var(--amber)">Confianza</span><span class="mono" style="font-size:18px; color:var(--mute)">P(SEVERO | X)</span></div><p class="body" style="font-size:20px; line-height:1.4">De los siniestros que cumplen X, qué proporción termina <strong>severa</strong>. Es la probabilidad condicional de gravedad dada la combinación.</p></div><div class="placa" style="padding:26px 30px; display:flex; flex-direction:column; gap:10px"><div style="display:flex; align-items:baseline; justify-content:space-between"><span style="font-family:var(--ff-sans); font-weight:800; font-size:26px; color:var(--severe)">Lift</span><span class="mono" style="font-size:18px; color:var(--mute)">conf / base</span></div><p class="body" style="font-size:20px; line-height:1.4">Confianza dividida la base global (<strong>5,7%</strong>). <strong>Lift 2 = el doble</strong> de probable que el promedio. Filtramos <strong>lift ≥ 1,2</strong>.</p></div>
+    </div>
+  </div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">26</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Reglas de asociación">
-<div class="eyebrow"><span class="rcode"><b>NS</b><i>21</i></span><span class="ey-sec">No supervisado · Apriori · explorá las reglas</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>NS</b><i>27</i></span><span class="ey-sec">No supervisado · Apriori · explorá las reglas</span><span class="ey-line"></span></div>
 <h2 class="title sm anim" style="margin-bottom:24px">Combinaciones que <em>duplican</em> el riesgo de gravedad</h2>
-<div class="content" style="justify-content:flex-start"><div class="anim" style="--d:.1s"><div class="app-embed reglas-embed" id="reglas-mount"></div></div></div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">21</span></span></span></div>
+<div class="content" style="justify-content:flex-start"><div class="anim" style="--d:.1s"><div class="app-embed reglas-embed" id="reglas-mount"></div></div></div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">27</span></span></span></div>
+  </section>
+
+  
+  <section class="slide" data-label="Método DBSCAN">
+<div class="eyebrow"><span class="rcode"><b>NS</b><i>28</i></span><span class="ey-sec">No supervisado · DBSCAN · método</span><span class="ey-line"></span></div>
+<h2 class="title sm anim">DBSCAN: agrupar por <em>densidad</em>, no por cantidad de grupos</h2>
+<div class="content" style="justify-content:center">
+  <div class="grid2" style="grid-template-columns:1fr 1.05fr; gap:60px; align-items:center">
+    <div class="anim" style="--d:.12s">
+      <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin-bottom:16px">La receta</p>
+      <p class="body" style="font-size:23px; margin-bottom:22px">Un punto es <strong>núcleo</strong> si tiene al menos <strong>min_samples</strong> vecinos dentro de un radio <strong>eps</strong>. Los núcleos conectados forman un <strong>hotspot</strong>; lo que queda aislado es <strong>ruido</strong> y se descarta.</p>
+      <div class="mono" style="font-size:20px; color:var(--ink); line-height:2; background:#fff; border-radius:10px; box-shadow:inset 0 0 0 3px var(--inset), var(--plaque-lift); padding:20px 24px">eps ≈ <strong>60 m</strong><br>min_samples = <strong>40</strong> siniestros<br>distancia = <strong>haversine</strong> (lat, lon)</div>
+      <p class="note" style="margin-top:20px">Trabaja sobre coordenadas reales con distancia geográfica (haversine), no euclídea sobre grados.</p>
+    </div>
+    <div class="anim" style="--d:.24s; display:flex; flex-direction:column; gap:18px">
+      <p class="mono" style="font-size:18px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute)">Por qué DBSCAN y no k-means</p>
+<div class="placa" style="padding:24px 28px; display:flex; flex-direction:column; gap:9px"><div style="font-family:var(--ff-sans); font-weight:800; font-size:24px; color:var(--panel)">No fijás <span style="color:var(--severe)">k</span></div><p class="body" style="font-size:20px; line-height:1.4">A diferencia de k-means, no le decís cuántos grupos hay: DBSCAN <strong>descubre</strong> cuántos focos densos existen — encontró <strong>29</strong>.</p></div><div class="placa" style="padding:24px 28px; display:flex; flex-direction:column; gap:9px"><div style="font-family:var(--ff-sans); font-weight:800; font-size:24px; color:var(--panel)">Separa el ruido</div><p class="body" style="font-size:20px; line-height:1.4">k-means asigna <strong>todo</strong> punto a una zona; DBSCAN deja fuera lo disperso y se queda <strong>solo con los focos densos</strong> — justo lo que es una "esquina peligrosa".</p></div><div class="placa" style="padding:22px 28px; display:flex; align-items:center; gap:26px"><div class="stat-num" style="font-size:60px; color:var(--severe)">29</div><div><div style="font-family:var(--ff-sans); font-weight:700; font-size:22px; color:var(--ink)">micro-hotspots</div><div class="mono" style="font-size:18px; color:var(--mute); margin-top:4px">4,6% de los siniestros · el mayor: 79 en un acceso de Gral. Paz</div></div></div>
+    </div>
+  </div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">28</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Hotspots DBSCAN">
-<div class="eyebrow"><span class="rcode"><b>NS</b><i>22</i></span><span class="ey-sec">No supervisado · DBSCAN · mapa interactivo</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>NS</b><i>29</i></span><span class="ey-sec">No supervisado · DBSCAN · mapa interactivo</span><span class="ey-line"></span></div>
 <h2 class="title sm anim" style="margin-bottom:24px">La gravedad <em>no</em> es un lugar — pero las 29 esquinas, sí</h2>
-<div class="content" style="justify-content:flex-start"><div class="anim" style="--d:.1s"><div class="app-embed mapa-embed" id="mapa-mount"></div></div></div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">22</span></span></span></div>
+<div class="content" style="justify-content:flex-start"><div class="anim" style="--d:.1s"><div class="app-embed mapa-embed" id="mapa-mount"></div></div></div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">29</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Predecir gravedad">
-<div class="eyebrow"><span class="rcode"><b>CLF</b><i>23</i></span><span class="ey-sec">Clasificación · modelo de lifts ≡ logística</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>CLF</b><i>30</i></span><span class="ey-sec">Clasificación · modelo de lifts ≡ logística</span><span class="ey-line"></span></div>
 <h2 class="title sm anim" style="margin-bottom:30px">Armá un siniestro: <em>¿leve o severo?</em></h2>
-<div class="content" style="justify-content:center"><div class="anim" style="--d:.1s" id="predecir-grav-mount"></div></div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">23</span></span></span></div>
+<div class="content" style="justify-content:center"><div class="anim" style="--d:.1s" id="predecir-grav-mount"></div></div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">30</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Predecir cantidad">
-<div class="eyebrow"><span class="rcode"><b>REG</b><i>24</i></span><span class="ey-sec">Regresión lineal · siniestros por día</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>REG</b><i>31</i></span><span class="ey-sec">Regresión lineal · siniestros por día</span><span class="ey-line"></span></div>
 <h2 class="title sm anim" style="margin-bottom:30px">¿Cuántos siniestros <em>mañana?</em></h2>
-<div class="content" style="justify-content:center"><div class="anim" style="--d:.1s" id="predecir-cant-mount"></div></div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">24</span></span></span></div>
+<div class="content" style="justify-content:center"><div class="anim" style="--d:.1s" id="predecir-cant-mount"></div></div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">31</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Limitaciones">
-<div class="eyebrow"><span class="rcode"><b>RIG</b><i>25</i></span><span class="ey-sec">Rigor · limitaciones</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>RIG</b><i>32</i></span><span class="ey-sec">Rigor · limitaciones</span><span class="ey-line"></span></div>
 <h2 class="title sm anim">Medimos nuestro propio sesgo de registro</h2>
 <div class="content" style="justify-content:center">
   <div class="grid2" style="grid-template-columns:1fr 1.1fr; gap:80px; align-items:center">
@@ -801,17 +930,17 @@
       <div style="border-left:3px solid var(--hair-2); padding-left:22px"><p class="body" style="font-size:23px; color:var(--mute)">Víctima y acusado se conocen <em>después</em> del hecho: el modelo es explicativo. No hay datos públicos de alcoholemia ni velocidad medida.</p></div>
     </div>
   </div>
-</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">25</span></span></span></div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">32</span></span></span></div>
   </section>
 
   <section class="slide" data-label="Conclusiones">
-<div class="eyebrow"><span class="rcode"><b>CON</b><i>26</i></span><span class="ey-sec">Conclusiones</span><span class="ey-line"></span></div>
+<div class="eyebrow"><span class="rcode"><b>CON</b><i>33</i></span><span class="ey-sec">Conclusiones</span><span class="ey-line"></span></div>
 <h2 class="title anim">Seis conclusiones</h2>
 <div class="content" style="justify-content:flex-start; padding-top:56px">
   <div class="concl">
 <div class="cc anim"><span class="cc-n">1</span><p class="cc-t">La señal de gravedad está en el <b>quién</b> y el <b>cuándo</b> — peatón, moto, mayores de 65, madrugada de finde, tipo de vía — no en el ambiente ni en el lugar exacto.</p></div><div class="cc anim"><span class="cc-n">2</span><p class="cc-t">El crecimiento es ante todo <b>exposición</b>: dos tercios del +35% lo explica el tránsito (+22%); la tasa por vehículo subió solo +10%.</p></div><div class="cc anim"><span class="cc-n">3</span><p class="cc-t">La lluvia es un factor de <b>frecuencia</b> (menos exposición → menos siniestros), no de gravedad. Confirmado por tres fuentes.</p></div><div class="cc anim"><span class="cc-n">4</span><p class="cc-t">La <b>velocidad de la vía</b> es el factor estructural de severidad más claro: el gradiente 20 → 80 km/h multiplica por 4 los siniestros severos.</p></div><div class="cc anim"><span class="cc-n">5</span><p class="cc-t">Para <b>política pública</b>: proteger peatones en avenidas, controlar madrugadas de finde, atender a los mayores de 65 e intervenir los hotspots.</p></div><div class="cc anim"><span class="cc-n end">6</span><p class="cc-t">Metodología: evaluar la integración <b>antes</b> de integrar, reagrupar el target (la mejora más barata) y combinar técnicas dio el mejor modelo.</p></div>
   </div>
-</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">26</span></span></span></div>
+</div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span><span class="km"><span class="km-cap"></span><span class="km-body"><span class="km-k">KM</span><span class="km-n">33</span></span></span></div>
   </section>
 
   <section class="slide cover" data-label="Cierre">
@@ -823,7 +952,7 @@
   <div class="grid2" style="grid-template-columns:1.1fr 1fr; gap:80px; align-items:center">
     <div>
       <div class="cartel-wrap anim" style="--d:.05s">
-        <div class="cartel-tab">SALIDA · FIN DE RUTA</div>
+        <div class="cartel-tab">RUTA TPO · FIN DE RUTA</div>
         <div class="cartel"><h2 style="font-size:84px"><span class="hi">Gracias.</span></h2></div>
       </div>
       <p class="lead anim" style="--d:.15s; margin-top:30px; max-width:40ch">Un pipeline reproducible que corre de punta a punta, sin APIs en runtime, con semillas fijas y un protocolo de validación único.</p>
