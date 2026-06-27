@@ -1,12 +1,42 @@
 # Genera informe_tpo.pdf — Informe del TPO Siniestros Viales CABA
+# Estética: sistema "Señalización vial · Ruta verde" del deck de defensa
+# (tokens y tipografía Overpass idénticos a webapp/src/defensa).
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
 from reportlab.lib import colors
 from reportlab.platypus import (SimpleDocTemplate, Paragraph, Spacer, PageBreak,
                                 Image, Table, TableStyle, KeepTogether)
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.pdfbase.pdfmetrics import registerFontFamily
 from PIL import Image as PILImage
 import os
+
+# ── Tipografía del deck: Overpass (sans) + Overpass Mono ──────────────────
+_F = 'fonts'
+pdfmetrics.registerFont(TTFont('Overpass',          os.path.join(_F, 'Overpass-Regular.ttf')))
+pdfmetrics.registerFont(TTFont('Overpass-Bold',     os.path.join(_F, 'Overpass-Bold.ttf')))
+pdfmetrics.registerFont(TTFont('Overpass-Black',    os.path.join(_F, 'Overpass-Black.ttf')))
+pdfmetrics.registerFont(TTFont('Overpass-Italic',   os.path.join(_F, 'Overpass-Italic-Regular.ttf')))
+pdfmetrics.registerFont(TTFont('Overpass-BoldItalic', os.path.join(_F, 'Overpass-Italic-Bold.ttf')))
+pdfmetrics.registerFont(TTFont('OverpassMono',      os.path.join(_F, 'OverpassMono-Regular.ttf')))
+pdfmetrics.registerFont(TTFont('OverpassMono-Bold', os.path.join(_F, 'OverpassMono-Bold.ttf')))
+registerFontFamily('Overpass', normal='Overpass', bold='Overpass-Bold',
+                   italic='Overpass-Italic', boldItalic='Overpass-BoldItalic')
+
+# ── Tokens de color del deck (:root señalización vial) ────────────────────
+INK     = colors.HexColor('#15171B')
+BODY    = colors.HexColor('#3A362E')
+SEVERE  = colors.HexColor('#C8301B')
+PANEL   = colors.HexColor('#0E6B3A')   # verde ruta (identidad)
+ACCENT  = colors.HexColor('#FFC400')   # amarillo señal
+AMBER   = colors.HexColor('#E0901F')
+MUTE    = colors.HexColor('#6B6456')
+MUTE2   = colors.HexColor('#8A8475')
+HAIR    = colors.HexColor('#DED8C8')
+PAPER   = colors.HexColor('#EFEDE6')
+PAPER2  = colors.HexColor('#E7E3D7')
 
 OUT = 'outputs'
 doc = SimpleDocTemplate('informe_tpo.pdf', pagesize=A4,
@@ -15,15 +45,18 @@ doc = SimpleDocTemplate('informe_tpo.pdf', pagesize=A4,
                         author='TPO Ciencia de Datos — UADE 2026')
 
 ss = getSampleStyleSheet()
-H1 = ParagraphStyle('H1x', parent=ss['Heading1'], fontSize=16, spaceBefore=18, spaceAfter=8,
-                    textColor=colors.HexColor('#1C1813'))   # ink (sistema de marca)
-H2 = ParagraphStyle('H2x', parent=ss['Heading2'], fontSize=13, spaceBefore=12, spaceAfter=6,
-                    textColor=colors.HexColor('#C0391F'))   # severe (acento de subsección)
-P  = ParagraphStyle('Px', parent=ss['Normal'], fontSize=10, leading=14, spaceAfter=6)
-PC = ParagraphStyle('PCx', parent=P, fontSize=8.5, textColor=colors.HexColor('#6E6456'),
-                    spaceBefore=2, spaceAfter=12)             # mute
-TIT = ParagraphStyle('TITx', parent=ss['Title'], fontSize=22, leading=28)
-SUB = ParagraphStyle('SUBx', parent=ss['Normal'], fontSize=12, alignment=1, textColor=colors.HexColor('#6E6456'))
+H1 = ParagraphStyle('H1x', parent=ss['Heading1'], fontName='Overpass-Black', fontSize=16,
+                    spaceBefore=20, spaceAfter=9, textColor=INK, leading=19)
+H2 = ParagraphStyle('H2x', parent=ss['Heading2'], fontName='Overpass-Bold', fontSize=12.5,
+                    spaceBefore=13, spaceAfter=6, textColor=SEVERE, leading=15)
+P  = ParagraphStyle('Px', parent=ss['Normal'], fontName='Overpass', fontSize=10, leading=14.5,
+                    spaceAfter=6, textColor=BODY)
+PC = ParagraphStyle('PCx', parent=P, fontName='OverpassMono', fontSize=8.3, textColor=MUTE,
+                    spaceBefore=3, spaceAfter=12, leading=11.5)   # captions en mono (como el deck)
+TIT = ParagraphStyle('TITx', parent=ss['Title'], fontName='Overpass-Black', fontSize=23, leading=27,
+                     textColor=INK)
+SUB = ParagraphStyle('SUBx', parent=ss['Normal'], fontName='Overpass', fontSize=12, alignment=1,
+                     textColor=MUTE)
 
 def img(path, width=15.5*cm, caption=None):
     el = []
@@ -41,29 +74,56 @@ def img(path, width=15.5*cm, caption=None):
 def tabla(data, col_widths=None, font=8.5):
     t = Table(data, colWidths=col_widths, hAlign='LEFT')
     t.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#3E5A66')),   # slate
+        ('BACKGROUND', (0, 0), (-1, 0), PANEL),            # verde ruta (identidad del deck)
         ('TEXTCOLOR', (0, 0), (-1, 0), colors.white),
         ('FONTSIZE', (0, 0), (-1, -1), font),
-        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-        ('GRID', (0, 0), (-1, -1), 0.4, colors.HexColor('#D7CFBF')),   # hair
-        ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor('#EDE7DA')]),  # paper-2
+        ('FONTNAME', (0, 0), (-1, 0), 'Overpass-Bold'),
+        ('FONTNAME', (0, 1), (-1, -1), 'Overpass'),
+        ('TEXTCOLOR', (0, 1), (-1, -1), INK),
+        ('LINEBELOW', (0, 0), (-1, 0), 2.2, ACCENT),       # filo amarillo señal bajo el header
+        ('GRID', (0, 0), (-1, -1), 0.4, HAIR),
+        ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, PAPER2]),
         ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
-        ('TOPPADDING', (0, 0), (-1, -1), 4), ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
+        ('TOPPADDING', (0, 0), (-1, -1), 5), ('BOTTOMPADDING', (0, 0), (-1, -1), 5),
+        ('LEFTPADDING', (0, 0), (-1, -1), 6), ('RIGHTPADDING', (0, 0), (-1, -1), 6),
     ]))
     return t
 
 S = []
 
 # ───────────────────────── PORTADA ─────────────────────────
-S.append(Spacer(1, 4*cm))
-S.append(Paragraph('Análisis y Clasificación de Gravedad de<br/>Siniestros Viales — CABA', TIT))
-S.append(Spacer(1, 0.8*cm))
+# Cartel "Ruta verde": eyebrow mono + panel verde con el título en blanco + filo amarillo.
+EYE = ParagraphStyle('EYE', parent=ss['Normal'], fontName='OverpassMono', fontSize=11,
+                     alignment=1, textColor=MUTE2, leading=14)
+PANELTIT = ParagraphStyle('PANELTIT', parent=ss['Title'], fontName='Overpass-Black', fontSize=27,
+                          leading=31, alignment=1, textColor=colors.white)
+PANELSUB = ParagraphStyle('PANELSUB', parent=ss['Normal'], fontName='OverpassMono', fontSize=11.5,
+                          alignment=1, textColor=colors.HexColor('#BDE7CE'), leading=15)
+
+def cartel(title_html, sub_html):
+    inner = [[Paragraph(title_html, PANELTIT)], [Paragraph(sub_html, PANELSUB)]]
+    t = Table(inner, colWidths=[16.6*cm])
+    t.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), PANEL),
+        ('LINEBELOW', (0, -1), (-1, -1), 6, ACCENT),     # filo amarillo señal
+        ('TOPPADDING', (0, 0), (-1, 0), 34), ('BOTTOMPADDING', (0, 0), (-1, 0), 6),
+        ('TOPPADDING', (0, 1), (-1, 1), 0), ('BOTTOMPADDING', (0, 1), (-1, 1), 34),
+        ('LEFTPADDING', (0, 0), (-1, -1), 30), ('RIGHTPADDING', (0, 0), (-1, -1), 30),
+    ]))
+    return t
+
+S.append(Spacer(1, 3.4*cm))
+S.append(Paragraph('CIENCIA DE DATOS · UADE · TPO 2026', EYE))
+S.append(Spacer(1, 0.55*cm))
+S.append(cartel('Siniestros Viales — CABA',
+                'ANÁLISIS Y CLASIFICACIÓN DE GRAVEDAD'))
+S.append(Spacer(1, 0.9*cm))
 S.append(Paragraph('Pipeline completo: ingesta → limpieza → integración → EDA → modelado', SUB))
-S.append(Spacer(1, 2.5*cm))
+S.append(Spacer(1, 2.6*cm))
 S.append(Paragraph('<b>Materia:</b> Ciencia de Datos (3.4.217) — UADE', SUB))
 S.append(Paragraph('<b>Docente:</b> Santiago Gabriel Martín', SUB))
 S.append(Paragraph('<b>1er cuatrimestre 2026</b> · Junio 2026', SUB))
-S.append(Spacer(1, 2*cm))
+S.append(Spacer(1, 1.8*cm))
 S.append(Paragraph('Datos: 37.849 siniestros viales en CABA (2021-2024), data.buenosaires.gob.ar · '
                    'INDEC Censo 2022 · Meteostat · ArgentinaDatos', SUB))
 S.append(PageBreak())

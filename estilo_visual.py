@@ -14,34 +14,37 @@ from matplotlib import font_manager as fm
 from matplotlib.colors import LinearSegmentedColormap, ListedColormap
 import matplotlib.pyplot as plt
 
-# --- Tokens de marca (idénticos a styles.css / defensa) -------------------
+# --- Tokens de marca (idénticos al deck de defensa: "Señalización vial · Ruta verde") --
+# Sincronizados con webapp/src/defensa/index.html :root
 BRAND = {
-    "paper":    "#F4F0E8",
-    "paper_2":  "#EDE7DA",
-    "ink":      "#1C1813",
-    "severe":   "#C0391F",
-    "severe_br":"#E05334",
-    "slate":    "#3E5A66",
-    "amber":    "#C28A2C",
-    "green":    "#4E7A52",
-    "mute":     "#6E6456",
-    "hair":     "#D7CFBF",
+    "paper":    "#EFEDE6",
+    "paper_2":  "#E7E3D7",
+    "ink":      "#15171B",
+    "severe":   "#C8301B",
+    "severe_br":"#E0654A",    # 2º rojo (tinte claro) para charts que necesitan contraste
+    "slate":    "#0E6B3A",    # 3er color de datos → verde ruta (identidad del deck)
+    "amber":    "#E0901F",
+    "green":    "#2E9E5B",    # verde "safe" (semántico: bajo riesgo)
+    "asphalt":  "#23252A",
+    "mute":     "#8A8475",
+    "hair":     "#DED8C8",
 }
 
-# Paleta categórica: orden de prioridad narrativa del deck
-PALETA = [BRAND["severe"], BRAND["slate"], BRAND["amber"], BRAND["green"], BRAND["mute"]]
+# Paleta categórica: orden de prioridad narrativa del deck.
+# Verde-ruta (slate) y verde-safe se evitan juntos → asfalto como 4º para distinguibilidad.
+PALETA = [BRAND["severe"], BRAND["slate"], BRAND["amber"], BRAND["asphalt"], BRAND["mute"]]
 
-# Colormap secuencial = gradiente de los mapas del deck (claro -> severo)
+# Colormap secuencial = gradiente de severidad del deck (claro -> severo)
 CMAP_SEC = LinearSegmentedColormap.from_list(
-    "brand_seq", ["#F7F3C8", "#F4C04E", "#E0681F", "#9E1B1B"]
+    "brand_seq", ["#FBF1D2", "#F4BE12", "#E0901F", "#C8301B"]
 )
-# Variante divergente (slate -> papel -> severe) para correlaciones, etc.
+# Variante divergente (verde ruta -> papel -> severe) para correlaciones, etc.
 CMAP_DIV = LinearSegmentedColormap.from_list(
-    "brand_div", [BRAND["slate"], "#8FA6AE", BRAND["paper"], BRAND["severe_br"], BRAND["severe"]]
+    "brand_div", [BRAND["slate"], "#8FB9A4", BRAND["paper"], BRAND["severe_br"], BRAND["severe"]]
 )
 # Colormap categórico (clusters, grupos) — hasta 6 categorías con tokens de marca
 CMAP_CAT = ListedColormap(
-    [BRAND["severe"], BRAND["slate"], BRAND["amber"], BRAND["green"], BRAND["mute"], BRAND["severe_br"]],
+    [BRAND["severe"], BRAND["slate"], BRAND["amber"], BRAND["green"], BRAND["mute"], BRAND["asphalt"]],
     name="brand_cat",
 )
 
@@ -65,9 +68,10 @@ def _registrar_fuentes():
 def aplicar_estilo():
     """Aplica el estilo de marca a matplotlib/seaborn (idempotente)."""
     disponibles = _registrar_fuentes()
-    sans  = "Archivo"        if "Archivo" in disponibles        else "DejaVu Sans"
-    serif = "Newsreader"     if "Newsreader" in disponibles     else "DejaVu Serif"
-    mono  = "IBM Plex Mono"  if "IBM Plex Mono" in disponibles  else "DejaVu Sans Mono"
+    # Tipografía del deck: Overpass (sans/serif) + Overpass Mono
+    sans  = "Overpass"       if "Overpass" in disponibles       else "DejaVu Sans"
+    serif = "Overpass"       if "Overpass" in disponibles       else "DejaVu Serif"
+    mono  = "Overpass Mono"  if "Overpass Mono" in disponibles  else "DejaVu Sans Mono"
 
     try:
         import seaborn as sns
