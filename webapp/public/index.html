@@ -767,7 +767,7 @@
 <div class="content" style="justify-content:center">
   <div class="grid2" style="grid-template-columns:1.15fr 1fr; gap:72px; align-items:center">
     <div class="anim" style="--d:.12s">
-      <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:20px">Matriz de confusión · clase real · umbral por defecto (0,50)</p>
+      <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:20px">Matriz de confusión · holdout (test 20%) · umbral 0,50</p>
       <div style="display:grid; grid-template-columns:130px 1fr 1fr; grid-template-rows:auto 1fr 1fr; gap:10px">
         <div></div>
         <div class="cm-axis" style="padding-bottom:4px">Predijo leve</div>
@@ -782,7 +782,7 @@
     </div>
     <div class="anim" style="--d:.24s">
       <div style="margin-bottom:22px"><div class="stat-num" style="font-size:64px">0,81</div><div class="stat-lab">ROC-AUC · discriminación del modelo final</div></div>
-      <p class="mono" style="font-size:17px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:12px">El recall se elige con el umbral</p>
+      <p class="mono" style="font-size:17px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:12px">El recall se elige con el umbral · sobre el holdout</p>
       <div style="display:flex; gap:16px; margin-bottom:18px">
         <div style="flex:1; background:var(--inset); border-radius:10px; padding:15px 20px">
           <div style="font-family:var(--ff-sans); font-weight:800; font-size:34px; color:var(--ink)">0,67</div>
