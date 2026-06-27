@@ -10,7 +10,7 @@ function Explorar({ slide = false } = {}) {
     {
       title: "Cu\xE1ndo: siniestros por hora del d\xEDa",
       cap: isSev ? "% severo" : "volumen + % severo",
-      note: "El volumen pica en la hora pico vespertina (17\u201319h). Pero la franja m\xE1s severa es la madrugada: pocos siniestros, mucha gravedad \u2014 velocidad real en calles vac\xEDas."
+      note: "El volumen pica en la hora pico vespertina (17\u201319h). Pero la franja m\xE1s severa es la madrugada: pocos siniestros, mucha gravedad \u2014 velocidad real en calles vac\xEDas. No es ruido por pocos casos: aun con intervalo de confianza al 95%, el piso de la madrugada (12,6% a las 3h) duplica al techo de la tarde (~4%)."
     },
     /* @__PURE__ */ React.createElement(Columns, { data: D.byHour, yKey: "n", rateKey: "rate", height: 300, color: "var(--slate)", fmtX: (h) => h + "h" })
   ), /* @__PURE__ */ React.createElement(
@@ -48,7 +48,7 @@ function Explorar({ slide = false } = {}) {
     {
       title: "Siniestros por hora del d\xEDa",
       cap: "0h \u2014 23h",
-      note: "El volumen pica en la hora pico vespertina (17\u201319h). Pero la franja m\xE1s severa es la madrugada: pocos siniestros, mucha gravedad \u2014 velocidad real en calles vac\xEDas."
+      note: "El volumen pica en la hora pico vespertina (17\u201319h). Pero la franja m\xE1s severa es la madrugada: pocos siniestros, mucha gravedad \u2014 velocidad real en calles vac\xEDas. No es ruido por pocos casos: aun con intervalo de confianza al 95%, el piso de la madrugada (12,6% a las 3h) duplica al techo de la tarde (~4%)."
     },
     /* @__PURE__ */ React.createElement(
       Columns,

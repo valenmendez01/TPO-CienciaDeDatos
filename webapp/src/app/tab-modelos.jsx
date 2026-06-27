@@ -4,13 +4,13 @@ function Modelos() {
   const base = D.lifts.base;
   // operating points (recall / precision) per model — documented screening points
   const ops = {
-    'Árbol d=4': { recall:0.93, prec:0.096 },
-    'Árbol d=7': { recall:0.80, prec:0.121 },
+    'Árbol d=4': { recall:0.79, prec:0.111 },
+    'Árbol d=7': { recall:0.73, prec:0.125 },
     'Reg. Logística': { recall:0.75, prec:0.137 },
-    'Random Forest': { recall:0.71, prec:0.156 },
-    'RF + zona k-means': { recall:0.70, prec:0.16 },
+    'Random Forest': { recall:0.65, prec:0.157 },
+    'RF + zona k-means': { recall:0.64, prec:0.166 },
   };
-  const [sel, setSel] = useState('RF + zona k-means');
+  const [sel, setSel] = useState('Random Forest');
   const Ntest = 7570, sev = Math.round(Ntest*base);
   const op = ops[sel];
   const tp = Math.round(sev*op.recall), fn = sev-tp;
@@ -39,13 +39,13 @@ function Modelos() {
                 <td style={{textAlign:'left',color:'var(--mute)',fontSize:13}}>{m.tipo}</td>
                 <td className="m">{m.f1.toFixed(3).replace('.',',')}</td>
                 <td className="m">{m.roc.toFixed(3).replace('.',',')}</td>
-                <td className="m" style={{color: m.recall>0.9?'var(--green)':'var(--ink)'}}>{m.recall.toFixed(2).replace('.',',')}</td>
+                <td className="m" style={{color: m.recall>0.78?'var(--green)':'var(--ink)'}}>{m.recall.toFixed(2).replace('.',',')}</td>
                 <td style={{textAlign:'left',color:'var(--mute)',fontSize:12}}>{m.nota}</td>
               </tr>
             ))}
           </tbody>
         </table>
-        <div className="card-note">El árbol gana en <b>recall</b> (0,93): ideal para screening, no perder casos graves. El RF + zona k-means gana en F1 de severo (0,261) y discriminación global (ROC-AUC 0,830). Voting y stacking <b>no aportan</b> (≈ igual, 3× el costo): combinar técnicas sí (la zona k-means como feature), combinar modelos no.</div>
+        <div className="card-note">El árbol gana en <b>recall</b> (0,79): ideal para screening, no perder casos graves. El <b>Random Forest</b> gana en F1 de severo (0,253) y discriminación global (ROC-AUC 0,811). Excluimos los flags <b>*_DESCONOCIDO</b> (sesgo de registro): sacarlos cuesta solo −0,015 de ROC-AUC. Sumar la zona geográfica (k-means) da +0,005 ROC-AUC, dentro del ruido — <b>no entró al modelo final</b>.</div>
       </Card>
 
       <div className="grid g-2-1" style={{marginTop:20}}>

@@ -80,8 +80,8 @@ S.append(Paragraph(
     'transformación (feature engineering), minería de datos y evaluación de patrones.', P))
 S.append(Paragraph('Resultados principales:', P))
 S.append(Paragraph(
-    '• <b>Modelo final de clasificación:</b> Random Forest + zona geográfica de k-means como variable '
-    'sintética — detecta el <b>73% de los siniestros severos</b> en el test holdout (recall 0,73; ROC-AUC 0,83), el mejor '
+    '• <b>Modelo final de clasificación:</b> Random Forest (excluyendo los flags de registro <i>*_DESCONOCIDO</i>, '
+    'que son leakage de proceso) — detecta el <b>67% de los siniestros severos</b> en el test holdout (recall 0,67; ROC-AUC 0,81), el mejor '
     'F1-Score de la comparación.<br/>'
     '• <b>El "+35% de siniestros 2021-2024" es en dos tercios un efecto del tránsito:</b> los vehículos '
     'crecieron +22% (peajes) y la tasa por millón de vehículos solo +10% (68 → 75). El tránsito mensual y '
@@ -220,23 +220,34 @@ S.append(Paragraph(
     'solo sobre el train:', P))
 S.append(tabla([
     ['Modelo', 'Accuracy', 'Precision SEV.', 'Recall SEV.', 'F1 SEV.', 'ROC-AUC'],
-    ['Árbol de decisión d=4 (interpretable)', '0,491', '0,096', '0,93', '0,174', '0,764'],
-    ['Árbol de decisión d=7', '0,649', '0,121', '0,80', '0,209', '0,789'],
-    ['Regresión Logística', '0,714', '0,137', '0,75', '0,231', '0,815'],
-    ['Random Forest (n=300, d=10)', '0,764', '0,156', '0,71', '0,256', '0,826'],
-    ['RF + zona k-means (FINAL)', '0,771', '0,160', '0,70', '0,261', '0,830'],
+    ['Árbol de decisión d=4 (interpretable)', '0,626', '0,111', '0,79', '0,194', '0,756'],
+    ['Árbol de decisión d=7', '0,690', '0,125', '0,73', '0,214', '0,768'],
+    ['Regresión Logística', '0,715', '0,137', '0,75', '0,231', '0,815'],
+    ['Random Forest (n=300, d=10) (FINAL)', '0,778', '0,157', '0,65', '0,253', '0,811'],
+    ['RF + zona k-means (ablación)', '0,794', '0,166', '0,64', '0,264', '0,816'],
 ], col_widths=[6.2*cm, 1.9*cm, 2.5*cm, 2.1*cm, 1.7*cm, 1.8*cm]))
 S.append(Spacer(1, 0.2*cm))
 S.append(Paragraph(
     'Los árboles usan el <b>índice de Gini</b> como criterio de impureza, con profundidad y hojas mínimas '
-    'limitadas como <b>poda preventiva</b> contra el sobreajuste. La mejora final viene de combinar '
-    '<b>técnicas</b>: la zona geográfica de k-means se ajusta dentro de cada fold de validación y se usa '
-    'como <b>variable sintética</b> del Random Forest. El árbol de profundidad 4 se conserva como modelo '
-    'interpretable de screening (recall 0,93: detecta casi todos los severos, a costa de falsos positivos).', P))
+    'limitadas como <b>poda preventiva</b> contra el sobreajuste. Probamos sumar la zona geográfica de '
+    'k-means como <b>variable sintética</b> (se ajusta dentro de cada fold de validación para no filtrar '
+    'información), pero aporta apenas +0,005 de ROC-AUC — dentro del ruido —, así que el modelo final es el '
+    'Random Forest sin ella. El árbol de profundidad 4 se conserva como modelo '
+    'interpretable de screening (recall 0,79: detecta la mayoría de los severos, a costa de falsos positivos).', P))
 S += img('modelo_final_rf.png',
-         caption='Modelo final Random Forest + zona: matriz de confusión y curva ROC (test 20%, recall SEVERO 0,73).')
+         caption='Modelo final Random Forest (sin flags de registro): matriz de confusión y curva ROC (test 20%, recall SEVERO 0,67).')
 S += img('feature_importance_final.png', width=12.5*cm,
-         caption='Importancia de variables del modelo final: dominan la edad media, la completitud del registro (categorías DESCONOCIDO — el sesgo declarado en Limitaciones) y los agregados de víctimas (% masculino, peatón).')
+         caption='Importancia de variables del modelo final: dominan la edad media, el % masculino y los agregados de víctimas (peatón, moto). Excluimos las categorías DESCONOCIDO (sesgo de registro — causalidad inversa gravedad→completitud), declarado en Limitaciones.')
+S.append(Paragraph(
+    '<b>Calibración del umbral (caso de uso: triage de gravedad).</b> El recall reportado (0,67) '
+    'es el del umbral por defecto (0,50); el umbral es una <b>decisión</b>, no una propiedad del modelo. '
+    'Para priorizar la respuesta al registrar un siniestro, perder un caso severo cuesta más que una falsa '
+    'alarma, así que conviene <b>bajar el umbral</b>: a 0,36 el recall sube a <b>0,85</b> (marca como severo '
+    'el 42% de los casos, vs 26% por defecto), a costa de precisión. No se cambia de modelo —el Random Forest '
+    'discrimina mejor que el árbol en todo punto de operación (a igual precisión 0,11, el RF da recall 0,85 '
+    'vs 0,79 del árbol)— se elige su punto sobre la curva precisión-recall.', P))
+S += img('umbral_triage.png', width=11.5*cm,
+         caption='Curva precisión-recall del modelo final: el umbral por defecto (0,50) y el umbral de triage (0,36) son dos puntos de operación del mismo modelo, según el costo de perder un severo.')
 S += img('arbol_decision.png',
          caption='Árbol de Decisión interpretable (criterio Gini, primeros 3 niveles): reglas si-entonces legibles.')
 S.append(PageBreak())
@@ -303,10 +314,12 @@ S.append(Paragraph('Limitaciones', H2))
 S.append(Paragraph(
     '• <b>Sesgo de registro (detectado y medido):</b> los siniestros graves se documentan completos, '
     'muchos leves quedan con placeholders — la edad falta en el 33% de los LEVE pero en menos del 2% de '
-    'los GRAVE/MORTAL, y "víctima desconocida" es LEVE el 99,8% de las veces. El modelo aprovecha en parte '
-    'ese atajo. Chequeo de robustez sobre el 57% de casos con datos completos (tasa SEVERO 9,9%): '
-    'ROC-AUC 0,74 (vs 0,83 global), recall 0,52, F1 0,33 — el poder discriminante real, declarado.<br/>'
-    '• La precisión sobre SEVERO es baja (~0,16): el modelo detecta el 73% de los severos pero con falsos '
+    'los GRAVE/MORTAL, y "víctima desconocida" es LEVE el 99,8% de las veces — marcar que falta un dato es '
+    'consecuencia de la gravedad (causalidad inversa). Por eso <b>excluimos los flags <i>*_DESCONOCIDO</i> del '
+    'modelo final</b>: sacarlos cuesta solo −0,015 de ROC-AUC, prueba de que el modelo no vivía del atajo. '
+    'Y como piso honesto, el chequeo de robustez sobre el 57% de casos con datos completos (tasa SEVERO 9,9%) da '
+    'ROC-AUC 0,73 (vs 0,81 global), recall 0,51, F1 0,32 — el poder discriminante real, declarado.<br/>'
+    '• La precisión sobre SEVERO es baja (~0,16): el modelo detecta el 67% de los severos pero con falsos '
     'positivos — útil como screening, no como predictor puntual. La severidad depende de física del impacto '
     '(velocidad real, ángulo) que ningún dataset público captura.<br/>'
     '• Las features víctima/acusado se conocen <i>después</i> del hecho: el modelo explica factores de '

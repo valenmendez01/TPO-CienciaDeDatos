@@ -17,7 +17,7 @@ function Explorar({ slide = false } = {}) {
       </div>
       <div className="grid g2">
         <Card title="Cuándo: siniestros por hora del día" cap={isSev?'% severo':'volumen + % severo'}
-          note="El volumen pica en la hora pico vespertina (17–19h). Pero la franja más severa es la madrugada: pocos siniestros, mucha gravedad — velocidad real en calles vacías.">
+          note="El volumen pica en la hora pico vespertina (17–19h). Pero la franja más severa es la madrugada: pocos siniestros, mucha gravedad — velocidad real en calles vacías. No es ruido por pocos casos: aun con intervalo de confianza al 95%, el piso de la madrugada (12,6% a las 3h) duplica al techo de la tarde (~4%).">
           <Columns data={D.byHour} yKey="n" rateKey="rate" height={300} color="var(--slate)" fmtX={(h)=>h+'h'} />
         </Card>
         <Card title="Día × franja horaria" cap={isSev?'% severo':'volumen'}
@@ -48,7 +48,7 @@ function Explorar({ slide = false } = {}) {
       </div>
 
       <Card title="Siniestros por hora del día" cap="0h — 23h"
-        note="El volumen pica en la hora pico vespertina (17–19h). Pero la franja más severa es la madrugada: pocos siniestros, mucha gravedad — velocidad real en calles vacías.">
+        note="El volumen pica en la hora pico vespertina (17–19h). Pero la franja más severa es la madrugada: pocos siniestros, mucha gravedad — velocidad real en calles vacías. No es ruido por pocos casos: aun con intervalo de confianza al 95%, el piso de la madrugada (12,6% a las 3h) duplica al techo de la tarde (~4%).">
         <Columns data={D.byHour} yKey="n" rateKey="rate" height={250} color="var(--slate)"
           fmtX={(h)=>h+'h'} />
       </Card>

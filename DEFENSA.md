@@ -3,7 +3,12 @@
 ## Sobre el clasificador
 
 **1. "¿Por qué el árbol abre por `victima = DESCONOCIDO`? ¿No es trampa?"**
-Es el punto que nosotros mismos detectamos y declaramos: la *completitud del registro* depende de la gravedad (los casos graves se documentan completos; la edad falta en el 33% de los LEVE pero en <2% de los GRAVE/MORTAL). Por eso hicimos el **chequeo de robustez**: re-evaluamos el modelo solo sobre el 57% de casos con datos completos → ROC-AUC 0,74 (vs 0,83 global). Ese es el poder discriminante real, y está en el notebook, el informe y el slide de Limitaciones.
+Ya no abre por ahí — lo sacamos. Es el punto que nosotros mismos detectamos: la *completitud del registro* es **consecuencia** de la gravedad (causalidad inversa `gravedad → completitud`; los casos graves se documentan completos, la edad falta en el 33% de los LEVE pero en <2% de los GRAVE/MORTAL). Usar `DESCONOCIDO` como predictor es por lo tanto **leakage de proceso**. Lo tratamos en tres capas:
+- **Lo excluimos del modelo final**: el encoder descarta las dummies `*_DESCONOCIDO`, así que el árbol interpretable y la importancia del RF ahora abren por factores reales (`edad_media`, `pct_masculino`, `hay_peaton`, `hora`, `victima_PEATON`). Costo de sacarlo: ROC-AUC 0,826 → **0,811** (−0,015), recall SEVERO 0,71 → **0,65**. El modelo no vivía de la muleta.
+- **Techo honesto**: re-evaluado solo sobre el 57% de casos con datos completos → ROC-AUC **0,73**. Esa es la estimación más conservadora del poder real, sobre la población donde el dato existe.
+- **El baseline con flags (0,826) queda documentado como lo que rechazamos** — haber encontrado nosotros el atajo es la posición más fuerte.
+
+Matiz honesto: sacar las dummies no purga del todo la completitud, porque los numéricos de víctima (`hay_peaton`, `edad_media`...) valen 0/NaN cuando la víctima es desconocida y siguen llevando la señal implícita. Por eso reportamos el 0,73 del subconjunto completo como piso, no el 0,811.
 
 **2. "Con precisión 0,16, ¿sirve el modelo?"**
 Es un **screening**: prioriza no perder casos severos (recall 0,73) a costa de falsos positivos. Para priorización de inspección o política pública, marcar de más es tolerable; para predicción puntual no sirve, y lo decimos. Además el modelo es explicativo/post-siniestro: su valor es identificar *factores* (peatón, 65+, madrugada, tipo de vía), no predecir antes del hecho.
