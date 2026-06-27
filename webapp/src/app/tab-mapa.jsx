@@ -81,7 +81,7 @@ function Mapa({ slide = false } = {}) {
       const geo=L.geoJSON(geoRef.current,{style:{fillColor:'transparent',color:'var(--hair-2)',weight:1,fillOpacity:0}}).addTo(map); map._geo=geo;
       const pts=D.pts.map(p=>[p[0],p[1],0.6]);
       map._heat=L.heatLayer(pts,{radius:14,blur:20,maxZoom:15,minOpacity:.25,
-        gradient:{0.2:'#3E5A66',0.45:'#C28A2C',0.7:'#E05334',1:'#C0391F'}}).addTo(map);
+        gradient:{0.2:'#2E9E5B',0.45:'#E0901F',0.7:'#D8261C',1:'#C8301B'}}).addTo(map);
     }
   }
 
