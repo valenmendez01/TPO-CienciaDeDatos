@@ -393,7 +393,7 @@
   <div class="ruta anim" style="--d:.1s">
 <div class="hito"><div class="hito-top"><div class="hito-disc">01</div><div class="hito-conn"></div></div><div class="hito-h">Ingesta</div><div class="hito-b">6 datasets base + fuentes externas.</div></div><div class="hito"><div class="hito-top"><div class="hito-disc">02</div><div class="hito-conn"></div></div><div class="hito-h">Perfilado</div><div class="hito-b">Cobertura, nulos y llaves, una por una.</div></div><div class="hito"><div class="hito-top"><div class="hito-disc">03</div><div class="hito-conn"></div></div><div class="hito-h">Veredicto</div><div class="hito-b">Integra solo si aporta señal medible.</div></div><div class="hito"><div class="hito-top"><div class="hito-disc">04</div><div class="hito-conn"></div></div><div class="hito-h">Modelado</div><div class="hito-b">Clasificación, regresión, no supervisado.</div></div><div class="hito"><div class="hito-top"><div class="hito-disc end">05</div></div><div class="hito-h">Patrones</div><div class="hito-b">Métricas correctas y validación temporal.</div></div>
   </div>
-  <div class="band anim" style="--d:.24s"><span class="lab">Criterio de integración</span><p>Un dataset entra <strong>solo si</strong> comparte llave a granularidad útil, aporta señal medible contra el target, y cubre el período. Documentar lo que <em>no</em> aporta es parte del entregable.</p></div>
+  <div class="band anim" style="--d:.24s"><span class="lab">Criterio de integración</span><p>Un dataset entra <strong>solo si</strong> comparte llave a granularidad útil, aporta señal medible contra el target, y cubre el período. Documentar lo que <em>no</em> aporta también es un resultado.</p></div>
 </div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span></div>
   </section>
 
@@ -471,7 +471,7 @@
 
   <section class="slide" data-label="Tránsito 2 de 3">
 <div class="eyebrow"><span class="rcode"><b>EXP</b></span><span class="ey-sec">Exposición · normalización</span><span class="ey-line"></span></div>
-<h2 class="title anim">Dos tercios de ese +35% es <em>tránsito</em>, no más riesgo</h2>
+<h2 class="title anim">El <em>tránsito</em> explica dos tercios de ese +35%</h2>
 <div class="content" style="justify-content:center; gap:44px">
   <div class="anim" style="--d:.12s">
     <div style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:14px">
@@ -520,14 +520,14 @@
       <div class="bar"><span class="bar-label" style="width:300px">Corredor oeste · 25 de Mayo + Perito Moreno</span><div class="bar-track"><div class="bar-fill" style="width:100%; background:var(--amber)"></div></div><span class="bar-val">0,55</span></div>
       <div class="bar"><span class="bar-label" style="width:300px">Autopista Illia <span style="color:var(--severe); font-weight:700">· más severa</span></span><div class="bar-track"><div class="bar-fill" style="width:18%; background:var(--panel)"></div></div><span class="bar-val">0,10</span></div>
     </div>
-    <p class="note" style="margin-top:18px; max-width:none">La Illia tiene 5× menos siniestros por vehículo pero la mayor severidad: menos choques, más graves (velocidad). El sensor mide un punto, no toda la arteria — índice comparativo.</p>
+    <p class="note" style="margin-top:18px; max-width:none">La Illia tiene 5× menos siniestros por vehículo pero la mayor severidad: pocos choques, y a alta velocidad. El sensor mide un punto, no toda la arteria — índice comparativo.</p>
   </div>
 </div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span></div>
   </section>
 
   <section class="slide" data-label="Lluvia">
 <div class="eyebrow"><span class="rcode"><b>EDA</b></span><span class="ey-sec">Análisis exploratorio</span><span class="ey-line"></span></div>
-<h2 class="title anim">La lluvia trae <em>menos</em> siniestros, no más graves</h2>
+<h2 class="title anim">La lluvia reduce los siniestros, pero no los vuelve más <em>graves</em></h2>
 <div class="content" style="justify-content:center">
   <div class="grid2" style="grid-template-columns:1.05fr 1fr; gap:72px; align-items:center">
     <div class="anim" style="--d:.12s">
@@ -733,7 +733,7 @@
 
   <section class="slide" data-label="Ablación zona">
 <div class="eyebrow"><span class="rcode"><b>CLF</b></span><span class="ey-sec">Clasificación · ablación</span><span class="ey-line"></span></div>
-<h2 class="title sm anim">Probamos sumar la zona con k-means — <em>no movió la aguja</em></h2>
+<h2 class="title sm anim">Probamos sumar la zona con k-means — <em>casi no cambió el modelo</em></h2>
 <div class="content" style="justify-content:center">
   <div class="grid2" style="grid-template-columns:1fr 1fr; gap:72px; align-items:center">
     <div class="anim" style="--d:.14s">
@@ -832,7 +832,7 @@
       <div class="stat-num" style="font-size:150px; color:var(--safe)">0,79</div>
       <div class="stat-lab" style="font-size:18px">Recall severo · árbol de decisión d=4</div>
       <p class="body" style="font-size:25px; margin-top:26px">Atrapa <strong>79 de cada 100</strong> severos, y sus reglas se leen una por una. Sacrifica precisión, pero como red de seguridad <strong>auditable</strong> es justo lo que se quiere.</p>
-      <p class="note" style="margin-top:22px">No es una alternativa de más recall al RF: a la misma precisión, el RF calibrado da <strong>0,85 vs 0,79</strong>. El árbol no discrimina mejor — solo es <strong>legible</strong>. Por eso es complemento, no el modelo final. Criterio Gini, profundidad 4, reglas con <span class="mono">plot_tree</span>.</p>
+      <p class="note" style="margin-top:22px">No es una alternativa de más recall al RF: a la misma precisión, el RF calibrado da <strong>0,85 vs 0,79</strong>. El árbol no discrimina mejor; su valor está en que es <strong>legible</strong>. Por eso es complemento, no el modelo final. Criterio Gini, profundidad 4, reglas con <span class="mono">plot_tree</span>.</p>
     </div>
     <div class="anim" style="--d:.24s">
       <p class="mono" style="font-size:18px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-bottom:22px">Cómo decide, en factores</p>
@@ -880,7 +880,7 @@
         <div><div class="stat-num" style="font-size:64px">7,4</div><div class="stat-lab">RMSE · siniestros/día</div></div>
       </div>
       <p class="mono" style="font-size:18px; color:var(--reason); margin-bottom:24px; max-width:42ch; line-height:1.5">Acierta dentro de <strong style="color:var(--ink)">±7 sobre ~26 por día</strong>. En conteos diarios el R² tiene <strong style="color:var(--ink)">techo bajo</strong>: lo que falta para 1,0 es ruido día-a-día irreducible, no error del modelo.</p>
-      <p class="body" style="font-size:25px; margin-bottom:20px">El <strong>feriado</strong> es el driver más fuerte — más que cualquier variable climática. Validado sobre 2024, un año nunca visto.</p>
+      <p class="body" style="font-size:25px; margin-bottom:20px">El <strong>feriado</strong> es el factor más fuerte — más que cualquier variable climática. Validado sobre 2024, un año nunca visto.</p>
       <p class="note">Los árboles no extrapolan la tendencia creciente; la lineal sí. Reemplazar la "tendencia" abstracta por el tránsito real del mes la explica por su mecanismo: la recuperación post-pandemia.</p>
     </div>
   </div>
@@ -916,7 +916,7 @@
   
   <section class="slide" data-label="Método DBSCAN">
 <div class="eyebrow"><span class="rcode"><b>NS</b></span><span class="ey-sec">No supervisado · DBSCAN · método</span><span class="ey-line"></span></div>
-<h2 class="title sm anim">DBSCAN: agrupar por <em>densidad</em>, no por cantidad de grupos</h2>
+<h2 class="title sm anim">DBSCAN: agrupar por <em>densidad</em>, sin fijar cuántos grupos hay</h2>
 <div class="content" style="justify-content:center">
   <div class="grid2" style="grid-template-columns:1fr 1.05fr; gap:60px; align-items:center">
     <div class="anim" style="--d:.12s">
@@ -935,7 +935,7 @@
 
   <section class="slide" data-label="Hotspots DBSCAN">
 <div class="eyebrow"><span class="rcode"><b>NS</b></span><span class="ey-sec">No supervisado · DBSCAN · mapa interactivo</span><span class="ey-line"></span></div>
-<h2 class="title sm anim" style="margin-bottom:24px">La gravedad <em>no</em> es un lugar — pero las 29 esquinas, sí</h2>
+<h2 class="title sm anim" style="margin-bottom:24px">Veintinueve <em>esquinas</em> concentran los siniestros más densos</h2>
 <div class="content" style="justify-content:flex-start"><div class="anim" style="--d:.1s"><div class="app-embed mapa-embed" id="mapa-mount"></div></div></div><div class="deck-foot"><span class="foot-mark">Siniestros Viales CABA · TPO</span><span class="foot-dash"></span></div>
   </section>
 
@@ -1027,7 +1027,7 @@
   "Del lado no supervisado, las reglas de asociación con Apriori. Cada siniestro es una canasta de ítems, y el lift mide cuánto multiplica una combinación la probabilidad base de ser severo. Un peatón en avenida, o la madrugada, duplican el riesgo. Lo bueno de esto, frente al modelo, es que es directamente accionable y se explica solo: 'un peatón atropellado en avenida tiene el doble de chances de terminar grave' no necesita ningún modelo para comunicarse a quien toma decisiones.",
   "Y el último del no supervisado, DBSCAN para encontrar esquinas peligrosas. Veintinueve micro-hotspots concentran casi el 5 por ciento de todos los siniestros. El más cargado tiene 153 siniestros en un solo punto, en los accesos de General Paz. Esto es lo más concreto del análisis geográfico: si tuvieras que intervenir mañana, acá están las esquinas. De paso, el PCA nos dijo que no conviene reducir dimensiones, porque las variables son casi ortogonales.",
   "Y para que no quede solo en slides, el modelo de gravedad corre acá en vivo, en el navegador, sin ninguna API ni backend. Armás el perfil del siniestro —víctima, franja horaria, tipo de vía, edad, si es fin de semana— y combina los lifts de Apriori en escala log-odds, que es equivalente a una logística, para devolver la probabilidad de que ese siniestro termine severo. A la derecha se ve el aporte de cada factor: cuánto multiplica la chance base cada elección. Es el mismo análisis del trabajo, pero tocable.",
-  "El segundo modelo en vivo es el de cantidad: la regresión lineal que predice cuántos siniestros va a haber en un día según el día de la semana, el año —que es el nivel de tránsito—, la lluvia y si es feriado. A la derecha, la descomposición término a término muestra cómo se arma la predicción, y el feriado es el driver más fuerte. Validado sobre 2024, un año que el modelo nunca vio.",
+  "El segundo modelo en vivo es el de cantidad: la regresión lineal que predice cuántos siniestros va a haber en un día según el día de la semana, el año —que es el nivel de tránsito—, la lluvia y si es feriado. A la derecha, la descomposición término a término muestra cómo se arma la predicción, y el feriado es el factor más fuerte. Validado sobre 2024, un año que el modelo nunca vio.",
   "Antes de cerrar, las limitaciones, porque para nosotros declararlas es parte del rigor. Detectamos un sesgo de registro: los casos graves se documentan completos, muchos leves quedan incompletos, así que marcar que falta un dato es consecuencia de la gravedad. Por eso lo sacamos del modelo final —cuesta apenas un punto y medio de AUC, prueba de que no vivía de ese atajo—, y además, evaluando solo sobre los casos con datos completos, el ROC-AUC se ubica en 0,73. Ese es el poder discriminante real, y lo decimos abiertamente. Además, la precisión es baja, así que es screening y no predictor puntual; y no hay datos públicos de alcoholemia ni de velocidad medida.",
   "Resumiendo en seis conclusiones. Uno: la gravedad está en el quién y el cuándo. Dos: el crecimiento es sobre todo exposición, más tránsito. Tres: la lluvia afecta la frecuencia, no la gravedad. Cuatro: la velocidad de la vía es el factor estructural más claro. Cinco, para política pública: peatones en avenidas, madrugadas de finde, mayores de 65 y los hotspots concretos. Y seis, lo metodológico: evaluar la integración antes de integrar, reagrupar el target y combinar técnicas fue lo que nos dio el mejor modelo.",
   "Eso es todo. Todo el trabajo es reproducible: un notebook que corre de punta a punta, sin llamadas a APIs en tiempo de ejecución, con semillas fijas. Quedan los gráficos, los mapas interactivos y los modelos serializados. Muchas gracias, y quedamos para las preguntas."

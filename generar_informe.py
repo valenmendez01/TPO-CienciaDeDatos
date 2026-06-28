@@ -152,7 +152,7 @@ S.append(Paragraph(
     'pero entre tipos de siniestro varía 6× (peatón mayor 12,9% vs choque vehicular leve 2,0%).<br/>'
     '• <b>El gradiente de velocidad de la vía ordena la severidad de punta a punta:</b> '
     'zona peatonal 20 km/h 3,4% → calle 3,8% → avenida 5,4% → autopista 14,1%.<br/>'
-    '• <b>El feriado es el driver más fuerte de la cantidad diaria</b> (-9,6 siniestros/día), '
+    '• <b>El feriado es el factor más fuerte de la cantidad diaria</b> (-9,6 siniestros/día), '
     'más que cualquier variable climática.', P))
 S.append(Spacer(1, 0.3*cm))
 
