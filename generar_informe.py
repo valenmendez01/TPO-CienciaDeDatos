@@ -149,7 +149,7 @@ S.append(Paragraph(
     '• <b>La lluvia reduce la frecuencia de siniestros (-8%; -21% con lluvia fuerte) pero NO aumenta '
     'la gravedad</b> del siniestro individual — validado por 3 vías independientes.<br/>'
     '• <b>La severidad no es un lugar, es un perfil:</b> geográficamente es homogénea (4,7-5,6%), '
-    'pero entre tipos de siniestro varía 6× (peatón mayor 12,9% vs choque vehicular leve 2,0%).<br/>'
+    'pero entre tipos de siniestro varía 6× (persona mayor 12,9% vs choque vehicular leve 2,0%).<br/>'
     '• <b>El gradiente de velocidad de la vía ordena la severidad de punta a punta:</b> '
     'zona peatonal 20 km/h 3,4% → calle 3,8% → avenida 5,4% → autopista 14,1%.<br/>'
     '• <b>El feriado es el factor más fuerte de la cantidad diaria</b> (-9,6 siniestros/día), '
@@ -334,7 +334,7 @@ S += img('regresion_diaria.png',
 S.append(Paragraph('4.3 Aprendizaje no supervisado', H2))
 S.append(Paragraph(
     '<b>K-means de perfiles</b> (k=5, elegido con el método del codo): la severidad varía 6× entre tipos de siniestro — '
-    'peatón mayor (73 años, 12,9% SEVERO) &gt; peatón adulto (10,3%) &gt; moto laboral (7,0%) &gt; '
+    'persona mayor (73 años, 12,9% SEVERO) &gt; peatón adulto (10,3%) &gt; moto laboral (7,0%) &gt; '
     'finde joven (6,3%) &gt; vehicular leve (2,0%). En contraste, el k-means geográfico muestra severidad '
     'casi pareja entre zonas (spread 0,9 pp): <b>el riesgo de gravedad no es un lugar, es un tipo de siniestro</b>.', P))
 S += img('perfiles_siniestro.png', width=13.5*cm,
@@ -367,8 +367,8 @@ S.append(Paragraph(
     '<b>5.</b> Para política pública: proteger peatones en avenidas, controles en madrugadas de fin de '
     'semana, atención a mayores de 65, e intervenciones puntuales en los hotspots identificados.<br/>'
     '<b>6.</b> Metodológicamente: evaluar la integración <i>antes</i> de integrarla evitó arrastrar ruido; '
-    'reagrupar el target fue la mejora más barata; y combinar técnicas (la zona de k-means como variable '
-    'sintética del Random Forest) dio el mejor modelo de la comparación.', P))
+    'reagrupar el target fue la mejora más barata; y la ablación de la zona k-means (variable sintética, '
+    'ajustada sin leakage) mostró que su aporte queda dentro del ruido — nos quedamos con el modelo más simple.', P))
 
 S.append(Paragraph('Limitaciones', H2))
 S.append(Paragraph(
@@ -379,7 +379,7 @@ S.append(Paragraph(
     'modelo final</b>: sacarlos cuesta solo −0,015 de ROC-AUC, prueba de que el modelo no vivía del atajo. '
     'Y como piso honesto, el chequeo de robustez sobre el 57% de casos con datos completos (tasa SEVERO 9,9%) da '
     'ROC-AUC 0,73 (vs 0,81 global), recall 0,51, F1 0,32 — el poder discriminante real, declarado.<br/>'
-    '• La precisión sobre SEVERO es baja (~0,16): el modelo detecta el 67% de los severos pero con falsos '
+    '• La precisión sobre SEVERO es baja (~0,15): el modelo detecta el 67% de los severos pero con falsos '
     'positivos — útil como screening, no como predictor puntual. La severidad depende de física del impacto '
     '(velocidad real, ángulo) que ningún dataset público captura.<br/>'
     '• Las features víctima/acusado se conocen <i>después</i> del hecho: el modelo explica factores de '

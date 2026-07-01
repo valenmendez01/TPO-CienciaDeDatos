@@ -4,7 +4,7 @@ Análisis de siniestros viales en CABA con foco en gravedad del siniestro, frecu
 
 ## Qué predice el trabajo
 
-1. **Clasificación** (Clases 7-8): dado un siniestro ocurrido, ¿es LEVE o SEVERO (grave + mortal)? Modelo final: Random Forest + zona k-means — explicativo/screening post-siniestro.
+1. **Clasificación** (Clases 7-8): dado un siniestro ocurrido, ¿es LEVE o SEVERO (grave + mortal)? Modelo final: Random Forest sin flags de registro (la zona k-means se probó como ablación y quedó descartada) — explicativo/screening post-siniestro.
 2. **Regresión** (Clase 9): ¿cuántos siniestros va a haber por día en CABA? Regresión Lineal Múltiple, validada sobre 2024 (año nunca visto).
 3. **Descriptivo** (Clase 10, no supervisado): zonas y perfiles de riesgo (k-means), esquinas peligrosas (DBSCAN), reglas de asociación (Apriori).
 

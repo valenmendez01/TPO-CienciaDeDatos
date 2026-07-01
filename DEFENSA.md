@@ -10,8 +10,8 @@ Ya no abre por ahí — lo sacamos. Es el punto que nosotros mismos detectamos: 
 
 Matiz honesto: sacar las dummies no purga del todo la completitud, porque los numéricos de víctima (`hay_peaton`, `edad_media`...) valen 0/NaN cuando la víctima es desconocida y siguen llevando la señal implícita. Por eso reportamos el 0,73 del subconjunto completo como piso, no el 0,811.
 
-**2. "Con precisión 0,16, ¿sirve el modelo?"**
-Es un **screening**: prioriza no perder casos severos (recall 0,73) a costa de falsos positivos. Para priorización de inspección o política pública, marcar de más es tolerable; para predicción puntual no sirve, y lo decimos. Además el modelo es explicativo/post-siniestro: su valor es identificar *factores* (peatón, 65+, madrugada, tipo de vía), no predecir antes del hecho.
+**2. "Con precisión 0,15, ¿sirve el modelo?"**
+Es un **screening**: prioriza no perder casos severos (recall 0,67 con el umbral por defecto; 0,85 bajando el umbral a 0,36 para triage) a costa de falsos positivos. Para priorización de inspección o política pública, marcar de más es tolerable; para predicción puntual no sirve, y lo decimos. Además el modelo es explicativo/post-siniestro: su valor es identificar *factores* (peatón, 65+, madrugada, tipo de vía), no predecir antes del hecho.
 
 **3. "¿Por qué k-means dentro de cada fold?"**
 Si k-means se ajustara una sola vez con todo el dataset, la feature `zona` usaría información del fold de validación (leakage de validación). El transformer la ajusta solo con el train de cada fold y asigna el fold de validación con `predict`. La mejora es chica pero el protocolo queda limpio.
