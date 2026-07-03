@@ -109,7 +109,7 @@ function Mapa({ slide = false } = {}) {
       D.hotspots.forEach((h, i) => {
         const rad = 6 + Math.sqrt(h.n) * 1.5;
         const col = h.rate > 0.1 ? "var(--severe)" : h.rate > 0.06 ? "var(--amber)" : "var(--slate)";
-        L.circleMarker([h.lat, h.lon], { radius: rad, fillColor: col, color: "var(--card)", weight: 1.5, fillOpacity: 0.62 }).bindPopup(`<div class="popup-t">Hotspot #${i + 1}</div><div class="popup-n">${h.n}</div><div style="font-size:12px;color:var(--mute)">siniestros en ~60 m</div><div style="font-size:11.5px;color:var(--mute);margin-top:6px;font-family:var(--ff-mono)">${pct(h.rate, 1)} severos</div>`).addTo(grp);
+        L.circleMarker([h.lat, h.lon], { radius: rad, fillColor: col, color: "var(--card)", weight: 1.5, fillOpacity: 0.62 }).bindPopup(`<div class="popup-t">${h.cruce || `Hotspot #${i + 1}`}</div><div class="popup-n">${h.n}</div><div style="font-size:12px;color:var(--mute)">siniestros en ~60 m</div><div style="font-size:11.5px;color:var(--mute);margin-top:6px;font-family:var(--ff-mono)">${pct(h.rate, 1)} severos</div>`).addTo(grp);
       });
       grp.addTo(map);
       layerRef.current = grp;

@@ -27,6 +27,21 @@ El target diario tiene tendencia creciente y los árboles **no extrapolan** fuer
 **6. "¿Qué es la feature `tendencia`? ¿No es hacer trampa con el tiempo?"**
 Era la crítica justa — por eso la reemplazamos por su **mecanismo**: el tránsito real del mes (peajes). El modelo mejora (R² 0,397) y la "tendencia" queda explicada: es la recuperación del tránsito post-pandemia. +2,87 siniestros/día por cada millón de vehículos mensuales extra.
 
+**6b. "¿R² 0,39 no es bajo?"**
+El target es un conteo de eventos raros (~Poisson, media ~29/día en 2024): solo el ruido aleatorio pone un piso de error de √29 ≈ 5,4/día, o sea un **techo de R² ≈ 0,68** (varianza test ~89,8, piso Poisson ~28,9). Capturamos ~57% de lo explicable. Para el caso de uso alcanza: con error medio de ~6-7 se distingue un feriado tranquilo (~17) de un viernes cargado (~35), que es lo que necesita el SAME para dimensionar guardias. Predicción puntual exacta no — y lo decimos.
+
+**6c. "¿El tránsito siempre crece año a año?"**
+No. La serie de peajes 2014-2026 muestra que pre-pandemia estaba **planchado** (+1,5% anual 2014-2019, con 2017 y 2018 negativos). Lo que hay en la ventana de estudio es el **rebote post-pandemia, que ya se saturó**: 2024 dio 0,0% contra 2023 (quedando +11% sobre 2019). Por eso el reemplazo tendencia→tránsito es la decisión correcta: la tendencia extrapola para siempre; el tránsito sigue al mecanismo — si se aplana, el modelo se aplana con él. Matiz: los siniestros 2024 subieron +6,5% con tránsito plano → en 2024 subió la tasa por vehículo, no la exposición (coherente con la descomposición 2/3-1/3 de §7c).
+
+**6d. "¿La temperatura aporta algo a la regresión?"**
+No — verificado por ablación sobre el protocolo exacto del notebook: sin `tavg`/`tmax` el R² sobre 2024 da **0,392 vs 0,385** del modelo completo (RMSE 7,39 vs 7,43). La estacionalidad ya está capturada por las dummies de `mes`. Además `tavg`~`tmax` correlacionan **0,93** y sus coeficientes salen con signos opuestos (+0,08/−0,11): se cancelan — el síntoma clásico de multicolinealidad, tolerado porque solo importa su efecto conjunto (~nulo) y no son titulares del análisis. Se deja documentada, mismo criterio que el clima mensual en el clasificador.
+
+**6e. "¿No es redundante tener `llovio` y `prcp` a la vez?"**
+No: son **el salto y la dosis**. `llovio` captura el cambio de comportamiento por el hecho de llover (−1,7 aunque sea garúa — la mediana del día de lluvia es 3 mm); `prcp` cuánto se profundiza con la intensidad (−0,036/mm). Correlación entre ambas: **0,34** — el escalón no es función lineal de los milímetros (la colinealidad que rompe una regresión es la *lineal*). Juntas reproducen el hallazgo del EDA: −8% con lluvia común, −21% con >20 mm.
+
+**6f. "¿Por qué el test es 2024 entero y no un 80/20 aleatorio?"**
+El split debe imitar el uso real: predecir días **futuros**. Con 80/20 aleatorio, para predecir el 15/03/2024 el modelo entrenó con el 14 y el 16 — por la autocorrelación de la serie "ve" el nivel del período que dice predecir y las métricas salen infladas (leakage temporal). Además escondería la incapacidad de extrapolar de los árboles (con días de 2024 en el train parecerían competitivos) y se elegiría el modelo equivocado. El split temporal es exactamente lo que reveló esa diferencia. Para el clasificador, en cambio, el 80/20 aleatorio estratificado es correcto: cada siniestro es un caso independiente, sin flecha temporal en la pregunta.
+
 ## Sobre la exposición (sección 7c)
 
 **7. "¿El +35% de siniestros significa que manejar es más peligroso?"**
