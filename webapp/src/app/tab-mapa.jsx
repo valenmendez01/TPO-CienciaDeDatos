@@ -114,7 +114,7 @@ function Mapa({ slide = false } = {}) {
         </Card>
         <Card title="Concentración" cap="29 hotspots">
           <div style={{fontFamily:'var(--ff-serif)',fontSize:44,fontWeight:500,color:'var(--amber)',lineHeight:1}}><CountUp value={4.6} fmt={v=>v.toFixed(1).replace('.',',')}/>%</div>
-          <div style={{fontSize:15,color:'var(--mute)',marginTop:6}}>de todos los siniestros caen en 29 micro-esquinas</div>
+          <div style={{fontSize:15,color:'var(--mute)',marginTop:6}}>de todos los siniestros en 29 micro-esquinas — el ~0,2% de la superficie de CABA</div>
         </Card>
         <Card title="Severidad entre comunas" cap="casi pareja">
           <div style={{fontFamily:'var(--ff-serif)',fontSize:44,fontWeight:500,color:'var(--slate)',lineHeight:1}}>1,2×</div>
